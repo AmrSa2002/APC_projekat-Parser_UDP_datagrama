@@ -1,0 +1,45 @@
+{ signal: [
+  ['AVALON ST input',
+   {	name: 'clk',   wave: 'p....................'},
+  {	name: 'rst',   wave: '10...................'},
+   { name: 'in_data', wave: 'x55555557444444666666', data: ["Preamble", "Preamble", "Preamble", "Preamble", "Preamble", "Preamble", "Preamble", "SFD", "MAC dest", "MAC dest","MAC dest","MAC dest", "MAC dest","MAC dest", "MAC src", "MAC src","MAC src","MAC src", "MAC src","MAC src"]}, 
+   { name: 'in_empty', wave: 'x2...................', data: '0'},
+    { name: 'in_startofpacket', wave: '010..................'},
+    { name: 'in_endofpacket', wave: '0....................'},
+   { name: 'in_ready', wave: '01...................'},
+    { name: 'in_valid', wave: '01...................'}
+  ],
+  ['AVALON ST input nastavak1',
+   {name: 'clk',   wave: 'p....................'},
+  {	name: 'rst',   wave: '0....................'},
+   { name: 'in_data', wave: '338955774435668888999', data: ["Eth type", "Eth type", "IP version", "IP TOS", "IP length", "IP length", "IP identif.", "IP identif.", "IP Flags", "IP Flags","IP TTL","Protocol", "Checksum","Checksum", "Source IP", "Source IP","Source IP","Source IP", "Dest. IP","Dest. IP", "Dest. IP"]}, 
+   { name: 'in_empty', wave: '2....................', data: '0'},
+    { name: 'in_startofpacket', wave: '0....................'},
+    { name: 'in_endofpacket', wave: '0....................'},
+   { name: 'in_ready', wave: '1....................'},
+    { name: 'in_valid', wave: '1....................'}
+  ],
+  ['AVALON ST input nastavak2',
+   {name: 'clk',   wave: 'p....................'},
+  {	name: 'rst',   wave: '0....................'},
+   { name: 'in_data', wave: '933445566222222222222', data: ["Dest. IP", "Source port", "Source port", "Dest. port", "Dest. port", "UDP length", "UDP length", "Checksum", "Checksum", "00100000", "01110011", "01101101", "01101111", "00100000", "01101110", "01100001", "01101010", "01101010", "01100001", "01100011", "01101001"]}, 
+   { name: 'in_empty', wave: '2....................', data: '0'},
+    { name: 'in_startofpacket', wave: '0....................'},
+    { name: 'in_endofpacket', wave: '0...................1'},
+   { name: 'in_ready', wave: '1....................'},
+    { name: 'in_valid', wave: '1....................'}
+  ],
+  
+  ['AVALON ST output',
+   {name: 'clk',   wave: 'p....................'},
+  {	name: 'rst',   wave: '10...................'},
+   { name: 'out_data', wave: 'x222222222222xxxxxxxx', data: ["00100000", "01110011", "01101101", "01101111", "00100000", "01101110", "01100001", "01101010", "01101010", "01100001", "01100011", "01101001"]}, 
+   { name: 'out_empty', wave: 'x2...................', data: '0'},
+    { name: 'out_startofpacket', wave: '010..................'},
+    { name: 'out_endofpacket', wave: '0...........10.......'},
+   { name: 'out_ready', wave: '01...................'},
+    { name: 'out_valid', wave: '01...........0.......'},
+   { name: 'channel', wave: 'x888899993344xxxxxxxx', data: ["Source IP", "Source IP", "Source IP", "Source IP", "Dest. IP", "Dest. IP", "Dest. IP", "Dest. IP", "Source port", "Source port", "Dest. port", "Dest. port"]}
+  ],
+ 
+], config: { hscale: 1.5 }}
