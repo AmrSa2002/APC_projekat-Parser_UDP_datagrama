@@ -35,4 +35,14 @@ Ethernet okvir je prethodno najavljen preambulom i delimiterom početka okvira (
 Početna ideja izleda talasnih oblika, izrađena korištenjem _Wavedrom_ data je u istoimenom folderu. Unutar foldera date su 2 verzije, od kojih je jedna sa generalnim izgledom okvira i njegovih polja, dok je drugi detaljniji i sadrži oktete koji dolaze na interfejs. Prethodno je urađeno na osnovu izgleda okvira datog u _Uvodu_.
 
 ### Signali - Avalon ST
+
+_channel_
+_data_
+_error_
+_ready_
+_valid_
+_empty_
+_endofpacket_
+_startofpacket_
+
 ## Literatura
