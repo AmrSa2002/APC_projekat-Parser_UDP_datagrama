@@ -36,13 +36,20 @@ Početna ideja izleda talasnih oblika, izrađena korištenjem _Wavedrom_ data je
 
 ### Signali - Avalon ST
 
-_channel_
+_channel_ 
+
 _data_
+
 _error_
+
 _ready_
+
 _valid_
+
 _empty_
+
 _endofpacket_
+
 _startofpacket_
 
 ## Literatura
