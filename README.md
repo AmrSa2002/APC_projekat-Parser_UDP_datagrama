@@ -15,8 +15,9 @@ Glavni koraci pri parsiranju UDP datagrama su:
 
 ### Ethernet okvir
 
-
 <img width="710" alt="Screenshot 2024-12-10 at 17 22 06" src="https://github.com/user-attachments/assets/303e2b74-5c0e-467c-948b-a39176913f73">
+
+Ethernet okvir je prethodno najavljen preambulom i delimiterom početka okvira (SFD), koji su dio Ethernet paketa na fizičkom sloju. Svaki Ethernet okvir počinje Ethernet zaglavljem, koje sadrži odredišne i izvorne MAC adrese kao prva dva polja. Srednji dio okvira čini sadržaj podataka, uključujući zaglavlja drugih protokola (npr. Internet protokola) koji se prenose u okviru. Okvir se završava sekvencom provjere okvira, koja je predstavljena sa 32 bita.
 
 ### IP okvir
 
