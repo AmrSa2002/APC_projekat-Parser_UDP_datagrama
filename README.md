@@ -36,20 +36,37 @@ Početna ideja izleda talasnih oblika, izrađena korištenjem _Wavedrom_ data je
 
 ### Signali - Avalon ST
 
-_channel_ 
+Prema [1] i [2], Avalon-ST (engl. _Avalon Streaming_) predstavlja sučelje koje predstavlja jednosmjerni tok podataka sabirnicom maksimalne širine 4096 bita, uključujući multipleksirane tokove, pakete i DSP podatke. 
 
-_data_
+Signali na Avalon-ST sučelju su sljedeći:
 
-_error_
+* _channel_ - indicira kanal koji se prenosi;
 
-_ready_
+* _data_ - podatak koji se prenosi u trenutnom ciklusu transfera paketa;
 
-_valid_
+* _error_ - označava greške koje utiču na podatke koji se prenose u trenutnom ciklusu.
 
-_empty_
+* _ready_ - signal koji indicira da je odredište spremno za prelazak u sljedeći ciklus transfera paketa;
 
-_endofpacket_
+* _valid_ - signal koji indicira da je podatak koji se prenosi u trenutnom ciklusu transfera paketa ispravan;
 
-_startofpacket_
+* _empty_ - indicira broj praznih simbola u podatku iz trenutnog ciklusa transfera paketa;
+
+* _endofpacket_ - signal koji indicira kraj paketskog prenosa;
+
+* _startofpacket_ - signal koji indicira početak paketskog prenosa;
+
+### Ulazni i izlazni signali sklopa - Waveform dijagram
+
+![UDP_parser_waveforms](https://github.com/user-attachments/assets/1f481615-2da3-46ec-b23c-38f67f8d16e0)
+
+Kako je prikazano, definisani su takt signal _clk_, te reset signal _rst_. Kako je naglašeno, _in_data_ signal predstavlja podatke koje se prenose, odnosno pakete iz okvira definisanih u _Uvodu_. U nastavku je dat opis paketa:
+
+
+
+Izlazni podaci _out_data_ se pojavljuju nakon obrade ulaznog toka. 	_channel_ pokazuje vrijednosti OD što sugeriše da parser signalizira završetak prenosa podataka i selekciju odgovarajućeg izlaznog kanala.
 
 ## Literatura
+
+[1] Intel, F. P. G. A. (2021.) _Avalon® interface specifications_., Tech. Rep., MNL-AVABUSREF.
+[2] Kaljić E., (2024.), _Arhitekture paketskih čvorišta - Predavanje 5_.
