@@ -62,8 +62,9 @@ Signali na Avalon-ST sučelju su sljedeći:
 
 Kako je prikazano, definisani su takt signal _clk_, te reset signal _rst_. Kako je naglašeno, _in_data_ signal predstavlja podatke koje se prenose, odnosno pakete iz okvira definisanih u _Uvodu_. U nastavku je dat opis paketa:
 
-* D1 - D14 predstavljaju Ethernet okvir (isključujući preambulu i SFD), odnosno D1-D6 predstavljaju 6B odredišne MAC adrese. Nakon toga, slijedi 6B izvorišne MAC adrese (D7-D12), te 2B koja označavaju dužinu ili tip podataka. Iz posljednja dva okteta izvlači se informacija o tipu protokola koji se prenosi u okviru. U slučaju da su posljednja dva okteta "0x0800", riječ je IPv4. 
-* Nakon Ethernet okvira, slijedi IP okvir (D15 - D34). 
+* **D1 - D14** predstavljaju Ethernet okvir (isključujući preambulu i SFD). Dakle, prenos počinje sa prvim oktetom odredišne MAC adrese. S tim u vezi, **D1-D6** predstavljaju 6B odredišne MAC adrese. Nakon toga, slijedi 6B izvorišne MAC adrese (**D7-D12**), te 2B koja označavaju dužinu ili tip podataka. Iz posljednja dva okteta izvlači se informacija o tipu protokola koji se prenosi u okviru. U slučaju da su posljednja dva okteta "0x0800", riječ je IPv4. 
+* Nakon Ethernet okvira, slijedi IP okvir (**D15 - D34**). U strukturi okvira, **D15** predstavlja 1B informacije o verziji IP, nakon čega slijedi 1B (**D16**) TOS (engl. _Type of service_). **D17-D18** nose informaciju o dužini IP okvira na osnovu kojeg zaključujemo kada očekujemo sljedeći okvir. **D17-D21** predstavljaju identifikaciju (2B), IP zastavice (2B), te 1B TTL (engl. _Time to live_), rekurzivno.
+  
 
 Izlazni podaci _out_data_ se pojavljuju nakon obrade ulaznog toka. 	_channel_ pokazuje vrijednosti OD što sugeriše da parser signalizira završetak prenosa podataka i selekciju odgovarajućeg izlaznog kanala.
 
