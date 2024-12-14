@@ -1,0 +1,90 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+ENTITY generator_avalon_st IS
+	PORT (
+		clk_clk : IN STD_LOGIC;
+		reset_reset_n : IN STD_LOGIC;
+		start : IN STD_LOGIC;
+		len : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
+		out_data : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
+		out_empty : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+		out_endofpacket : OUT STD_LOGIC;
+		out_ready : IN STD_LOGIC;
+		out_startofpacket : OUT STD_LOGIC;
+		out_valid : OUT STD_LOGIC
+	);
+END ENTITY generator_avalon_st;
+
+ARCHITECTURE rtl OF generator_avalon_st IS
+	TYPE STATE_TYPE IS (IDLE, SENDING_SOP, SENDING_DATA, SENDING_EOP);
+	SIGNAL s_state : STATE_TYPE;
+	SIGNAL s_counter : STD_LOGIC_VECTOR(10 DOWNTO 0);
+	SIGNAL s_len : STD_LOGIC_VECTOR(10 DOWNTO 0);
+BEGIN
+	fsm: PROCESS (reset_reset_n, clk_clk)
+	BEGIN
+		IF reset_reset_n = '0' THEN
+			s_state <= IDLE;
+		ELSIF RISING_EDGE(clk_clk) THEN
+			CASE s_state IS
+				WHEN IDLE =>
+					IF start = '1' THEN
+						s_counter <= len;
+						s_len <= len;
+						s_state <= SENDING_SOP;
+					END IF;
+				WHEN SENDING_SOP =>
+					IF out_ready = '1' THEN
+						s_counter <= s_counter - 8;
+						s_state <= SENDING_DATA;
+					END IF;
+				WHEN SENDING_DATA =>
+					IF out_ready = '1' THEN
+						IF s_counter <= 16 THEN
+							s_state <= SENDING_EOP;
+						END IF;
+						s_counter <= s_counter - 8;
+					END IF;
+				WHEN SENDING_EOP =>
+					IF out_ready = '1' THEN
+						s_state <= IDLE;
+					END IF;
+			END CASE;
+		END IF;
+	END PROCESS;
+	outp: PROCESS (all)
+	BEGIN
+		CASE s_state IS
+			WHEN IDLE =>
+				out_data <= (OTHERS => '0');
+				out_empty <= (OTHERS => '0');
+				out_endofpacket <= '0';
+				out_startofpacket <= '0';
+				out_valid <= '0';
+			WHEN SENDING_SOP =>
+				out_data(63 DOWNTO 11) <= (OTHERS => '0');
+				out_data(10 DOWNTO 0) <= s_counter;
+				out_empty <= (OTHERS => '0');
+				out_endofpacket <= '0';
+				out_startofpacket <= '1';
+				out_valid <= '1';
+			WHEN SENDING_DATA =>
+				out_data(63 DOWNTO 11) <= (OTHERS => '0');
+				out_data(10 DOWNTO 0) <= s_counter;
+				out_empty <= (OTHERS => '0');
+				out_endofpacket <= '0';
+				out_startofpacket <= '0';
+				out_valid <= '1';
+			WHEN SENDING_EOP =>
+				out_data(63 DOWNTO 11) <= (OTHERS => '0');
+				out_data(10 DOWNTO 0) <= s_counter;
+				out_empty <= STD_LOGIC_VECTOR(TO_UNSIGNED(8-(TO_INTEGER(UNSIGNED(s_len)) MOD 8), 3));
+				out_endofpacket <= '1';
+				out_startofpacket <= '0';
+				out_valid <= '1';
+		END CASE;
+	END PROCESS;
+END ARCHITECTURE rtl;

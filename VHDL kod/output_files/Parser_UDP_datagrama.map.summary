@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Sat Dec 14 20:10:34 2024
+Quartus Prime Version : 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+Revision Name : Parser_UDP_datagrama
+Top-level Entity Name : Parser_UDP_datagrama
+Family : Cyclone IV E
+Total logic elements : 460
+    Total combinational functions : 360
+    Dedicated logic registers : 171
+Total registers : 171
+Total pins : 122
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

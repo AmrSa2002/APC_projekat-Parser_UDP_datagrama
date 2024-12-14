@@ -1,0 +1,477 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "out_data[0]",
+					"strict" : false
+				},
+				{
+					"name" : "out_data[1]",
+					"strict" : false
+				},
+				{
+					"name" : "out_data[2]",
+					"strict" : false
+				},
+				{
+					"name" : "out_data[3]",
+					"strict" : false
+				},
+				{
+					"name" : "out_data[4]",
+					"strict" : false
+				},
+				{
+					"name" : "out_data[5]",
+					"strict" : false
+				},
+				{
+					"name" : "out_data[6]",
+					"strict" : false
+				},
+				{
+					"name" : "out_data[7]",
+					"strict" : false
+				},
+				{
+					"name" : "out_endofpacket",
+					"strict" : false
+				},
+				{
+					"name" : "out_valid",
+					"strict" : false
+				},
+				{
+					"name" : "channel[0]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[1]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[2]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[3]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[4]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[5]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[6]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[7]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[8]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[9]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[10]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[11]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[12]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[13]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[14]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[15]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[16]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[17]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[18]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[19]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[20]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[21]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[22]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[23]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[24]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[25]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[26]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[27]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[28]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[29]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[30]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[31]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[32]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[33]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[34]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[35]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[36]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[37]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[38]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[39]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[40]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[41]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[42]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[43]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[44]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[45]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[46]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[47]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[48]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[49]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[50]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[51]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[52]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[53]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[54]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[55]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[56]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[57]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[58]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[59]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[60]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[61]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[62]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[63]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[64]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[65]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[66]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[67]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[68]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[69]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[70]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[71]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[72]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[73]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[74]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[75]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[76]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[77]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[78]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[79]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[80]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[81]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[82]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[83]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[84]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[85]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[86]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[87]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[88]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[89]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[90]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[91]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[92]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[93]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[94]",
+					"strict" : false
+				},
+				{
+					"name" : "channel[95]",
+					"strict" : false
+				},
+				{
+					"name" : "in_data[0]",
+					"strict" : false
+				},
+				{
+					"name" : "in_data[1]",
+					"strict" : false
+				},
+				{
+					"name" : "in_data[2]",
+					"strict" : false
+				},
+				{
+					"name" : "in_data[3]",
+					"strict" : false
+				},
+				{
+					"name" : "in_data[4]",
+					"strict" : false
+				},
+				{
+					"name" : "in_data[5]",
+					"strict" : false
+				},
+				{
+					"name" : "in_data[6]",
+					"strict" : false
+				},
+				{
+					"name" : "in_data[7]",
+					"strict" : false
+				},
+				{
+					"name" : "in_startofpacket",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "reset_n",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

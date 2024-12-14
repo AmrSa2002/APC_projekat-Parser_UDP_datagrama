@@ -1,0 +1,9 @@
+
+State Machine - |Parser_UDP_datagrama|s_state
+Name s_state.CRC s_state.DATA s_state.UDP_HEADER s_state.IP_HEADER s_state.ETHERNET_HEADER s_state.IDLE 
+s_state.IDLE 0 0 0 0 0 0 
+s_state.ETHERNET_HEADER 0 0 0 0 1 1 
+s_state.IP_HEADER 0 0 0 1 0 1 
+s_state.UDP_HEADER 0 0 1 0 0 1 
+s_state.DATA 0 1 0 0 0 1 
+s_state.CRC 1 0 0 0 0 1 
