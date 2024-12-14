@@ -69,4 +69,5 @@ Izlazni podaci _out_data_ se pojavljuju nakon obrade ulaznog toka. 	_channel_ po
 ## Literatura
 
 [1] Intel, F. P. G. A. (2021.) _Avalon® interface specifications_., Tech. Rep., MNL-AVABUSREF.
+
 [2] Kaljić E., (2024.), _Arhitekture paketskih čvorišta - Predavanje 5_.
