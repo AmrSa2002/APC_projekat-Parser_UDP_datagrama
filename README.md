@@ -7,8 +7,8 @@ Parsiranje predstavlja proces identifikacije i ekstrakcije odgovarajućih polja 
 S prethodnim u vezi, UDP datagram parser je hardverski ili softverski modul dizajniran za analizu (parsiranje) i ekstrakciju informacija iz UDP (User Datagram Protocol) datagrama.
 
 Glavni koraci pri parsiranju UDP datagrama su:
-* Parsiranje Ethernet zaglavlja: Ekstraktuje MAC adrese i provjerava EtherType (da li je IP paket).
-* Parsiranje IP zaglavlja: Ekstraktuje IP adrese i provjerava protokol (da li je UDP).
+* Parsiranje Ethernet zaglavlja: Ekstraktuje MAC adrese i provjerava EtherType.
+* Parsiranje IP zaglavlja: Ekstraktuje IP adrese i provjerava protokol.
 * Parsiranje UDP zaglavlja: Ekstraktuje UDP portove i veličinu korisničkih podataka.
 * Ekstrakcija korisničkih podataka: Prenosi podatke aplikacijskog sloja prema izlaznom interfejsu.
 
