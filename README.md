@@ -24,15 +24,19 @@ Ethernet okvir je prethodno najavljen preambulom i delimiterom početka okvira (
 
 <img width="890" alt="Screenshot 2024-12-10 at 17 22 27" src="https://github.com/user-attachments/assets/bd7f174f-d24c-4445-b04d-ad889322ae6f">
 
+Prva komponenta IP okvira označava verziju IP protokola (npr. IPv4). Polje TOS (engl. _Type of service_) koristi se za definisanje prioriteta i kvaliteta usluge (engl. _Quality of service_) za prenesene podatke. Length polje definiše ukupnu veličinu paketa u bajtima, uključujući zaglavlje i podatke. Identifikaciono polje se koristi za prepoznavanje grupe fragmenata jednog IP datagrama. IP protokol ima ograničenje maksimalne veličine paketa koju mreža može prenijeti (engl. _Maximum Transmission Unit_), ako veličina datagrama premašuje ovo ograničenje mora se podijeliti na manje dijelove, odnosno fragmente, kako bi prijenos bio uspješan. Polje flags pruža dodatne informacije o fragmentaciji. Vrijeme trajanja ograničava maksimalni broj skokova paketa kroz mrežu u slučaju beskonačne petlje u rutiranju. Naredno polje identifikuje transportni protokol koji se koristi (npr. TCP ili UDP), a zatim se koristi Checksum za provjeru grešaka u zaglavlju. Krajnji dio okvira je sačinjen od izvorišne i odredišne IP adrese, te polja za prijenos stvarnih korisničkih podataka.
+
 ### UDP okvir
 
 
 <img width="509" alt="Screenshot 2024-12-10 at 17 22 38" src="https://github.com/user-attachments/assets/3981b43b-6921-4e3e-8b4a-639021945021">
 
+UDP okvir je sačinjen od četiri polja dužine po dva bita, te korisničkih podataka. Prva dva su izvorišni i odredišni port, a zatim slijedi specificiranje dužine UDP datagrama u bajtima (polja zaglavlja i polje podataka). Polje Checksum služi za provjeru grešaka u zaglavlju i podacima.
+
 
 ## Talasni oblici
 
-Početna ideja izleda talasnih oblika, izrađena korištenjem _Wavedrom_ data je u istoimenom folderu. Unutar foldera date su 2 verzije, od kojih je jedna sa generalnim izgledom okvira i njegovih polja, dok je drugi detaljniji i sadrži oktete koji dolaze na interfejs. Prethodno je urađeno na osnovu izgleda okvira datog u _Uvodu_. Prva verzija FSM dijagrama je također data u folderu.
+Početna ideja izleda talasnih oblika, izrađena korištenjem _Wavedrom_ data je u istoimenom folderu. Unutar foldera date su 2 verzije, od kojih je jedna sa generalnim izgledom okvira i njegovih polja, dok je drugi detaljniji i sadrži oktete koji dolaze na interfejs. Prethodno je urađeno na osnovu izgleda okvira datog u _Uvodu_.
 
 ### Signali - Avalon ST
 
