@@ -36,6 +36,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "out_startofpacket",
+					"strict" : false
+				},
+				{
 					"name" : "out_endofpacket",
 					"strict" : false
 				},

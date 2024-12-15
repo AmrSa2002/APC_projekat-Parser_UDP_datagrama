@@ -53,14 +53,14 @@ BEGIN
                     END IF;
 
                 WHEN ETHERNET_HEADER =>
-                    IF byte_index = 12 THEN
+                    IF byte_index = 11 THEN
                         IF in_data /= "00001000" THEN -- Check first part of Ethernet type for IPv4
                             s_state <= IDLE;
                             byte_index <= 0;
                         ELSE
                             byte_index <= byte_index + 1;
                         END IF;
-                    ELSIF byte_index = 13 THEN
+                    ELSIF byte_index = 12 THEN
                         IF in_data = "00000000" THEN -- Check second part of Ethernet type for IPv4
                             byte_index <= byte_index + 1;
                             s_state <= IP_HEADER;
@@ -73,41 +73,45 @@ BEGIN
                     END IF;
 
                 WHEN IP_HEADER =>
-                    IF byte_index = 14 THEN
+                    IF byte_index = 13 THEN
                         ip_header_length <= to_integer(unsigned(in_data(3 DOWNTO 0))) * 4;
                         byte_index <= byte_index + 1;
-                    ELSIF byte_index = 23 THEN
+                    ELSIF byte_index = 22 THEN
                         IF in_data /= "00010001" THEN -- Check protocol type
                             s_state <= IDLE;
                             byte_index <= 0;
                         ELSE
                             byte_index <= byte_index + 1;
                         END IF;
-                    ELSIF byte_index = 26 THEN
+                    ELSIF byte_index = 25 THEN
                         s_channel(95 DOWNTO 88) <= in_data;
                         byte_index <= byte_index + 1;
-                    ELSIF byte_index = 27 THEN
+                    ELSIF byte_index = 26 THEN
                         s_channel(87 DOWNTO 80) <= in_data;
                         byte_index <= byte_index + 1;
-                    ELSIF byte_index = 28 THEN
+                    ELSIF byte_index = 27 THEN
                         s_channel(79 DOWNTO 72) <= in_data;
                         byte_index <= byte_index + 1;
-                    ELSIF byte_index = 29 THEN
+                    ELSIF byte_index = 28 THEN
                         s_channel(71 DOWNTO 64) <= in_data;
                         byte_index <= byte_index + 1;
-                    ELSIF byte_index = 30 THEN
+                    ELSIF byte_index = 29 THEN
                         s_channel(63 DOWNTO 56) <= in_data;
                         byte_index <= byte_index + 1;
-                    ELSIF byte_index = 31 THEN
+                    ELSIF byte_index = 30 THEN
                         s_channel(55 DOWNTO 48) <= in_data;
                         byte_index <= byte_index + 1;
-                    ELSIF byte_index = 32 THEN
+                    ELSIF byte_index = 31 THEN
                         s_channel(47 DOWNTO 40) <= in_data;
                         byte_index <= byte_index + 1;
-                    ELSIF byte_index = 33 THEN
+                    ELSIF byte_index = 32 THEN
                         s_channel(39 DOWNTO 32) <= in_data;
-                        byte_index <= byte_index + 1;
-                    ELSIF byte_index = 13 + ip_header_length THEN
+								IF ip_header_length = 20 THEN
+									s_state <= UDP_HEADER;
+									byte_index <= byte_index + 1;
+                        ELSE byte_index <= byte_index + 1;
+								END IF;
+                    ELSIF byte_index = 13 + ip_header_length -1 THEN
                         s_state <= UDP_HEADER;
                         byte_index <= byte_index + 1;
                     ELSE
@@ -115,26 +119,27 @@ BEGIN
                     END IF;
 
                 WHEN UDP_HEADER =>
-                    IF byte_index = 13 + ip_header_length + 1 THEN
+                    IF byte_index = 13 + ip_header_length THEN
                         s_channel(31 DOWNTO 24) <= in_data;
                         byte_index <= byte_index + 1;
-                    ELSIF byte_index = 13 + ip_header_length + 2 THEN
+                    ELSIF byte_index = 13 + ip_header_length + 1 THEN
                         s_channel(23 DOWNTO 16) <= in_data;
                         byte_index <= byte_index + 1;
-                    ELSIF byte_index = 13 + ip_header_length + 3 THEN
+                    ELSIF byte_index = 13 + ip_header_length + 2 THEN
                         s_channel(15 DOWNTO 8) <= in_data;
                         byte_index <= byte_index + 1;
-                    ELSIF byte_index = 13 + ip_header_length + 4 THEN
+                    ELSIF byte_index = 13 + ip_header_length + 3 THEN
                         s_channel(7 DOWNTO 0) <= in_data;
                         byte_index <= byte_index + 1;
-                    ELSIF byte_index = 13 + ip_header_length + 5 THEN
+                    ELSIF byte_index = 13 + ip_header_length + 4 THEN
                         udp_length <= to_integer(unsigned(in_data)) * 256;
                         byte_index <= byte_index + 1;
-                    ELSIF byte_index = 13 + ip_header_length + 6 THEN
+                    ELSIF byte_index = 13 + ip_header_length + 5 THEN
                         udp_length <= udp_length + to_integer(unsigned(in_data));
                         udp_payload_length <= udp_length - 8;
                         byte_index <= byte_index + 1;
-                    ELSIF byte_index = 13 + ip_header_length + 7 THEN
+                    ELSIF byte_index = 13 + ip_header_length + 8 THEN
+							   out_startofpacket <='1';
                         byte_index <= byte_index + 1;
                         s_state <= DATA;
                     ELSE
@@ -142,8 +147,14 @@ BEGIN
                     END IF;
 
                 WHEN DATA =>
-                    IF byte_index = 13 + ip_header_length + udp_length THEN
+						  IF byte_index = 13 + ip_header_length + 9 THEN
+                        out_startofpacket <= '0';
+                        byte_index <= byte_index + 1;
+						  ELSIF byte_index = 13 + ip_header_length + udp_length-1 THEN
                         s_out_endofpacket <= '1';
+                        byte_index <= byte_index + 1;
+                    ELSIF byte_index = 13 + ip_header_length + udp_length THEN
+                        s_out_endofpacket <= '0';
                         byte_index <= byte_index + 1;
                         s_state <= CRC;
                     ELSE
@@ -151,7 +162,7 @@ BEGIN
                     END IF;
 
                 WHEN CRC =>
-                    IF byte_index = 13 + ip_header_length + udp_length + 4 THEN
+                    IF byte_index = 13 + ip_header_length + udp_length + 3 THEN
                         byte_index <= 0;
                         s_state <= IDLE;
                     ELSE
@@ -169,17 +180,21 @@ BEGIN
     CASE s_state IS
         WHEN IDLE =>
             out_data <= (OTHERS => '0');
-            out_startofpacket <= '0';
             out_valid <= '0';
 
         WHEN DATA =>
             out_data <= in_data;
             channel <= s_channel;
             out_valid <= '1';
+		  WHEN CRC =>
+				out_data <= (OTHERS => '0');
+				--s_out_endofpacket <= '0';
+				channel <= (OTHERS => '0');
+            out_valid <= '0';
 
         WHEN OTHERS =>
+				channel <= (OTHERS => '0');
             out_data <= (OTHERS => '0');
-            out_startofpacket <= '0';
             out_valid <= '0';
     END CASE;
 END PROCESS;
