@@ -33,6 +33,20 @@ Prva komponenta IP okvira označava verziju IP protokola (npr. IPv4). Polje TOS 
 
 UDP okvir je sačinjen od četiri polja dužine po dva bita, te korisničkih podataka. Prva dva su izvorišni i odredišni port, a zatim slijedi specificiranje dužine UDP datagrama u bajtima (polja zaglavlja i polje podataka). Polje Checksum služi za provjeru grešaka u zaglavlju i podacima.
 
+## Konačni automat
+
+Konačni automat (engl. _Final State Machine_) predstavlja diskretni matematički model koji se koristi za modeliranje sekvencijalnih logičkih kola. Postoje dva načina predstavljanja konačnih automata - pomoću dijagrama stanja ili hardverski bazirane reprezentacija. Dijagram stanja predstavlja grafičku reprezentaciju specifikacija konačnog automata. Dijagram stanja prikazuje sva moguća stanja u kojima se sistem može naći, vrijednosti ulaza za koje sistem prelazi iz stanja u stanje, te vrijednosti izlaza koje sistem proizvodi u svakom od stanja. Za izradu projektnog zadatka korišten je dijagram sa upotrebom ključne riječi else. Konačni automat je dizajniran da parsira ulazni tok podataka kroz nekoliko slojeva mrežnog paketa. Proces uključuje identifikaciju početka paketa, validaciju zaglavlja svakog sloja (Ethernet, IP, UDP), izdvajanje korisničkih podataka i validaciju završetka paketa.
+
+Predstavljeno je ukupno šest mogućih stanja: 
+* idle: Početno stanje,
+* Ethernet_header: Obrada Ethernet zaglavlja,
+* IP_header: Obrada IP zaglavlja,
+* UDP_header: Obrada UDP zaglavlja,
+* Data: Korisnički podataci,
+* CRC: Provjera završnih bajta paketa.
+
+Parser ostaje u stanju idle sve do dolaska paketa, dok signal 'rst' omogućava resetovanje konačnog automata u početno stanje. Ukoliko je paket validan automat prelazi u naredno stanje - Ethernet_header. Na osnovu posljednja dva okteta određuje se tip protokola koji se koristi za prenos, a u slučaju IPv4 posljednja dva okteta su "0x0800". Ukoliko uslov nije ispunjen, automat se vraća u stanje idle, a ukoliko jeste ostaje u stanju IP_header sve dok se ne izvrši provjera UDP protokola. Ukoliko je protokol UDP naredno stanje je Data, a ako nije parser se vraća u idle. Za određivanje stanja koristi se i brojač bita, te kada dođe do kraja UDP payloada prelazi u CRC stanje iz kojeg se, ponovo, vraća u početno.
+
 
 ## Talasni oblici
 
