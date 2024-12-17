@@ -31,21 +31,7 @@ Prva komponenta IP okvira označava verziju IP protokola (npr. IPv4). Polje TOS 
 
 <img width="509" alt="Screenshot 2024-12-10 at 17 22 38" src="https://github.com/user-attachments/assets/3981b43b-6921-4e3e-8b4a-639021945021">
 
-UDP okvir je sačinjen od četiri polja dužine po dva bita, te korisničkih podataka. Prva dva su izvorišni i odredišni port, a zatim slijedi specificiranje dužine UDP datagrama u bajtima (polja zaglavlja i polje podataka). Polje Checksum služi za provjeru grešaka u zaglavlju i podacima.
-
-## Konačni automat
-
-Konačni automat (engl. _Final State Machine_) predstavlja diskretni matematički model koji se koristi za modeliranje sekvencijalnih logičkih kola. Postoje dva načina predstavljanja konačnih automata - pomoću dijagrama stanja ili hardverski bazirane reprezentacija. Dijagram stanja predstavlja grafičku reprezentaciju specifikacija konačnog automata. Dijagram stanja prikazuje sva moguća stanja u kojima se sistem može naći, vrijednosti ulaza za koje sistem prelazi iz stanja u stanje, te vrijednosti izlaza koje sistem proizvodi u svakom od stanja. Za izradu projektnog zadatka korišten je dijagram sa upotrebom ključne riječi else. Konačni automat je dizajniran da parsira ulazni tok podataka kroz nekoliko slojeva mrežnog paketa. Proces uključuje identifikaciju početka paketa, validaciju zaglavlja svakog sloja (Ethernet, IP, UDP), izdvajanje korisničkih podataka i validaciju završetka paketa.
-
-Predstavljeno je ukupno šest mogućih stanja: 
-* idle: Početno stanje,
-* Ethernet_header: Obrada Ethernet zaglavlja,
-* IP_header: Obrada IP zaglavlja,
-* UDP_header: Obrada UDP zaglavlja,
-* Data: Korisnički podaci,
-* CRC: Provjera završnih bajta paketa.
-
-Parser ostaje u stanju idle sve do dolaska paketa, dok signal 'rst' omogućava resetovanje konačnog automata u početno stanje. Ukoliko je paket validan automat prelazi u naredno stanje - Ethernet_header. Na osnovu posljednja dva okteta određuje se tip protokola koji se koristi za prenos, a u slučaju IPv4 posljednja dva okteta su "0x0800". Ukoliko uslov nije ispunjen, automat se vraća u stanje idle, a ukoliko jeste ostaje u stanju IP_header sve dok se ne izvrši provjera UDP protokola. Ukoliko je protokol UDP naredno stanje je Data, a ako nije parser se vraća u idle. Za određivanje stanja koristi se i brojač bita, te kada dođe do kraja UDP payloada prelazi u CRC stanje iz kojeg se, ponovo, vraća u početno.
+UDP okvir je sačinjen od četiri polja dužine po dva bajta, te korisničkih podataka. Prva dva su izvorišni i odredišni port, a zatim slijedi specificiranje dužine UDP datagrama u bajtima (polja zaglavlja i polje podataka). Polje Checksum služi za provjeru grešaka u zaglavlju i podacima.
 
 
 ## Talasni oblici
@@ -81,11 +67,29 @@ Signali na Avalon-ST sučelju su sljedeći:
 Kako je prikazano, definisani su takt signal `clk`, te reset signal `rst`. Kako je naglašeno, `in_data` signal predstavlja podatke koje se prenose, odnosno pakete iz okvira definisanih u _Uvodu_. U nastavku je dat opis paketa:
 
 * **D1 - D14** predstavljaju Ethernet okvir (isključujući preambulu i SFD). Dakle, prenos počinje sa prvim oktetom odredišne MAC adrese. S tim u vezi, **D1-D6** predstavljaju 6B odredišne MAC adrese. Nakon toga, slijedi 6B izvorišne MAC adrese (**D7-D12**), te 2B koja označavaju dužinu ili tip podataka. Iz posljednja dva okteta izvlači se informacija o tipu protokola koji se prenosi u okviru. U slučaju da su posljednja dva okteta "0x0800", riječ je IPv4. 
-* Nakon Ethernet okvira, slijedi IP okvir (**D15 - D34**). U strukturi okvira, **D15** predstavlja 1B informacije o verziji IP, nakon čega slijedi 1B (**D16**) TOS (engl. _Type of service_). **D17-D18** nose informaciju o dužini IP okvira na osnovu kojeg zaključujemo kada očekujemo sljedeći okvir. **D17-D23** predstavljaju identifikaciju (2B), IP zastavice (2B), te 1B TTL (engl. _Time to live_), rekurzivno. Potom slijedi **D24**, odnosno polje veličine 1B koje služi za identifikaciju protokola koji se koristi na višem sloju. U slučaju da je to vrijednost 17, paket se dalje šalje na UDP. Slijede 2B checksum-a (**D25-D26**), te 4B izvorišne IP adrese (**D27-D30**) koji identigikuje uređaj koji šalje IPv4 paket, te 4B odredišne IP adrese (**D31-D34**).
+* Nakon Ethernet okvira, slijedi IP okvir (**D15 - D34**). U strukturi okvira, **D15** predstavlja 1B informacije o verziji IP, nakon čega slijedi 1B (**D16**) TOS (engl. _Type of service_). **D17-D18** nose informaciju o dužini IP okvira na osnovu kojeg zaključujemo kada očekujemo sljedeći okvir. **D17-D23** predstavljaju identifikaciju (2B), IP zastavice (2B), te 1B TTL (engl. _Time to live_), rekurzivno. Potom slijedi **D24**, odnosno polje veličine 1B koje služi za identifikaciju protokola koji se koristi na višem sloju. U slučaju da je to vrijednost 17, paket se dalje šalje na UDP. Slijede 2B checksum-a (**D25-D26**), te 4B izvorišne IP adrese (**D27-D30**) koji identifikuje uređaj koji šalje IPv4 paket, te 4B odredišne IP adrese (**D31-D34**).
 * Kako je ranije navedeno, u slučaju da je unutar IP okvira vrijednost protokola 17, sljedeći okvir je UDP (**D35-D42**). U strukturi okvira, prva 2B (**D35-D36**) rezervisana su za UDP port izvora, nakon čega slijede 2B UDP porta odredišta (**D37-D38**). Slijede 2B (**D39-D40**)o dužini UDP datagrama (uključujući zaglavlje i payload), te 2B (**D41-D42**) checksuma.
 * Kada se završi UDP okvir, šalju se podaci (engl. _payload_) (**D43-D60**), nakon čega slijede 4B provjere (engl. _Frame Check Sequence_) koji se koriste za detekciju grešaka nastalih tokom prijenosa podataka.
-  
-Izlazni podaci `out_data` se pojavljuju nakon obrade ulaznog toka, a `channel` pokazuje vrijednosti OD što sugeriše da parser signalizira završetak prenosa podataka i selekciju odgovarajućeg izlaznog kanala.
+
+Signal `out_data` predstavlja parsirani UDP payload ulaznih podataka, dok `channel` pokazuje vrijednosti OCD: {IP adresa izvora **D27-D30**, UDP port izvora **D35-D36**, IP adresa odredišta **D31-D34**, UDP port odredišta **D37-D38**} što sugeriše da parser signalizira završetak prenosa podataka i selekciju odgovarajućeg izlaznog kanala.
+
+Signali na AVALON-ST sučelju obuhvataju i `empty` signal, ali je u konkretnom slučaju isti isključen jer projektni zadatak predviđa 8-bitni Avalon-ST, gdje je vrijednost empty signala uvijek nula.
+
+## Konačni automat
+
+Konačni automat (engl. _Final State Machine_) predstavlja diskretni matematički model koji se koristi za modeliranje sekvencijalnih logičkih kola. Postoje dva načina predstavljanja konačnih automata - pomoću dijagrama stanja ili hardverski bazirane reprezentacija. Dijagram stanja predstavlja grafičku reprezentaciju specifikacija konačnog automata. Dijagram stanja prikazuje sva moguća stanja u kojima se sistem može naći, vrijednosti ulaza za koje sistem prelazi iz stanja u stanje, te vrijednosti izlaza koje sistem proizvodi u svakom od stanja. Za izradu projektnog zadatka korišten je dijagram sa upotrebom ključne riječi else. Konačni automat je dizajniran da parsira ulazni tok podataka kroz nekoliko slojeva mrežnog paketa. Proces uključuje identifikaciju početka paketa, validaciju zaglavlja svakog sloja (Ethernet, IP, UDP), izdvajanje korisničkih podataka i validaciju završetka paketa.
+
+Predstavljeno je ukupno šest mogućih stanja: 
+* idle: Početno stanje,
+* Ethernet_header: Obrada Ethernet zaglavlja,
+* IP_header: Obrada IP zaglavlja,
+* UDP_header: Obrada UDP zaglavlja,
+* Data: Korisnički podaci,
+* CRC: Provjera završnih bajta paketa.
+
+Parser ostaje u stanju idle sve do dolaska paketa, dok signal 'rst' omogućava resetovanje konačnog automata u početno stanje. Ukoliko je paket validan automat prelazi u naredno stanje - Ethernet_header. Na osnovu posljednja dva okteta određuje se tip protokola koji se koristi za prenos, a u slučaju IPv4 posljednja dva okteta su "0x0800". Ukoliko uslov nije ispunjen, automat se vraća u stanje idle, a ukoliko jeste ostaje u stanju IP_header sve dok se ne izvrši provjera UDP protokola. Ukoliko je protokol UDP naredno stanje je Data, a ako nije parser se vraća u idle. Za određivanje stanja koristi se i brojač bita, te kada dođe do kraja UDP payloada prelazi u CRC stanje iz kojeg se, ponovo, vraća u početno.
+
+
 
 ## Literatura
 
