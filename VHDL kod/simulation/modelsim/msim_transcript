@@ -14,7 +14,7 @@
 # 
 # vcom -2008 -work work {C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 16:55:43 on Dec 15,2024
+# Start time: 21:31:28 on Dec 17,2024
 # vcom -reportprogress 300 -2008 -work work C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -22,12 +22,12 @@
 # -- Loading package NUMERIC_STD
 # -- Compiling entity Parser_UDP_datagrama
 # -- Compiling architecture rtl of Parser_UDP_datagrama
-# End time: 16:55:43 on Dec 15,2024, Elapsed time: 0:00:00
+# End time: 21:31:29 on Dec 17,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # 
 vcom -reportprogress 300 -work work {C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_tb.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 16:56:10 on Dec 15,2024
+# Start time: 21:31:46 on Dec 17,2024
 # vcom -reportprogress 300 -work work C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_tb.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -35,19 +35,17 @@ vcom -reportprogress 300 -work work {C:/Users/User/Desktop/APC/APC_projekat-Pars
 # -- Loading package NUMERIC_STD
 # -- Compiling entity Parser_UDP_datagrama_tb
 # -- Compiling architecture behavior of Parser_UDP_datagrama_tb
-# End time: 16:56:10 on Dec 15,2024, Elapsed time: 0:00:00
+# End time: 21:31:46 on Dec 17,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 vsim rtl_work.parser_udp_datagrama_tb
 # vsim rtl_work.parser_udp_datagrama_tb 
-# Start time: 16:56:15 on Dec 15,2024
+# Start time: 21:31:50 on Dec 17,2024
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
 # Loading rtl_work.parser_udp_datagrama_tb(behavior)
 # Loading rtl_work.parser_udp_datagrama(rtl)
-# ** Warning: (vsim-8683) Uninitialized out port /parser_udp_datagrama_tb/uut/in_ready has no driver.
-# This port will contribute value (U) to the signal network.
 # A bookmarks file was found in the current directory with 1 bookmark
 add wave -position insertpoint  \
 sim:/parser_udp_datagrama_tb/clk \
@@ -65,7 +63,6 @@ sim:/parser_udp_datagrama_tb/channel \
 sim:/parser_udp_datagrama_tb/clk_period
 # Bookmark(s) were restored for window "Wave"
 run
-run
-run
-# End time: 16:58:28 on Dec 15,2024, Elapsed time: 0:02:13
-# Errors: 0, Warnings: 1
+# No bookmark changes exist in window "Wave"
+# End time: 21:32:40 on Dec 17,2024, Elapsed time: 0:00:50
+# Errors: 0, Warnings: 0

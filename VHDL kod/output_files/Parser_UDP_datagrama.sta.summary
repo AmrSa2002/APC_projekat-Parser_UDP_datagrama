@@ -3,19 +3,19 @@ Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'clk'
-Slack : -7.851
-TNS   : -939.050
+Slack : -8.230
+TNS   : -990.675
 
 Type  : Slow 1200mV 85C Model Setup 's_state.IDLE'
-Slack : -1.526
-TNS   : -130.088
+Slack : -1.227
+TNS   : -106.975
 
 Type  : Slow 1200mV 85C Model Hold 's_state.IDLE'
-Slack : 0.260
+Slack : 0.035
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'clk'
-Slack : 0.343
+Slack : 0.342
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
@@ -23,23 +23,23 @@ Slack : -3.000
 TNS   : -175.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 's_state.IDLE'
-Slack : 0.363
+Slack : 0.332
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'clk'
-Slack : -6.981
-TNS   : -833.164
+Slack : -7.247
+TNS   : -881.619
 
 Type  : Slow 1200mV 0C Model Setup 's_state.IDLE'
-Slack : -1.367
-TNS   : -116.556
-
-Type  : Slow 1200mV 0C Model Hold 'clk'
-Slack : 0.298
-TNS   : 0.000
+Slack : -1.119
+TNS   : -97.565
 
 Type  : Slow 1200mV 0C Model Hold 's_state.IDLE'
-Slack : 0.330
+Slack : 0.149
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'clk'
+Slack : 0.297
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
@@ -47,31 +47,31 @@ Slack : -3.000
 TNS   : -175.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 's_state.IDLE'
-Slack : 0.418
+Slack : 0.421
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'clk'
-Slack : -4.040
-TNS   : -461.774
+Slack : -4.254
+TNS   : -494.881
 
 Type  : Fast 1200mV 0C Model Setup 's_state.IDLE'
-Slack : -0.570
-TNS   : -44.751
+Slack : -0.418
+TNS   : -32.905
+
+Type  : Fast 1200mV 0C Model Hold 's_state.IDLE'
+Slack : 0.098
+TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'clk'
 Slack : 0.179
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Hold 's_state.IDLE'
-Slack : 0.221
-TNS   : 0.000
-
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -186.911
+TNS   : -186.184
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 's_state.IDLE'
-Slack : 0.336
+Slack : 0.319
 TNS   : 0.000
 
 ------------------------------------------------------------

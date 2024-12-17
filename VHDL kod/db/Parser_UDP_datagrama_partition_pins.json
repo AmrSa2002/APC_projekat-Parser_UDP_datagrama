@@ -4,6 +4,10 @@
 			"name" : "Top",
 			"pins" : [
 				{
+					"name" : "in_ready",
+					"strict" : false
+				},
+				{
 					"name" : "out_data[0]",
 					"strict" : false
 				},
@@ -429,6 +433,10 @@
 				},
 				{
 					"name" : "channel[95]",
+					"strict" : false
+				},
+				{
+					"name" : "out_ready",
 					"strict" : false
 				},
 				{
