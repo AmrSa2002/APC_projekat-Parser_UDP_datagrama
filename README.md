@@ -42,7 +42,7 @@ Predstavljeno je ukupno šest mogućih stanja:
 * Ethernet_header: Obrada Ethernet zaglavlja,
 * IP_header: Obrada IP zaglavlja,
 * UDP_header: Obrada UDP zaglavlja,
-* Data: Korisnički podataci,
+* Data: Korisnički podaci,
 * CRC: Provjera završnih bajta paketa.
 
 Parser ostaje u stanju idle sve do dolaska paketa, dok signal 'rst' omogućava resetovanje konačnog automata u početno stanje. Ukoliko je paket validan automat prelazi u naredno stanje - Ethernet_header. Na osnovu posljednja dva okteta određuje se tip protokola koji se koristi za prenos, a u slučaju IPv4 posljednja dva okteta su "0x0800". Ukoliko uslov nije ispunjen, automat se vraća u stanje idle, a ukoliko jeste ostaje u stanju IP_header sve dok se ne izvrši provjera UDP protokola. Ukoliko je protokol UDP naredno stanje je Data, a ako nije parser se vraća u idle. Za određivanje stanja koristi se i brojač bita, te kada dođe do kraja UDP payloada prelazi u CRC stanje iz kojeg se, ponovo, vraća u početno.
@@ -50,11 +50,11 @@ Parser ostaje u stanju idle sve do dolaska paketa, dok signal 'rst' omogućava r
 
 ## Talasni oblici
 
-Početna ideja izleda talasnih oblika, izrađena korištenjem _Wavedrom_ data je u istoimenom folderu. Unutar foldera date su 2 verzije, od kojih je jedna sa generalnim izgledom okvira i njegovih polja, dok je drugi detaljniji i sadrži oktete koji dolaze na interfejs. Prethodno je urađeno na osnovu izgleda okvira datog u _Uvodu_.
+Početna ideja izleda talasnih oblika, izrađena korištenjem alata _Wavedrom_ data je u istoimenom folderu. Unutar foldera date su dvije verzije, od kojih je jedna sa generalnim izgledom okvira i njegovih polja, dok je drugi detaljniji i sadrži oktete koji dolaze na interfejs. Prethodno je urađeno na osnovu izgleda okvira datog u _Uvodu_.
 
 ### Signali - Avalon ST
 
-Prema [1] i [2], Avalon-ST (engl. _Avalon Streaming_) predstavlja sučelje koje predstavlja jednosmjerni tok podataka sabirnicom maksimalne širine 4096 bita, uključujući multipleksirane tokove, pakete i DSP podatke. 
+Prema [1] i [2], Avalon-ST (engl. _Avalon Streaming_) je sučelje koje predstavlja jednosmjerni tok podataka sabirnicom maksimalne širine 4096 bita, uključujući multipleksirane tokove, pakete i DSP podatke. 
 
 Signali na Avalon-ST sučelju su sljedeći:
 
