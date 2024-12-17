@@ -62,7 +62,8 @@ Signali na Avalon-ST sučelju su sljedeći:
 
 ### Ulazni i izlazni signali sklopa - Waveform dijagram
 
-![UDP_parser_waveforms](https://github.com/user-attachments/assets/1f481615-2da3-46ec-b23c-38f67f8d16e0)
+#### Scenarij 1 - bez backpressure
+![Wavedrom - scenarij 1](https://github.com/user-attachments/assets/95cf4501-3498-4b93-84c8-76eae59f75f5)
 
 Kako je prikazano, definisani su takt signal `clk`, te reset signal `rst`. Kako je naglašeno, `in_data` signal predstavlja podatke koje se prenose, odnosno oktete iz okvira definisanih u _Uvodu_. U nastavku je dat opis transfera:
 
@@ -74,6 +75,14 @@ Kako je prikazano, definisani su takt signal `clk`, te reset signal `rst`. Kako 
 Signal `out_data` predstavlja parsirani UDP payload ulaznih podataka, dok `channel` pokazuje vrijednosti OCD: {IP adresa izvora **D27-D30**, UDP port izvora **D35-D36**, IP adresa odredišta **D31-D34**, UDP port odredišta **D37-D38**} što sugeriše da parser signalizira završetak prenosa podataka i selekciju odgovarajućeg izlaznog kanala.
 
 Signali na AVALON-ST sučelju obuhvataju i `empty` signal, ali je u konkretnom slučaju isti isključen jer projektni zadatak predviđa 8-bitni Avalon-ST, gdje je vrijednost empty signala uvijek nula.
+
+#### Scenarij 2 - sa backpressure
+![Wavedrom scenarij 2](https://github.com/user-attachments/assets/81ceb7b9-908d-47ad-8e66-13d1b37bf5bf)
+
+#### Scenarij 3 - backpressure (out_ready = '0' i na UDP payloadu)
+![Wavedrom scenarij 3](https://github.com/user-attachments/assets/4c771ba8-3b90-4763-9305-f8a922efdbf2)
+
+
 
 ## Konačni automat
 
