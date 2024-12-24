@@ -77,6 +77,9 @@ Signal `out_data` predstavlja parsirani UDP payload ulaznih podataka, dok `chann
 Signali na AVALON-ST sučelju obuhvataju i `empty` signal, ali je u konkretnom slučaju isti isključen jer projektni zadatak predviđa 8-bitni Avalon-ST, gdje je vrijednost empty signala uvijek nula.
 
 #### Scenarij 2 - sa backpressure
+
+Potiskivanje unazad (engl. _Backpressure_) je mehanizam putem kojeg odredište (engl. _sink_) može signalizirati izvoru (engl. _source_) da obustavi slanje podataka. Odredište obično koristi backpressure kako bi zaustavilo protok podataka kada su njegovi FIFO baferi puni ili kada postoji zagušenje na izlaznom portu[1].  
+
 ![Wavedrom scenarij 2](https://github.com/user-attachments/assets/81ceb7b9-908d-47ad-8e66-13d1b37bf5bf)
 
 #### Scenarij 3 - backpressure (out_ready = '0' i na UDP payloadu)
