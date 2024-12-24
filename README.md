@@ -79,6 +79,7 @@ Signali na AVALON-ST sučelju obuhvataju i `empty` signal, ali je u konkretnom s
 #### Scenarij 2 - sa backpressure
 
 Potiskivanje unazad (engl. _Backpressure_) je mehanizam putem kojeg odredište (engl. _sink_) može signalizirati izvoru (engl. _source_) da obustavi slanje podataka. Odredište obično koristi backpressure kako bi zaustavilo protok podataka kada su njegovi FIFO baferi puni ili kada postoji zagušenje na izlaznom portu[1].  
+Kada sink nije spreman za prijem paketa, signal `out_ready` prelazi u stanje nula, čime se aktivira mehanizam backpressura. Ovaj mehanizam zaustavlja daljnji prijem paketa od strane source-a, pri čemu signal `in_ready` također postaje jednak nuli.
 
 ![Wavedrom scenarij 2](https://github.com/user-attachments/assets/81ceb7b9-908d-47ad-8e66-13d1b37bf5bf)
 
