@@ -36,7 +36,7 @@ UDP okvir je sačinjen od četiri polja dužine po dva bajta, te korisničkih po
 
 ## Talasni oblici
 
-Početna ideja izgleda talasnih oblika, izrađena korištenjem alata _Wavedrom_ data je u istoimenom folderu. Unutar foldera date su dvije verzije, od kojih je jedna sa generalnim izgledom okvira i njegovih polja, dok je drugi detaljniji i sadrži oktete koji dolaze na interfejs. Prethodno je urađeno na osnovu izgleda okvira datog u _Uvodu_.
+Ulazni i izlazni signali sklopa opisani su korištenjem alata _Wavedrom_ na osnovu izgleda okvira datog u _Uvodu_. Analizirana su tri različita scenarija, te su u skladu s tim kreirana tri waveform dijagrama koji pokrivaju date scenarije. 
 
 ### Signali - Avalon ST
 
