@@ -76,6 +76,10 @@ Signal `out_data` predstavlja parsirani UDP payload ulaznih podataka, dok `chann
 
 Signali na AVALON-ST sučelju obuhvataju i `empty` signal, ali je u konkretnom slučaju isti isključen jer projektni zadatak predviđa 8-bitni Avalon-ST, gdje je vrijednost empty signala uvijek nula.
 
+Osim ulaznih i izlaznih Avalon-ST signala, na waveform dijagram dodani su i interni signali `byte_index`, `ip_header_length`, `udp_header_length`, te `s_state`, a na koji će pojednostaviti razumijevanje i kreiranje FSM dijagrama. 
+
+![scenarij1_interni](https://github.com/user-attachments/assets/bbd79924-578c-4cbd-aee6-293babf1ce88)
+
 #### Scenarij 2 - sa backpressure
 
 Potiskivanje unazad (engl. _Backpressure_) je mehanizam putem kojeg odredište (engl. _sink_) može signalizirati izvoru (engl. _source_) da obustavi slanje podataka. Odredište obično koristi backpressure kako bi zaustavilo protok podataka kada su njegovi FIFO baferi puni ili kada postoji zagušenje na izlaznom portu[1].  
@@ -83,9 +87,13 @@ Kada sink nije spreman za prijem paketa, signal `out_ready` prelazi u stanje nul
 
 ![Wavedrom scenarij 2](https://github.com/user-attachments/assets/81ceb7b9-908d-47ad-8e66-13d1b37bf5bf)
 
+![scenarij2_interni](https://github.com/user-attachments/assets/58983715-48ba-4d9b-b81b-9fc38e8cc3a7)
+
+
 #### Scenarij 3 - backpressure (out_ready = '0' i na UDP payloadu)
 ![Wavedrom scenarij 3](https://github.com/user-attachments/assets/4c771ba8-3b90-4763-9305-f8a922efdbf2)
 
+![scenarij3_interni](https://github.com/user-attachments/assets/5d54873e-e9d3-4ad4-b63a-1e9fe196014b)
 
 
 ## Konačni automat
