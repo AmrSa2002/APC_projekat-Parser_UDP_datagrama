@@ -78,7 +78,11 @@ Signali na AVALON-ST sučelju obuhvataju i `empty` signal, ali je u konkretnom s
 
 Osim ulaznih i izlaznih Avalon-ST signala, na waveform dijagram dodani su i interni signali `byte_index`, `ip_header_length`, `udp_header_length`, te `s_state`, a na koji će pojednostaviti razumijevanje i kreiranje FSM dijagrama. 
 
-![scenarij1_interni](https://github.com/user-attachments/assets/bbd79924-578c-4cbd-aee6-293babf1ce88)
+![scenarij1_interni](https://github.com/user-attachments/assets/1e199807-c16d-44ca-8533-eace0a742c11)
+
+Signal `byte_index`, kako mu i naziv govori, signalizira kroz koji oktet `in_data` signala se prolazi, odnosno predstavlja brojač na osnovu kojeg je realizirana kombinatorna logika koja omogućava parsiranje UDP datagrama. 
+Signali `ip_header_length` i `udp_header_length` usko su vezani uz IP i UDP okvire opisane u _Uvodu_. Tačnije, oni uzimaju vrijednosti iz odgovarajućih polja okvira koji se odnose na dužinu tog okvira. S tim u vezi, prvi bajt IP headera sačinjen je od 4 bita koji specificiraju verziju, te 4 bita koji specificiraju dužinu zaglavlja zbog čega se i razmatraju samo posljednja 4 bita tog okvira.
+Signal `s_state` odnosi se na trenutno zaglavlje okvira, odnosno Ethernet, IP ili UDP, te korisničke podatke ili idle stanje u slučaju da trenutno stanje nije niti jedno od ranije navedenih. Boje ovog dijela dijagrama konzistentne su sa bojama unutar `in_data` što pojednostavljuje čitljivost dijagrama. 
 
 #### Scenarij 2 - sa backpressure
 
@@ -87,13 +91,19 @@ Kada sink nije spreman za prijem paketa, signal `out_ready` prelazi u stanje nul
 
 ![Wavedrom scenarij 2](https://github.com/user-attachments/assets/81ceb7b9-908d-47ad-8e66-13d1b37bf5bf)
 
-![scenarij2_interni](https://github.com/user-attachments/assets/58983715-48ba-4d9b-b81b-9fc38e8cc3a7)
+U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz prethodni scenarij.
+
+
+![scenarij2_interni](https://github.com/user-attachments/assets/3188bb32-ceb4-44e3-bb41-e6e4e8f0acc0)
+
 
 
 #### Scenarij 3 - backpressure (out_ready = '0' i na UDP payloadu)
 ![Wavedrom scenarij 3](https://github.com/user-attachments/assets/4c771ba8-3b90-4763-9305-f8a922efdbf2)
 
-![scenarij3_interni](https://github.com/user-attachments/assets/5d54873e-e9d3-4ad4-b63a-1e9fe196014b)
+U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz _Scenarij br. 1_.
+
+![scenarij3_interni](https://github.com/user-attachments/assets/7c878dab-964c-4761-9972-d29407f1f7ae)
 
 
 ## Konačni automat
