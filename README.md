@@ -81,7 +81,7 @@ Osim ulaznih i izlaznih Avalon-ST signala, na waveform dijagram dodani su i inte
 ![scenarij1_interni](https://github.com/user-attachments/assets/1e199807-c16d-44ca-8533-eace0a742c11)
 
 Signal `byte_index`, kako mu i naziv govori, signalizira kroz koji oktet `in_data` signala se prolazi, odnosno predstavlja brojač na osnovu kojeg je realizirana kombinatorna logika koja omogućava parsiranje UDP datagrama. 
-Signali `ip_header_length` i `udp_header_length` usko su vezani uz IP i UDP okvire opisane u _Uvodu_. Tačnije, oni uzimaju vrijednosti iz odgovarajućih polja okvira koji se odnose na dužinu tog okvira. S tim u vezi, prvi bajt IP headera sačinjen je od 4 bita koji specificiraju verziju, te 4 bita koji specificiraju dužinu zaglavlja zbog čega se i razmatraju samo posljednja 4 bita tog okvira.
+Signali `ip_header_length` i `udp_header_length` usko su vezani uz IP i UDP okvire opisane u _Uvodu_. Tačnije, oni uzimaju vrijednosti iz odgovarajućih polja okvira koji se odnose na dužinu zaglavlja. S tim u vezi, prvi bajt IP headera sačinjen je od 4 bita koji specificiraju verziju, te 4 bita koji specificiraju dužinu zaglavlja zbog čega se i razmatraju samo posljednja 4 bita.
 Signal `s_state` odnosi se na trenutno zaglavlje okvira, odnosno Ethernet, IP ili UDP, te korisničke podatke ili idle stanje u slučaju da trenutno stanje nije niti jedno od ranije navedenih. Boje ovog dijela dijagrama konzistentne su sa bojama unutar `in_data` što pojednostavljuje čitljivost dijagrama. 
 
 #### Scenarij 2 - sa backpressure
