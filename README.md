@@ -78,7 +78,7 @@ Signali na AVALON-ST sučelju obuhvataju i `empty` signal, ali je u konkretnom s
 
 Osim ulaznih i izlaznih Avalon-ST signala, na waveform dijagram dodani su i interni signali `byte_index`, `ip_header_length`, `udp_header_length`, te `s_state`, a na koji će pojednostaviti razumijevanje i kreiranje FSM dijagrama. 
 
-![scenarij1_interni](https://github.com/user-attachments/assets/1e199807-c16d-44ca-8533-eace0a742c11)
+![scenarij1_interni](https://github.com/user-attachments/assets/2e9e0ab2-3f92-4ba4-a925-d5836c0b0cb0)
 
 Signal `byte_index`, kako mu i naziv govori, signalizira kroz koji oktet `in_data` signala se prolazi, odnosno predstavlja brojač na osnovu kojeg je realizirana kombinatorna logika koja omogućava parsiranje UDP datagrama. 
 Signali `ip_header_length` i `udp_header_length` usko su vezani uz IP i UDP okvire opisane u _Uvodu_. Tačnije, oni uzimaju vrijednosti iz odgovarajućih polja okvira koji se odnose na dužinu zaglavlja. S tim u vezi, prvi bajt IP headera sačinjen je od 4 bita koji specificiraju verziju, te 4 bita koji specificiraju dužinu zaglavlja zbog čega se i razmatraju samo posljednja 4 bita.
@@ -93,9 +93,7 @@ Kada sink nije spreman za prijem paketa, signal `out_ready` prelazi u stanje nul
 
 U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz prethodni scenarij.
 
-
-![scenarij2_interni](https://github.com/user-attachments/assets/3188bb32-ceb4-44e3-bb41-e6e4e8f0acc0)
-
+![scenarij2_interni](https://github.com/user-attachments/assets/a462d37e-91d4-4c6f-b0f9-4bf36cf10bbc)
 
 
 #### Scenarij 3 - backpressure (out_ready = '0' i na UDP payloadu)
@@ -103,7 +101,7 @@ U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz 
 
 U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz _Scenarij br. 1_.
 
-![scenarij3_interni](https://github.com/user-attachments/assets/7c878dab-964c-4761-9972-d29407f1f7ae)
+![scenarij3_interni](https://github.com/user-attachments/assets/2a4f6724-b9e8-4ffd-98ed-c530a06116df)
 
 
 ## Konačni automat
