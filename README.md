@@ -17,7 +17,7 @@ Glavni koraci pri parsiranju UDP datagrama su:
 
 <img width="710" alt="Screenshot 2024-12-10 at 17 22 06" src="https://github.com/user-attachments/assets/303e2b74-5c0e-467c-948b-a39176913f73">
 
-Ethernet okvir je prethodno najavljen preambulom i delimiterom početka okvira (SFD), koji su dio Ethernet paketa na fizičkom sloju. Svaki Ethernet okvir počinje Ethernet zaglavljem, koje sadrži odredišne i izvorne MAC adrese kao prva dva polja. Srednji dio okvira čini sadržaj podataka, uključujući zaglavlja drugih protokola (npr. Internet protokola) koji se prenose u okviru. Okvir se završava sekvencom provjere okvira, koja je predstavljena sa 32 bita.
+Ethernet okvir je prethodno najavljen preambulom i delimiterom početka okvira (SFD), koji su dio Ethernet paketa na fizičkom sloju. Svaki Ethernet okvir počinje Ethernet zaglavljem, koje sadrži odredišne i izvorišne MAC adrese kao prva dva polja. Srednji dio okvira čini sadržaj podataka, uključujući zaglavlja drugih protokola (npr. Internet protokola) koji se prenose u okviru. Okvir se završava sekvencom provjere okvira, koja je predstavljena sa 32 bita.
 
 ### IP okvir
 
@@ -106,7 +106,8 @@ U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz 
 
 ## Konačni automat
 
-Konačni automat (engl. _Final State Machine_) predstavlja diskretni matematički model koji se koristi za modeliranje sekvencijalnih logičkih kola. Postoje dva načina predstavljanja konačnih automata - pomoću dijagrama stanja ili hardverski bazirane reprezentacija. Dijagram stanja predstavlja grafičku reprezentaciju specifikacija konačnog automata. Dijagram stanja prikazuje sva moguća stanja u kojima se sistem može naći, vrijednosti ulaza za koje sistem prelazi iz stanja u stanje, te vrijednosti izlaza koje sistem proizvodi u svakom od stanja. Za izradu projektnog zadatka korišten je dijagram sa upotrebom ključne riječi else. Konačni automat je dizajniran da parsira ulazni tok podataka kroz nekoliko slojeva mrežnog paketa. Proces uključuje identifikaciju početka paketa, validaciju zaglavlja svakog sloja (Ethernet, IP, UDP), izdvajanje korisničkih podataka i validaciju završetka paketa.
+Konačni automat (engl. _Final State Machine_) predstavlja diskretni matematički model koji se koristi za modeliranje sekvencijalnih logičkih kola. Postoje dva načina predstavljanja konačnih automata - pomoću dijagrama stanja ili hardverski bazirane reprezentacija. Dijagram stanja predstavlja grafičku reprezentaciju specifikacija konačnog automata. Dijagram stanja prikazuje sva moguća stanja u kojima se sistem može naći, vrijednosti ulaza za koje sistem prelazi iz stanja u stanje, te vrijednosti izlaza koje sistem proizvodi u svakom od stanja. Ova metoda olakšava vizualizaciju i implementaciju sistema, jer omogućava intuitivno razumjevanje logike rada automata. Hardverski bazirana reprezentacija, s druge strane, fokusira se na implementaciju automata koristeći logičke sklopove, što je često ključno za dizajn ugrađenih sistema i digitalnih kola.
+Za izradu projektnog zadatka korišten je dijagram sa upotrebom ključne riječi else. Konačni automat je dizajniran da parsira ulazni tok podataka kroz nekoliko slojeva mrežnog paketa. Proces uključuje identifikaciju početka paketa, validaciju zaglavlja svakog sloja (Ethernet, IP, UDP), izdvajanje korisničkih podataka i validaciju završetka paketa.
 
 Predstavljeno je ukupno šest mogućih stanja: 
 * idle: Početno stanje,
@@ -116,7 +117,12 @@ Predstavljeno je ukupno šest mogućih stanja:
 * Data: Korisnički podaci,
 * CRC: Provjera završnih bajta paketa.
 
-Parser ostaje u stanju idle sve do dolaska paketa, dok signal 'rst' omogućava resetovanje konačnog automata u početno stanje. Ukoliko je paket validan automat prelazi u naredno stanje - Ethernet_header. Na osnovu posljednja dva okteta određuje se tip protokola koji se koristi za prenos, a u slučaju IPv4 posljednja dva okteta su "0x0800". Ukoliko uslov nije ispunjen, automat se vraća u stanje idle, a ukoliko jeste ostaje u stanju IP_header sve dok se ne izvrši provjera UDP protokola. Ukoliko je protokol UDP naredno stanje je Data, a ako nije parser se vraća u idle. Za određivanje stanja koristi se i brojač bita, te kada dođe do kraja UDP payloada prelazi u CRC stanje iz kojeg se, ponovo, vraća u početno.
+
+Konačni automat ostaje u stanju idle sve do dolaska paketa, dok signal 'rst' služi za resetovanje automata u početno stanje. Kada se prepozna validan paket, automat prelazi u naredno stanje pod nazivom Ethernet_header. U ovom stanju, na osnovu posljednja dva okteta Ethernet zaglavlja, određuje se tip protokola koji se koristi za prenos podataka. Za protokol IPv4, posljednja dva okteta su vrijednosti "0x0800".
+Ukoliko uslov nije ispunjen, automat se vraća u stanje idle. S druge strane, ako je protokol IPv4 potvrđen, automat prelazi u stanje IP_header, gdje ostaje dok se ne izvrši provjera UDP protokola. Ako je identifikovani protokol UDP, parser prelazi u stanje Data, gdje se obrađuju korisnički podaci. U suprotnom, automat se vraća u stanje idle.
+Za upravljanje stanjima automata koristi se brojač bita, koji prati tok obrade podataka. Kada brojač dosegne kraj UDP payload-a, automat prelazi u stanje CRC, gdje se provjerava integritet podataka. Nakon završetka ove provjere, automat se vraća u početno stanje idle, spreman za obradu narednog paketa.
+
+
 
 
 
