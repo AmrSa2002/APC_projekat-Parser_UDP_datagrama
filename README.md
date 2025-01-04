@@ -125,6 +125,7 @@ Nakon obrade korisničkih podataka, kada brojač bajta dostigne vrijednost 13 + 
 
 
 
+![UDP_parser_druga_verzija](https://github.com/user-attachments/assets/ccd6aed1-cbcf-432d-a32d-b3176f8bd3d8)
 
 ## Literatura
 
