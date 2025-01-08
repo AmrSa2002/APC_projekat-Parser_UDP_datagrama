@@ -89,14 +89,11 @@ Signal `s_state` odnosi se na trenutno zaglavlje okvira, odnosno Ethernet, IP il
 Potiskivanje unazad (engl. _Backpressure_) je mehanizam putem kojeg odredište (engl. _sink_) može signalizirati izvoru (engl. _source_) da obustavi slanje podataka. Odredište obično koristi backpressure kako bi zaustavilo protok podataka kada su njegovi FIFO baferi puni ili kada postoji zagušenje na izlaznom portu[1].  
 Kada sink nije spreman za prijem paketa, signal `out_ready` prelazi u stanje nula, čime se aktivira mehanizam backpressura. Ovaj mehanizam zaustavlja daljnji prijem paketa od strane source-a, pri čemu signal `in_ready` također postaje jednak nuli.
 
-![Wavedrom scenarij 2](https://github.com/user-attachments/assets/81ceb7b9-908d-47ad-8e66-13d1b37bf5bf)
-
 U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz prethodni scenarij.
 
 ![scenarij2_interni](https://github.com/user-attachments/assets/5a76f56c-10ba-4bd5-a576-c491375b49f5)
 
 #### Scenarij 3 - backpressure (out_ready = '0' i na UDP payloadu)
-![Wavedrom scenarij 3](https://github.com/user-attachments/assets/4c771ba8-3b90-4763-9305-f8a922efdbf2)
 
 U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz _Scenarij br. 1_.
 
