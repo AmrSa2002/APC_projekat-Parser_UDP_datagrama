@@ -31,7 +31,7 @@
    { name: 'ip_header_length', wave: 'xxxxxxxxxxxxxxxxx.6.................................|.......x.', data: ["D15[3,0]", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14",
                                                            										"15", "16", "17", "18", "19", "20"]},
    { name: 'udp_length', wave: 'x.............................................7.....|.......x.', data: ["D39", "2", "3", "4", "5", "6", "7", "8"]},
-   { name: 's_state', wave: '2.5...............6.......................7.......8.|....9...2', data: ["idle","Ethernet header", "IP header", "UDP header", "Data", "CRC", "idle"]}
+   { name: 's_state', wave: '2.5...............6.......................7.......8.|....9...2', data: ["IDLE","ETHERNET HEADER", "IP HEADER", "UDP HEADER", "DATA", "CRC", "IDLE"]}
   ],
 ], config: { hscale: 0.3 }} 
    
