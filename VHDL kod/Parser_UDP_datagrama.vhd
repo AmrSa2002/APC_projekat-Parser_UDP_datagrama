@@ -53,7 +53,7 @@ BEGIN
                     END IF;
 
                 WHEN ETHERNET_HEADER =>
-					 IF out_ready ='1' THEN
+		 IF out_ready ='1' && in_valid = '1' THEN
                     IF byte_index = 11 THEN
                         IF in_data /= "00001000" THEN -- Check first part of Ethernet type for IPv4
                             s_state <= IDLE;
@@ -76,7 +76,7 @@ BEGIN
 						  END IF;
 
                 WHEN IP_HEADER =>
-					 IF out_ready = '1' THEN
+		 IF out_ready = '1'  && in_valid = '1' THEN
                     IF byte_index = 13 THEN
                         ip_header_length <= to_integer(unsigned(in_data(3 DOWNTO 0))) * 4;
                         byte_index <= byte_index + 1;
@@ -124,7 +124,7 @@ BEGIN
 						  END IF;
 
                 WHEN UDP_HEADER =>
-					 IF out_ready = '1' THEN
+		 IF out_ready = '1'  && in_valid = '1' THEN
                     IF byte_index = 13 + ip_header_length THEN
                         s_channel(31 DOWNTO 24) <= in_data;
                         byte_index <= byte_index + 1;
@@ -154,8 +154,8 @@ BEGIN
 						  END IF;
 
                 WHEN DATA =>
-					 IF out_ready = '1' THEN
-						  IF byte_index = 13 + ip_header_length + 9 THEN
+		 IF out_ready = '1'  && in_valid = '1' THEN
+		     IF byte_index = 13 + ip_header_length + 9 THEN
                         out_startofpacket <= '0';
                         byte_index <= byte_index + 1;
 						  ELSIF byte_index = 13 + ip_header_length + udp_length-1 THEN
@@ -171,7 +171,7 @@ BEGIN
 						  END IF;
 
                 WHEN CRC =>
-					 IF out_ready = '1' THEN
+		 IF out_ready = '1' THEN
                     IF byte_index = 13 + ip_header_length + udp_length + 3 THEN
                         byte_index <= 0;
                         s_state <= IDLE;
