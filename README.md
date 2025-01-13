@@ -107,18 +107,18 @@ Konačni automat (engl. _Final State Machine_) predstavlja diskretni matematičk
 Za izradu projektnog zadatka korišten je dijagram sa upotrebom ključne riječi else. Konačni automat je dizajniran da parsira ulazni tok podataka kroz nekoliko slojeva mrežnog paketa. Proces uključuje identifikaciju početka paketa, validaciju zaglavlja svakog sloja (Ethernet, IP, UDP), izdvajanje korisničkih podataka i validaciju završetka paketa.
 
 Predstavljeno je ukupno šest mogućih stanja: 
-* idle: Početno stanje,
-* Ethernet_header: Obrada Ethernet zaglavlja,
-* IP_header: Obrada IP zaglavlja,
-* UDP_header: Obrada UDP zaglavlja,
-* Data: Korisnički podaci,
+* IDLE: Početno stanje,
+* ETHERNET_HEADER: Obrada Ethernet zaglavlja,
+* IP_HEADER: Obrada IP zaglavlja,
+* UDP_HEADER: Obrada UDP zaglavlja,
+* DATA: Korisnički podaci,
 * CRC: Provjera završnih bajta paketa.
 
 
-Konačni automat ostaje u stanju idle sve do dolaska paketa, dok signal 'rst' služi za resetovanje automata u početno stanje. Kada signal in_startofpacket postane aktivan ('1') i in_valid potvrdi valjanost ulaza, automat prelazi u naredno stanje pod nazivom Ethernet_header. U ovom stanju, na osnovu posljednja dva okteta Ethernet zaglavlja, određuje se tip protokola koji se koristi za prenos podataka. Za protokol IPv4, posljednja dva okteta su vrijednosti 0x0800.
-Ukoliko uslov nije ispunjen, automat se vraća u stanje idle. S druge strane, ako je protokol IPv4 potvrđen, automat prelazi u stanje IP_header, gdje obrađuje IP zaglavlje. Kada brojač bajta (byte_index) dostigne vrijednost 13 + ip_header_length - 1 i identifikuje da je protokol UDP (ip_protocol = x"11"), automat prelazi u stanje UDP_header. U suprotnom, vraća se u idle.
-U stanju UDP_header, automat obrađuje UDP zaglavlje. Ako brojač bajta dostigne vrijednost 13 + ip_header_length + 8, automat prelazi u stanje Data, gdje se obrađuju korisnički podaci.
-Nakon obrade korisničkih podataka, kada brojač bajta dostigne vrijednost 13 + ip_header_length + udp_length, automat prelazi u stanje CRC. U ovom stanju se provjerava integritet podataka, a kada signal out_endofpacket postane aktivan ('1'), automat se vraća u početno stanje idle, spreman za obradu narednog paketa.
+Konačni automat ostaje u stanju IDLE sve do dolaska paketa, dok signal 'rst' služi za resetovanje automata u početno stanje. Kada signal in_startofpacket postane aktivan ('1') i in_valid potvrdi valjanost ulaza, automat prelazi u naredno stanje pod nazivom ETHERNET_HEADER. U ovom stanju, na osnovu posljednja dva okteta Ethernet zaglavlja, određuje se tip protokola koji se koristi za prenos podataka. Za protokol IPv4, posljednja dva okteta su vrijednosti 0x0800.
+Ukoliko uslov nije ispunjen, automat se vraća u stanje IDLE. S druge strane, ako je protokol IPv4 potvrđen, automat prelazi u stanje IP_HEADER, gdje obrađuje IP zaglavlje. Kada brojač bajta (byte_index) dostigne vrijednost 13 + ip_header_length - 1 i identifikuje da je protokol UDP (ip_protocol = x"11"), automat prelazi u stanje UDP_HEADER. U suprotnom, vraća se u IDLE.
+U stanju UDP_HEADER, automat obrađuje UDP zaglavlje. Ako brojač bajta dostigne vrijednost 13 + ip_header_length + 8, automat prelazi u stanje DATA, gdje se obrađuju korisnički podaci.
+Nakon obrade korisničkih podataka, kada brojač bajta dostigne vrijednost 13 + ip_header_length + udp_length, automat prelazi u stanje CRC. U ovom stanju se provjerava integritet podataka, a kada signal out_endofpacket postane aktivan ('1'), automat se vraća u početno stanje IDLE, spreman za obradu narednog paketa.
 
 ![UDP_parser](https://github.com/user-attachments/assets/d74fd4bc-0a29-4773-a18d-8855eab34865)
 
