@@ -40,10 +40,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "out_startofpacket",
-					"strict" : false
-				},
-				{
 					"name" : "out_endofpacket",
 					"strict" : false
 				},
@@ -440,7 +436,19 @@
 					"strict" : false
 				},
 				{
-					"name" : "in_data[0]",
+					"name" : "in_valid",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "reset_n",
+					"strict" : false
+				},
+				{
+					"name" : "in_data[3]",
 					"strict" : false
 				},
 				{
@@ -449,14 +457,6 @@
 				},
 				{
 					"name" : "in_data[2]",
-					"strict" : false
-				},
-				{
-					"name" : "in_data[3]",
-					"strict" : false
-				},
-				{
-					"name" : "in_data[4]",
 					"strict" : false
 				},
 				{
@@ -472,15 +472,15 @@
 					"strict" : false
 				},
 				{
+					"name" : "in_data[0]",
+					"strict" : false
+				},
+				{
+					"name" : "in_data[4]",
+					"strict" : false
+				},
+				{
 					"name" : "in_startofpacket",
-					"strict" : false
-				},
-				{
-					"name" : "clk",
-					"strict" : false
-				},
-				{
-					"name" : "reset_n",
 					"strict" : false
 				}
 			]

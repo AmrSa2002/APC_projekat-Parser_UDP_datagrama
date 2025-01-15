@@ -1,6 +1,6 @@
 EDA Netlist Writer report for Parser_UDP_datagrama
-Tue Dec 17 21:31:09 2024
-Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+Tue Jan 14 18:21:12 2025
+Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Standard Edition
 
 
 ---------------------
@@ -17,27 +17,27 @@ Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2019  Intel Corporation. All rights reserved.
+Copyright (C) 2016  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
-and other software and tools, and any partner logic 
+and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
 to the terms and conditions of the Intel Program License 
 Subscription Agreement, the Intel Quartus Prime License Agreement,
-the Intel FPGA IP License Agreement, or other applicable license
-agreement, including, without limitation, that your use is for
-the sole purpose of programming logic devices manufactured by
-Intel and sold by Intel or its authorized distributors.  Please
-refer to the applicable agreement for further details, at
-https://fpgasoftware.intel.com/eula.
+the Intel MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Intel and sold by Intel or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
 
 
 
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Tue Dec 17 21:31:09 2024 ;
+; EDA Netlist Writer Status ; Successful - Tue Jan 14 18:21:12 2025 ;
 ; Revision Name             ; Parser_UDP_datagrama                  ;
 ; Top-level Entity Name     ; Parser_UDP_datagrama                  ;
 ; Family                    ; Cyclone IV E                          ;
@@ -67,20 +67,20 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------------------------------+------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Simulation Generated Files                                                                                                               ;
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Generated Files                                                                                                                          ;
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_6_1200mv_85c_slow.vho      ;
-; C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_6_1200mv_0c_slow.vho       ;
-; C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_min_1200mv_0c_fast.vho     ;
-; C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama.vho                        ;
-; C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_6_1200mv_85c_vhd_slow.sdo  ;
-; C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_6_1200mv_0c_vhd_slow.sdo   ;
-; C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_min_1200mv_0c_vhd_fast.sdo ;
-; C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_vhd.sdo                    ;
-+------------------------------------------------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Simulation Generated Files                                                                                                          ;
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Generated Files                                                                                                                     ;
++-------------------------------------------------------------------------------------------------------------------------------------+
+; /home/tk-student/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_6_1200mv_85c_slow.vho      ;
+; /home/tk-student/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_6_1200mv_0c_slow.vho       ;
+; /home/tk-student/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_min_1200mv_0c_fast.vho     ;
+; /home/tk-student/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama.vho                        ;
+; /home/tk-student/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_6_1200mv_85c_vhd_slow.sdo  ;
+; /home/tk-student/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_6_1200mv_0c_vhd_slow.sdo   ;
+; /home/tk-student/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_min_1200mv_0c_vhd_fast.sdo ;
+; /home/tk-student/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_vhd.sdo                    ;
++-------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------+
@@ -88,21 +88,21 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
-    Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Tue Dec 17 21:31:08 2024
+    Info: Version 16.1.0 Build 196 10/24/2016 SJ Standard Edition
+    Info: Processing started: Tue Jan 14 18:21:11 2025
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off Parser_UDP_datagrama -c Parser_UDP_datagrama
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (204019): Generated file Parser_UDP_datagrama_6_1200mv_85c_slow.vho in folder "C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file Parser_UDP_datagrama_6_1200mv_0c_slow.vho in folder "C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file Parser_UDP_datagrama_min_1200mv_0c_fast.vho in folder "C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file Parser_UDP_datagrama.vho in folder "C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file Parser_UDP_datagrama_6_1200mv_85c_vhd_slow.sdo in folder "C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file Parser_UDP_datagrama_6_1200mv_0c_vhd_slow.sdo in folder "C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file Parser_UDP_datagrama_min_1200mv_0c_vhd_fast.sdo in folder "C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file Parser_UDP_datagrama_vhd.sdo in folder "C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file Parser_UDP_datagrama_6_1200mv_85c_slow.vho in folder "/home/tk-student/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file Parser_UDP_datagrama_6_1200mv_0c_slow.vho in folder "/home/tk-student/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file Parser_UDP_datagrama_min_1200mv_0c_fast.vho in folder "/home/tk-student/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file Parser_UDP_datagrama.vho in folder "/home/tk-student/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file Parser_UDP_datagrama_6_1200mv_85c_vhd_slow.sdo in folder "/home/tk-student/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file Parser_UDP_datagrama_6_1200mv_0c_vhd_slow.sdo in folder "/home/tk-student/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file Parser_UDP_datagrama_min_1200mv_0c_vhd_fast.sdo in folder "/home/tk-student/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file Parser_UDP_datagrama_vhd.sdo in folder "/home/tk-student/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4655 megabytes
-    Info: Processing ended: Tue Dec 17 21:31:09 2024
+    Info: Peak virtual memory: 1241 megabytes
+    Info: Processing ended: Tue Jan 14 18:21:12 2025
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
