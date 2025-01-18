@@ -22,7 +22,7 @@ ARCHITECTURE behavior OF Parser_UDP_datagrama_tb3 IS
             out_endofpacket : OUT STD_LOGIC;
             out_ready : IN STD_LOGIC;
             out_valid : OUT STD_LOGIC;
-            channel: OUT STD_LOGIC_VECTOR(95 DOWNTO 0)
+            channel : OUT STD_LOGIC_VECTOR(95 DOWNTO 0)
         );
     END COMPONENT;
 
@@ -45,7 +45,7 @@ ARCHITECTURE behavior OF Parser_UDP_datagrama_tb3 IS
 BEGIN
 
     -- Instantiate the Unit Under Test (UUT)
-    uut: Parser_UDP_datagrama
+    uut : Parser_UDP_datagrama
         PORT MAP (
             clk => clk,
             reset_n => reset_n,
@@ -64,19 +64,20 @@ BEGIN
     -- Clock generation process
     clk_process : PROCESS
     BEGIN
-        clk <= '0';
-        WAIT FOR clk_period / 2;
         clk <= '1';
+        WAIT FOR clk_period / 2;
+        clk <= '0';
         WAIT FOR clk_period / 2;
     END PROCESS;
 
     -- Stimulus process
-    stim_proc: PROCESS
+    stim_proc : PROCESS
     BEGIN
         -- Reset the system
         reset_n <= '0';
         WAIT FOR 20 ns;
         reset_n <= '1'; 
+        
         -- Send a valid Ethernet frame with an IPv4 header
         in_startofpacket <= '1';
         in_valid <= '1';
@@ -85,51 +86,51 @@ BEGIN
         in_startofpacket <= '0';
         in_data <= X"1A"; WAIT FOR clk_period; -- MAC odredista 2/6
         in_data <= X"2B"; WAIT FOR clk_period; -- MAC odredista 3/6
-	in_data <= X"3C"; WAIT FOR clk_period; -- MAC odredista 4/6
+        in_data <= X"3C"; WAIT FOR clk_period; -- MAC odredista 4/6
         in_data <= X"5B"; WAIT FOR clk_period; -- MAC odredista 5/6
-	in_data <= X"4B"; WAIT FOR clk_period; -- MAC odredista 6/6
+        in_data <= X"4B"; WAIT FOR clk_period; -- MAC odredista 6/6
 
-	in_data <= X"00"; WAIT FOR clk_period; -- MAC izvorista 1/6
+        in_data <= X"00"; WAIT FOR clk_period; -- MAC izvorista 1/6
         in_data <= X"1A"; WAIT FOR clk_period; -- MAC izvorista 2/6
         in_data <= X"2B"; WAIT FOR clk_period; -- MAC izvorista 3/6
-	in_data <= X"3C"; WAIT FOR clk_period; -- MAC izvorista 4/6
+        in_data <= X"3C"; WAIT FOR clk_period; -- MAC izvorista 4/6
         in_data <= X"5B"; -- MAC izvorista 5/6
-	out_ready <= '0';
-	WAIT FOR 3*clk_period;
-	out_ready <= '1';
-	in_data <= X"4B"; WAIT FOR clk_period; -- MAC izvorista 6/6
+        out_ready <= '0';
+        WAIT FOR 3 * clk_period;
+        out_ready <= '1';
+        in_data <= X"4B"; WAIT FOR clk_period; -- MAC izvorista 6/6
 
         -- EtherType
         in_data <= X"08"; WAIT FOR clk_period; -- Ethertype 1/2
         in_data <= X"00"; WAIT FOR clk_period; -- Ethertype 2/2
 
-	-- IPv4 + IHL
+        -- IPv4 + IHL
         in_data <= X"45"; WAIT FOR clk_period; --
 
-	-- TOS
+        -- TOS
         in_data <= X"B9"; WAIT FOR clk_period; --
 
-	-- IP length
+        -- IP length
         in_data <= X"00"; WAIT FOR clk_period; -- IP length 1/2
         in_data <= X"14"; WAIT FOR clk_period; -- IP length 2/2
 
-	-- IP identification
+        -- IP identification
         in_data <= X"12"; WAIT FOR clk_period; -- IP identification 1/2
         in_data <= X"34"; WAIT FOR clk_period; -- IP identification 2/2
 
-	-- IP flags
+        -- IP flags
         in_data <= X"12"; WAIT FOR clk_period; -- IP flags 1/2
         in_data <= X"34"; WAIT FOR clk_period; -- IP flags 2/2
 
-	-- TTL
+        -- TTL
         in_data <= X"B9"; WAIT FOR clk_period; --
 
-	-- UDP
-	out_ready <= '0'; 
-        in_data <= X"11"; WAIT FOR 5*clk_period; --
+        -- UDP
+        out_ready <= '0'; 
+        in_data <= X"11"; WAIT FOR 5 * clk_period; --
 
-	-- IP checksum
-	out_ready <= '1';
+        -- IP checksum
+        out_ready <= '1';
         in_data <= X"12"; WAIT FOR clk_period; -- IP checksum 1/2
         in_data <= X"34"; WAIT FOR clk_period; -- IP checksum 2/2
 
@@ -153,31 +154,33 @@ BEGIN
 
         -- UDP length
         in_data <= X"00"; WAIT FOR clk_period; -- UDP length 1/2
-	in_data <= X"0D"; WAIT FOR clk_period; -- UDP length 2/2
+        in_data <= X"0D"; WAIT FOR clk_period; -- UDP length 2/2
 
-	-- IP checksum
+        -- IP checksum
         in_data <= X"12"; WAIT FOR clk_period; -- IP checksum 1/2
         in_data <= X"34"; WAIT FOR clk_period; -- IP checksum 2/2
 
-	--Data
-	in_data <= X"CC"; WAIT FOR clk_period; -- Data 1/5
+        -- Data
+        in_data <= X"CC"; WAIT FOR clk_period; -- Data 1/5
         in_data <= X"DC"; WAIT FOR clk_period; -- Data 2/5
+        out_ready <= '0';
         in_data <= X"DD"; WAIT FOR clk_period; -- Data 3/5
-	out_ready <= '0';
         in_data <= X"DD"; WAIT FOR clk_period; -- Data 4/5
-	in_data <= X"DD"; WAIT FOR clk_period; -- Data 5/5
-	
-	out_ready <= '1';
-	in_data <= X"AA"; WAIT FOR clk_period; -- Data 4/5
-	in_data <= X"BB"; WAIT FOR clk_period; -- Data 5/5
-	-- CRC
+        in_data <= X"DD"; WAIT FOR clk_period; -- Data 5/5
+        
+        out_ready <= '1';
+        in_data <= X"AA"; WAIT FOR clk_period; -- Data 4/5
+        in_data <= X"BB"; WAIT FOR clk_period; -- Data 5/5
+
+        -- CRC
         in_data <= X"12"; WAIT FOR clk_period; -- CRC 1/4
         in_data <= X"34"; WAIT FOR clk_period; -- CRC 2/4
         in_data <= X"56"; WAIT FOR clk_period; -- CRC 3/4
-        in_data <= X"78";   -- CRC 4/4
+        in_data <= X"78"; -- CRC 4/4
+
         -- End of packet
         in_endofpacket <= '1';
-	WAIT FOR clk_period;
+        WAIT FOR clk_period;
         in_endofpacket <= '0';
         in_valid <= '0';
 

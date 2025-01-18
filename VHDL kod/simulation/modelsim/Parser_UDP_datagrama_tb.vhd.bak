@@ -22,11 +22,7 @@ ARCHITECTURE behavior OF Parser_UDP_datagrama_tb IS
             out_endofpacket : OUT STD_LOGIC;
             out_ready : IN STD_LOGIC;
             out_valid : OUT STD_LOGIC;
-            channel: OUT STD_LOGIC_VECTOR(95 DOWNTO 0);
-	    test : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-	    byte_index : OUT INTEGER;
-	    ip_header_length : OUT INTEGER;
-	    udp_length : OUT INTEGER := 0
+            channel: OUT STD_LOGIC_VECTOR(95 DOWNTO 0)
         );
     END COMPONENT;
 
@@ -43,10 +39,6 @@ ARCHITECTURE behavior OF Parser_UDP_datagrama_tb IS
     SIGNAL out_endofpacket : STD_LOGIC;
     SIGNAL out_ready : STD_LOGIC := '1';
     SIGNAL channel : STD_LOGIC_VECTOR(95 DOWNTO 0);
-    SIGNAL test : STD_LOGIC_VECTOR(7 DOWNTO 0);
-    SIGNAL byte_index : INTEGER;
-    SIGNAL ip_header_length : INTEGER;
-    SIGNAL udp_length : INTEGER;
 
     -- Clock period definition
     CONSTANT clk_period : TIME := 10 ns;
@@ -67,19 +59,15 @@ BEGIN
             out_startofpacket => out_startofpacket,
             out_endofpacket => out_endofpacket,
             out_ready => out_ready,
-            channel => channel,
-	    test => test,
-	    byte_index => byte_index,
-	    ip_header_length => ip_header_length,
-	    udp_length => udp_length
+            channel => channel
         );
 
     -- Clock generation process
     clk_process : PROCESS
     BEGIN
-        clk <= '0';
-        WAIT FOR clk_period / 2;
         clk <= '1';
+        WAIT FOR clk_period / 2;
+        clk <= '0';
         WAIT FOR clk_period / 2;
     END PROCESS;
 
@@ -169,10 +157,10 @@ BEGIN
 
 	--Data
 	in_data <= X"CC"; WAIT FOR clk_period; -- Data 1/5
-        in_data <= X"CC"; WAIT FOR clk_period; -- Data 2/5
-        in_data <= X"CC"; WAIT FOR clk_period; -- Data 3/5
-        in_data <= X"CC"; WAIT FOR clk_period; -- Data 4/5
-	in_data <= X"CC"; WAIT FOR clk_period; -- Data 5/5
+        in_data <= X"AA"; WAIT FOR clk_period; -- Data 2/5
+        in_data <= X"BB"; WAIT FOR clk_period; -- Data 3/5
+        in_data <= X"DD"; WAIT FOR clk_period; -- Data 4/5
+	in_data <= X"AA"; WAIT FOR clk_period; -- Data 5/5
 
 	-- CRC
         in_data <= X"12"; WAIT FOR clk_period; -- CRC 1/4

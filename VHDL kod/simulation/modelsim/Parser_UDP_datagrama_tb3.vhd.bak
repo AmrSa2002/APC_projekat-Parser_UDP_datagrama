@@ -27,7 +27,7 @@ ARCHITECTURE behavior OF Parser_UDP_datagrama_tb3 IS
     END COMPONENT;
 
     -- Signals to connect to the DUT (Device Under Test)
-    SIGNAL clk : STD_LOGIC := '1';
+    SIGNAL clk : STD_LOGIC := '0';
     SIGNAL reset_n : STD_LOGIC := '0';
     SIGNAL in_data : STD_LOGIC_VECTOR(7 DOWNTO 0) := (OTHERS => '0');
     SIGNAL in_startofpacket : STD_LOGIC := '0';
@@ -64,9 +64,9 @@ BEGIN
     -- Clock generation process
     clk_process : PROCESS
     BEGIN
-        clk <= '0';
-        WAIT FOR clk_period / 2;
         clk <= '1';
+        WAIT FOR clk_period / 2;
+        clk <= '0';
         WAIT FOR clk_period / 2;
     END PROCESS;
 
@@ -162,8 +162,8 @@ BEGIN
 	--Data
 	in_data <= X"CC"; WAIT FOR clk_period; -- Data 1/5
         in_data <= X"DC"; WAIT FOR clk_period; -- Data 2/5
+        out_ready <= '0';
         in_data <= X"DD"; WAIT FOR clk_period; -- Data 3/5
-	out_ready <= '0';
         in_data <= X"DD"; WAIT FOR clk_period; -- Data 4/5
 	in_data <= X"DD"; WAIT FOR clk_period; -- Data 5/5
 	
