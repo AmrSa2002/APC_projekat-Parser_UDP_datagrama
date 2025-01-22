@@ -124,14 +124,17 @@ Nakon obrade korisničkih podataka, kada brojač bajta dostigne vrijednost 13 + 
 
 ## Modeliranje sklopa u VHDL-u
 
-Shodno ranije opisanim signalima, te stanjima konačnog automata, sklop je modeliran pomoću jezika za opis hardvera VHDL. Ulazni i izlazni signali obuhvataju signale Avalon ST sučelja, dok je FSM modelirajte kao 3-procesni.
+Shodno ranije opisanim signalima, te stanjima konačnog automata, sklop je modeliran pomoću jezika za opis hardvera VHDL. Ulazni i izlazni signali obuhvataju signale Avalon ST sučelja, dok je FSM modeliran kao 3-procesni.
 Prvi proces odnosi se na kombinatornu logiku za tranzicije stanja i ostalih registara; drugi proces odnosi se na sekvencijalnu logiku za registre stanja, brojače i pomoćne registre, dok se treći proces odnosi na kombinatornu logiku za izlaze.
 
 
-Modul koristi indeksiranje bajtova (byte_index) kako bi prepoznao odgovarajuća polja u Ethernet, IP i UDP zaglavljima. Dužina IP i UDP zaglavlja dinamički se računa na temelju ulaznih podataka, dok se korisnički podaci direktno prosljeđuju na izlaz, sa minimalnim kašnjenjem.
+Modul koristi indeksiranje bajta (byte_index) kako bi prepoznao odgovarajuća polja u Ethernet, IP i UDP zaglavljima. Dužina IP i UDP zaglavlja dinamički se računa na temelju ulaznih podataka, dok se korisnički podaci direktno prosljeđuju na izlaz, sa minimalnim kašnjenjem.
 
 
 ## Verifikacija pomoću simulacijskog alata ModelSim
+
+Kako su analizirana tri scenarija, kreirana su tri testbench file-a koji obuhvataju slučajeve bez _backpressure_-a, sa _backpressure_-om, te sa _backpressure_-om na UDP payload-u. U nastavku je dat opis kreiranih scenarija za verifikaciju, te prikaz signala u simulacijskom alatu ModelSim.
+
 
 ## Zaključak
 
