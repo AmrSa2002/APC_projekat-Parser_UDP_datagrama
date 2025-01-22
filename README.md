@@ -122,6 +122,12 @@ Nakon obrade korisničkih podataka, kada brojač bajta dostigne vrijednost 13 + 
 
 ![UDP_parser](https://github.com/user-attachments/assets/d74fd4bc-0a29-4773-a18d-8855eab34865)
 
+## Modeliranje sklopa u VHDL-u
+
+## Verifikacija pomoću simulacijskog alata ModelSim
+
+## Zaključak
+
 ## Literatura
 
 [1] Intel, F. P. G. A. (2021.) _Avalon® interface specifications_., Tech. Rep., MNL-AVABUSREF.
