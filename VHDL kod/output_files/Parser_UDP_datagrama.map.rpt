@@ -1,5 +1,5 @@
-Analysis & Synthesis report for Parser_UDP_datagrama
-Sat Jan 18 10:40:49 2025
+Analysis & Elaboration report for Parser_UDP_datagrama
+Thu Jan 23 20:18:01 2025
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -7,21 +7,10 @@ Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 ; Table of Contents ;
 ---------------------
   1. Legal Notice
-  2. Analysis & Synthesis Summary
-  3. Analysis & Synthesis Settings
-  4. Parallel Compilation
-  5. Analysis & Synthesis Source Files Read
-  6. Analysis & Synthesis Resource Usage Summary
-  7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |Parser_UDP_datagrama|s_state
-  9. User-Specified and Inferred Latches
- 10. Logic Cells Representing Combinational Loops
- 11. Registers Removed During Synthesis
- 12. General Register Statistics
- 13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Post-Synthesis Netlist Statistics for Top Partition
- 15. Elapsed Time Per Partition
- 16. Analysis & Synthesis Messages
+  2. Analysis & Elaboration Summary
+  3. Parallel Compilation
+  4. Analysis & Elaboration Settings
+  5. Analysis & Elaboration Messages
 
 
 
@@ -46,27 +35,43 @@ https://fpgasoftware.intel.com/eula.
 
 
 +----------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                     ;
+; Analysis & Elaboration Summary                                                   ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Jan 18 10:40:49 2025       ;
+; Analysis & Elaboration Status      ; Successful - Thu Jan 23 20:18:01 2025       ;
 ; Quartus Prime Version              ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name                      ; Parser_UDP_datagrama                        ;
 ; Top-level Entity Name              ; Parser_UDP_datagrama                        ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 605                                         ;
-;     Total combinational functions  ; 489                                         ;
-;     Dedicated logic registers      ; 187                                         ;
-; Total registers                    ; 187                                         ;
-; Total pins                         ; 122                                         ;
-; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 0                                           ;
-; Embedded Multiplier 9-bit elements ; 0                                           ;
-; Total PLLs                         ; 0                                           ;
+; Total logic elements               ; N/A until Partition Merge                   ;
+;     Total combinational functions  ; N/A until Partition Merge                   ;
+;     Dedicated logic registers      ; N/A until Partition Merge                   ;
+; Total registers                    ; N/A until Partition Merge                   ;
+; Total pins                         ; N/A until Partition Merge                   ;
+; Total virtual pins                 ; N/A until Partition Merge                   ;
+; Total memory bits                  ; N/A until Partition Merge                   ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                   ;
+; Total PLLs                         ; N/A until Partition Merge                   ;
 +------------------------------------+---------------------------------------------+
 
 
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
 +----------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Settings                                                                                  ;
+; Analysis & Elaboration Settings                                                                                ;
 +------------------------------------------------------------------+----------------------+----------------------+
 ; Option                                                           ; Setting              ; Default Value        ;
 +------------------------------------------------------------------+----------------------+----------------------+
@@ -151,299 +156,63 @@ https://fpgasoftware.intel.com/eula.
 +------------------------------------------------------------------+----------------------+----------------------+
 
 
-+------------------------------------------+
-; Parallel Compilation                     ;
-+----------------------------+-------------+
-; Processors                 ; Number      ;
-+----------------------------+-------------+
-; Number detected on machine ; 12          ;
-; Maximum allowed            ; 12          ;
-;                            ;             ;
-; Average used               ; 1.00        ;
-; Maximum used               ; 12          ;
-;                            ;             ;
-; Usage by Processor         ; % Time Used ;
-;     Processor 1            ; 100.0%      ;
-;     Processors 2-12        ;   0.0%      ;
-+----------------------------+-------------+
-
-
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                         ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                  ; Library ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------+---------+
-; Parser_UDP_datagrama.vhd         ; yes             ; User VHDL File  ; C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd ;         ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------+---------+
-
-
-+---------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary             ;
-+---------------------------------------------+-----------+
-; Resource                                    ; Usage     ;
-+---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 605       ;
-;                                             ;           ;
-; Total combinational functions               ; 489       ;
-; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 152       ;
-;     -- 3 input functions                    ; 73        ;
-;     -- <=2 input functions                  ; 264       ;
-;                                             ;           ;
-; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 304       ;
-;     -- arithmetic mode                      ; 185       ;
-;                                             ;           ;
-; Total registers                             ; 187       ;
-;     -- Dedicated logic registers            ; 187       ;
-;     -- I/O registers                        ; 0         ;
-;                                             ;           ;
-; I/O pins                                    ; 122       ;
-;                                             ;           ;
-; Embedded Multiplier 9-bit elements          ; 0         ;
-;                                             ;           ;
-; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 187       ;
-; Total fan-out                               ; 2413      ;
-; Average fan-out                             ; 2.62      ;
-+---------------------------------------------+-----------+
-
-
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                 ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------+----------------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name   ; Entity Name          ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------+----------------------+--------------+
-; |Parser_UDP_datagrama      ; 489 (489)           ; 187 (187)                 ; 0           ; 0            ; 0       ; 0         ; 122  ; 0            ; |Parser_UDP_datagrama ; Parser_UDP_datagrama ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------+----------------------+--------------+
-Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-Encoding Type:  One-Hot
-+----------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |Parser_UDP_datagrama|s_state                                                                                          ;
-+-------------------------+-------------+--------------+--------------------+-------------------+-------------------------+--------------+
-; Name                    ; s_state.CRC ; s_state.DATA ; s_state.UDP_HEADER ; s_state.IP_HEADER ; s_state.ETHERNET_HEADER ; s_state.IDLE ;
-+-------------------------+-------------+--------------+--------------------+-------------------+-------------------------+--------------+
-; s_state.IDLE            ; 0           ; 0            ; 0                  ; 0                 ; 0                       ; 0            ;
-; s_state.ETHERNET_HEADER ; 0           ; 0            ; 0                  ; 0                 ; 1                       ; 1            ;
-; s_state.IP_HEADER       ; 0           ; 0            ; 0                  ; 1                 ; 0                       ; 1            ;
-; s_state.UDP_HEADER      ; 0           ; 0            ; 1                  ; 0                 ; 0                       ; 1            ;
-; s_state.DATA            ; 0           ; 1            ; 0                  ; 0                 ; 0                       ; 1            ;
-; s_state.CRC             ; 1           ; 0            ; 0                  ; 0                 ; 0                       ; 1            ;
-+-------------------------+-------------+--------------+--------------------+-------------------+-------------------------+--------------+
-
-
-+---------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                               ;
-+----------------------------------------------------+---------------------+------------------------+
-; Latch Name                                         ; Latch Enable Signal ; Free of Timing Hazards ;
-+----------------------------------------------------+---------------------+------------------------+
-; out_data[0]$latch                                  ; s_state.DATA        ; yes                    ;
-; out_data[1]$latch                                  ; s_state.DATA        ; yes                    ;
-; out_data[2]$latch                                  ; s_state.DATA        ; yes                    ;
-; out_data[3]$latch                                  ; s_state.DATA        ; yes                    ;
-; out_data[4]$latch                                  ; s_state.DATA        ; yes                    ;
-; out_data[5]$latch                                  ; s_state.DATA        ; yes                    ;
-; out_data[6]$latch                                  ; s_state.DATA        ; yes                    ;
-; out_data[7]$latch                                  ; s_state.DATA        ; yes                    ;
-; Number of user-specified and inferred latches = 8  ;                     ;                        ;
-+----------------------------------------------------+---------------------+------------------------+
-Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
-
-
-+-------------------------------------------------------------+
-; Logic Cells Representing Combinational Loops                ;
-+--------------------------------------------------------+----+
-; Logic Cell Name                                        ;    ;
-+--------------------------------------------------------+----+
-; Add0~0                                                 ;    ;
-; next_counter[15]~31                                    ;    ;
-; next_counter[21]~32                                    ;    ;
-; next_counter[22]~33                                    ;    ;
-; next_counter[23]~34                                    ;    ;
-; next_counter[24]~35                                    ;    ;
-; next_counter[25]~36                                    ;    ;
-; next_counter[26]~37                                    ;    ;
-; next_counter[27]~38                                    ;    ;
-; next_counter[28]~39                                    ;    ;
-; next_counter[29]~40                                    ;    ;
-; next_counter[30]~41                                    ;    ;
-; next_counter[16]~42                                    ;    ;
-; next_counter[20]~43                                    ;    ;
-; next_counter[17]~44                                    ;    ;
-; next_counter[18]~45                                    ;    ;
-; next_counter[1]~46                                     ;    ;
-; next_counter[0]~47                                     ;    ;
-; next_counter[19]~48                                    ;    ;
-; next_counter[2]~49                                     ;    ;
-; next_counter[3]~50                                     ;    ;
-; next_counter[4]~51                                     ;    ;
-; next_counter[5]~52                                     ;    ;
-; next_counter[6]~53                                     ;    ;
-; next_counter[7]~54                                     ;    ;
-; next_counter[8]~55                                     ;    ;
-; next_counter[9]~56                                     ;    ;
-; next_counter[10]~57                                    ;    ;
-; next_counter[11]~58                                    ;    ;
-; next_counter[12]~59                                    ;    ;
-; next_counter[13]~60                                    ;    ;
-; next_counter[14]~61                                    ;    ;
-; Number of logic cells representing combinational loops ; 32 ;
-+--------------------------------------------------------+----+
-Note: All cells listed above may not be present at the end of synthesis due to various synthesis optimizations.
-
-
-+---------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                              ;
-+----------------------------------------+----------------------------------------+
-; Register name                          ; Reason for Removal                     ;
-+----------------------------------------+----------------------------------------+
-; ip_header_length[0,1,6..31]            ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 28 ;                                        ;
-+----------------------------------------+----------------------------------------+
-
-
-+------------------------------------------------------+
-; General Register Statistics                          ;
-+----------------------------------------------+-------+
-; Statistic                                    ; Value ;
-+----------------------------------------------+-------+
-; Total registers                              ; 187   ;
-; Number of registers using Synchronous Clear  ; 32    ;
-; Number of registers using Synchronous Load   ; 32    ;
-; Number of registers using Asynchronous Clear ; 187   ;
-; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 180   ;
-; Number of registers using Preset             ; 0     ;
-+----------------------------------------------+-------+
-
-
-+----------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
-; 3:1                ; 24 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |Parser_UDP_datagrama|udp_length[25] ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |Parser_UDP_datagrama|udp_length[15] ;
-; 12:1               ; 32 bits   ; 256 LEs       ; 32 LEs               ; 224 LEs                ; Yes        ; |Parser_UDP_datagrama|byte_index[0]  ;
-; 16:1               ; 4 bits    ; 40 LEs        ; 16 LEs               ; 24 LEs                 ; No         ; |Parser_UDP_datagrama|Selector3      ;
-; 17:1               ; 2 bits    ; 22 LEs        ; 8 LEs                ; 14 LEs                 ; No         ; |Parser_UDP_datagrama|Selector0      ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
-
-
-+-----------------------------------------------------+
-; Post-Synthesis Netlist Statistics for Top Partition ;
-+-----------------------+-----------------------------+
-; Type                  ; Count                       ;
-+-----------------------+-----------------------------+
-; boundary_port         ; 122                         ;
-; cycloneiii_ff         ; 187                         ;
-;     CLR               ; 7                           ;
-;     ENA CLR           ; 116                         ;
-;     ENA CLR SCLR      ; 32                          ;
-;     ENA CLR SLD       ; 32                          ;
-; cycloneiii_lcell_comb ; 489                         ;
-;     arith             ; 185                         ;
-;         2 data inputs ; 142                         ;
-;         3 data inputs ; 43                          ;
-;     normal            ; 304                         ;
-;         0 data inputs ; 1                           ;
-;         1 data inputs ; 6                           ;
-;         2 data inputs ; 115                         ;
-;         3 data inputs ; 30                          ;
-;         4 data inputs ; 152                         ;
-;                       ;                             ;
-; Max LUT depth         ; 12.10                       ;
-; Average LUT depth     ; 6.35                        ;
-+-----------------------+-----------------------------+
-
-
-+-------------------------------+
-; Elapsed Time Per Partition    ;
-+----------------+--------------+
-; Partition Name ; Elapsed Time ;
-+----------------+--------------+
-; Top            ; 00:00:00     ;
-+----------------+--------------+
-
-
-+-------------------------------+
-; Analysis & Synthesis Messages ;
-+-------------------------------+
++---------------------------------+
+; Analysis & Elaboration Messages ;
++---------------------------------+
 Info: *******************************************************************
-Info: Running Quartus Prime Analysis & Synthesis
+Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Sat Jan 18 10:40:42 2025
-Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Parser_UDP_datagrama -c Parser_UDP_datagrama
+    Info: Processing started: Thu Jan 23 20:17:46 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Parser_UDP_datagrama -c Parser_UDP_datagrama --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file parser_udp_datagrama.vhd
-    Info (12022): Found design unit 1: Parser_UDP_datagrama-rtl File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 26
-    Info (12023): Found entity 1: Parser_UDP_datagrama File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 5
+    Info (12022): Found design unit 1: Parser_UDP_datagrama-rtl File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 26
+    Info (12023): Found entity 1: Parser_UDP_datagrama File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 5
 Info (12127): Elaborating entity "Parser_UDP_datagrama" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at Parser_UDP_datagrama.vhd(33): object "next_channel" assigned a value but never read File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 33
-Warning (10492): VHDL Process Statement warning at Parser_UDP_datagrama.vhd(47): signal "udp_payload_length" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 47
-Warning (10492): VHDL Process Statement warning at Parser_UDP_datagrama.vhd(48): signal "s_channel" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 48
-Warning (10492): VHDL Process Statement warning at Parser_UDP_datagrama.vhd(49): signal "s_out_endofpacket" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 49
-Warning (10631): VHDL Process Statement warning at Parser_UDP_datagrama.vhd(41): inferring latch(es) for signal or variable "next_counter", which holds its previous value in one or more paths through the process File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Warning (10492): VHDL Process Statement warning at Parser_UDP_datagrama.vhd(165): signal "next_counter" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 165
-Warning (10631): VHDL Process Statement warning at Parser_UDP_datagrama.vhd(216): inferring latch(es) for signal or variable "out_data", which holds its previous value in one or more paths through the process File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 216
-Info (10041): Inferred latch for "out_data[0]" at Parser_UDP_datagrama.vhd(216) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 216
-Info (10041): Inferred latch for "out_data[1]" at Parser_UDP_datagrama.vhd(216) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 216
-Info (10041): Inferred latch for "out_data[2]" at Parser_UDP_datagrama.vhd(216) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 216
-Info (10041): Inferred latch for "out_data[3]" at Parser_UDP_datagrama.vhd(216) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 216
-Info (10041): Inferred latch for "out_data[4]" at Parser_UDP_datagrama.vhd(216) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 216
-Info (10041): Inferred latch for "out_data[5]" at Parser_UDP_datagrama.vhd(216) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 216
-Info (10041): Inferred latch for "out_data[6]" at Parser_UDP_datagrama.vhd(216) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 216
-Info (10041): Inferred latch for "out_data[7]" at Parser_UDP_datagrama.vhd(216) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 216
-Info (10041): Inferred latch for "next_counter[0]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[1]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[2]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[3]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[4]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[5]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[6]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[7]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[8]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[9]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[10]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[11]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[12]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[13]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[14]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[15]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[16]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[17]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[18]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[19]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[20]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[21]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[22]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[23]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[24]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[25]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[26]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[27]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[28]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[29]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[30]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Info (10041): Inferred latch for "next_counter[31]" at Parser_UDP_datagrama.vhd(41) File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 41
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "out_startofpacket" is stuck at GND File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 18
-Info (286030): Timing-Driven Synthesis is running
-Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
-    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 1 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "in_endofpacket" File: C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 13
-Info (21057): Implemented 727 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 14 input pins
-    Info (21059): Implemented 108 output pins
-    Info (21061): Implemented 605 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 12 warnings
-    Info: Peak virtual memory: 4841 megabytes
-    Info: Processing ended: Sat Jan 18 10:40:49 2025
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:13
+Warning (10036): Verilog HDL or VHDL warning at Parser_UDP_datagrama.vhd(33): object "next_channel" assigned a value but never read File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 33
+Warning (10492): VHDL Process Statement warning at Parser_UDP_datagrama.vhd(48): signal "udp_payload_length" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 48
+Warning (10492): VHDL Process Statement warning at Parser_UDP_datagrama.vhd(49): signal "s_channel" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 49
+Warning (10492): VHDL Process Statement warning at Parser_UDP_datagrama.vhd(50): signal "s_out_endofpacket" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 50
+Warning (10492): VHDL Process Statement warning at Parser_UDP_datagrama.vhd(51): signal "s_out_startofpacket" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 51
+Warning (10631): VHDL Process Statement warning at Parser_UDP_datagrama.vhd(42): inferring latch(es) for signal or variable "next_counter", which holds its previous value in one or more paths through the process File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Warning (10492): VHDL Process Statement warning at Parser_UDP_datagrama.vhd(172): signal "next_counter" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 172
+Info (10041): Inferred latch for "next_counter[0]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[1]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[2]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[3]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[4]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[5]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[6]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[7]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[8]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[9]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[10]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[11]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[12]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[13]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[14]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[15]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[16]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[17]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[18]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[19]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[20]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[21]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[22]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[23]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[24]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[25]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[26]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[27]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[28]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[29]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[30]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info (10041): Inferred latch for "next_counter[31]" at Parser_UDP_datagrama.vhd(42) File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd Line: 42
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 8 warnings
+    Info: Peak virtual memory: 4778 megabytes
+    Info: Processing ended: Thu Jan 23 20:18:02 2025
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:23
 
 

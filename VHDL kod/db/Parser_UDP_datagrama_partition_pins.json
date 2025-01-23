@@ -40,6 +40,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "out_startofpacket",
+					"strict" : false
+				},
+				{
 					"name" : "out_endofpacket",
 					"strict" : false
 				},
@@ -436,11 +440,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "in_valid",
+					"name" : "clk",
 					"strict" : false
 				},
 				{
-					"name" : "clk",
+					"name" : "in_valid",
 					"strict" : false
 				},
 				{

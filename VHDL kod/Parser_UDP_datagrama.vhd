@@ -30,11 +30,12 @@ ARCHITECTURE rtl OF Parser_UDP_datagrama IS
     SIGNAL ip_header_length, next_ip_header_length : INTEGER := 0;
     SIGNAL udp_length, next_udp_length : INTEGER := 0;
     SIGNAL udp_payload_length, next_udp_payload_length : INTEGER := 0;
-    SIGNAL s_channel, next_channel : STD_LOGIC_VECTOR(95 DOWNTO 0) := (OTHERS => '0');
+    SIGNAL s_channel, next_channel : STD_LOGIC_VECTOR(95 DOWNTO 0);
     SIGNAL s_out_endofpacket, next_out_endofpacket : STD_LOGIC := '0';
+	 SIGNAL s_out_startofpacket, next_out_startofpacket : STD_LOGIC := '0';
     SIGNAL counter, next_counter : INTEGER := 0;
-    SIGNAL s_out_data : STD_LOGIC_VECTOR(7 DOWNTO 0) := (OTHERS => '0');
-    SIGNAL delayed_data : STD_LOGIC_VECTOR(7 DOWNTO 0) := (OTHERS => '0');
+    SIGNAL s_out_data : STD_LOGIC_VECTOR(7 DOWNTO 0);
+    SIGNAL delayed_data : STD_LOGIC_VECTOR(7 DOWNTO 0) := (OTHERS => '-');
 BEGIN
 
     -- Kombinatorna logika za tranzicije stanja i pomoćne registre
@@ -47,6 +48,7 @@ BEGIN
         next_udp_payload_length <= udp_payload_length;
         next_channel <= s_channel;
         next_out_endofpacket <= s_out_endofpacket;
+		  next_out_startofpacket <= s_out_startofpacket;
         IF out_ready = '0' THEN
             next_counter <= counter + 1;
         ELSIF out_ready = '1' THEN
@@ -120,6 +122,7 @@ BEGIN
                         next_byte_index <= byte_index + 1;
                     ELSIF byte_index = 13 + ip_header_length + 8 THEN
                         next_state <= DATA;
+								next_out_startofpacket <= '1';
                         next_byte_index <= byte_index + 1;
                     ELSE
                         next_byte_index <= byte_index + 1;
@@ -137,11 +140,14 @@ BEGIN
                         next_out_endofpacket <= '0';
                         next_state <= CRC;
                         next_byte_index <= byte_index + 1;
+							--	s_out_data <= (OTHERS => '0');
                     ELSE
                         next_byte_index <= byte_index + 1;
+								next_out_startofpacket <= '0';
                     END IF;
                 ELSIF out_ready = '0' THEN
                     next_byte_index <= byte_index + 1;
+						  next_out_startofpacket <= '0';
                 END IF;
 
             WHEN CRC =>
@@ -151,6 +157,7 @@ BEGIN
                         next_state <= IDLE;
                     ELSE
                         next_byte_index <= byte_index + 1;
+							--	s_out_data <= (OTHERS => '0');
                     END IF;
                 END IF;
 
@@ -162,7 +169,7 @@ BEGIN
     -- Sekvencijalna logika za registre
     PROCES2: PROCESS(clk, reset_n)
     BEGIN
-        counter <= next_counter; --mora ici asinhrono nisam našao bolje rješenje
+        counter <= next_counter; --asinhrono rjesenje
         IF reset_n = '0' THEN
             s_state <= IDLE;
             byte_index <= 0;
@@ -171,19 +178,21 @@ BEGIN
             udp_payload_length <= 0;
             s_channel <= (OTHERS => '0');
             s_out_endofpacket <= '0';
-            delayed_data <= (OTHERS => '0');
-            s_out_data <= (OTHERS => '0');
+				s_out_startofpacket <= '0';
+            delayed_data <= (OTHERS => '-');
+            s_out_data <= (OTHERS => '-');
         ELSIF rising_edge(clk) THEN
             s_state <= next_state;
             IF (out_ready = '0' AND counter = 0) OR out_ready = '1' THEN
                 byte_index <= next_byte_index;
-                delayed_data <= in_data; -- Sačuvaj trenutnu vrednost in_data
-                s_out_data <= delayed_data; -- Dodijeli odgođenu vrednost izlazu
+                delayed_data <= in_data; -- Sačuvaj trenutnu vrijednost in_data
+                s_out_data <= delayed_data; -- Dodijeli odgođenu vrijednost izlazu
             END IF;
             ip_header_length <= next_ip_header_length;
             udp_length <= next_udp_length;
             udp_payload_length <= next_udp_payload_length;
             s_out_endofpacket <= next_out_endofpacket;
+				s_out_startofpacket <= next_out_startofpacket;
             IF byte_index = 25 THEN
                 s_channel(95 DOWNTO 88) <= in_data;
             ELSIF byte_index = 26 THEN
@@ -218,7 +227,8 @@ BEGIN
         out_valid <= '0';
         out_startofpacket <= '0';
         out_endofpacket <= s_out_endofpacket;
-        channel <= (OTHERS => '0');
+		  out_startofpacket <= s_out_startofpacket;
+        channel <= (OTHERS => '-');
         in_ready <= out_ready;
         CASE s_state IS
             WHEN DATA =>
@@ -227,6 +237,7 @@ BEGIN
                 channel <= s_channel;
             WHEN OTHERS =>
                 out_valid <= '0';
+					 out_data <= (OTHERS => '-');
         END CASE;
     END PROCESS;
 
