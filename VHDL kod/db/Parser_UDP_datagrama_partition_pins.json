@@ -448,10 +448,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "reset_n",
-					"strict" : false
-				},
-				{
 					"name" : "in_data[3]",
 					"strict" : false
 				},
@@ -485,6 +481,10 @@
 				},
 				{
 					"name" : "in_startofpacket",
+					"strict" : false
+				},
+				{
+					"name" : "reset_n",
 					"strict" : false
 				}
 			]

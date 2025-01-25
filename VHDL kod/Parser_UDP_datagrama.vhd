@@ -228,7 +228,7 @@ BEGIN
         out_startofpacket <= '0';
         out_endofpacket <= s_out_endofpacket;
 		  out_startofpacket <= s_out_startofpacket;
-        channel <= (OTHERS => '-');
+        channel <= (OTHERS => '0');
         in_ready <= out_ready;
         CASE s_state IS
             WHEN DATA =>
@@ -237,7 +237,7 @@ BEGIN
                 channel <= s_channel;
             WHEN OTHERS =>
                 out_valid <= '0';
-					 out_data <= (OTHERS => '-');
+					 out_data <= (OTHERS => '0');
         END CASE;
     END PROCESS;
 
