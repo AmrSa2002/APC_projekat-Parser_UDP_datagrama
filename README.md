@@ -103,7 +103,7 @@ U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz 
 
 ## Konačni automat
 
-Konačni automat (engl. _Final State Machine_) predstavlja diskretni matematički model koji se koristi za modeliranje sekvencijalnih logičkih kola. Postoje dva načina predstavljanja konačnih automata - pomoću dijagrama stanja ili hardverski bazirane reprezentacije. Dijagram stanja predstavlja grafičku reprezentaciju specifikacija konačnog automata. Dijagram stanja prikazuje sva moguća stanja u kojima se sistem može naći, vrijednosti ulaza za koje sistem prelazi iz stanja u stanje, te vrijednosti izlaza koje sistem proizvodi u svakom od stanja. Ova metoda olakšava vizualizaciju i implementaciju sistema, jer omogućava intuitivno razumijevanje logike rada automata. Hardverski bazirana reprezentacija, s druge strane, fokusira se na implementaciju automata koristeći logičke sklopove, što je često ključno za dizajn ugrađenih sistema i digitalnih kola.
+Konačni automat (engl. _Final State Machine_) predstavlja  je posebnu tehniku modeliranja za sekvencijalne logičke sklopove[3,str. 276]. Postoje dva načina predstavljanja konačnih automata - pomoću dijagrama stanja ili hardverski bazirane reprezentacije. Dijagram stanja predstavlja grafičku reprezentaciju specifikacija konačnog automata. Dijagram stanja prikazuje sva moguća stanja u kojima se sistem može naći, vrijednosti ulaza za koje sistem prelazi iz stanja u stanje, te vrijednosti izlaza koje sistem proizvodi u svakom od stanja. Ova metoda olakšava vizualizaciju i implementaciju sistema, jer omogućava intuitivno razumijevanje logike rada automata. Hardverski bazirana reprezentacija, s druge strane, fokusira se na implementaciju automata koristeći logičke sklopove, što je često ključno za dizajn ugrađenih sistema i digitalnih kola.
 Konačni automat je dizajniran da parsira ulazni tok podataka kroz nekoliko slojeva mrežnog paketa. Proces uključuje identifikaciju početka paketa, validaciju zaglavlja svakog sloja (Ethernet, IP, UDP), izdvajanje korisničkih podataka i validaciju završetka paketa.
 
 Predstavljeno je ukupno šest mogućih stanja: 
@@ -118,13 +118,15 @@ Predstavljeno je ukupno šest mogućih stanja:
 Konačni automat ostaje u stanju IDLE sve do dolaska paketa, dok signal 'rst' služi za resetovanje automata u početno stanje. Kada signal in_startofpacket postane aktivan ('1') i in_valid potvrdi valjanost ulaza, automat prelazi u naredno stanje pod nazivom ETHERNET_HEADER. U ovom stanju, na osnovu posljednja dva okteta Ethernet zaglavlja, određuje se tip protokola koji se koristi za prenos podataka. Za protokol IPv4, posljednja dva okteta su vrijednosti 0x0800.
 Ukoliko uslov nije ispunjen, automat se vraća u stanje IDLE. S druge strane, ako je protokol IPv4 potvrđen, automat prelazi u stanje IP_HEADER, gdje obrađuje IP zaglavlje. Kada brojač bajta (byte_index) dostigne vrijednost 13 + ip_header_length - 1 i identifikuje da je protokol UDP (ip_protocol = x"11"), automat prelazi u stanje UDP_HEADER. U suprotnom, vraća se u IDLE.
 U stanju UDP_HEADER, automat obrađuje UDP zaglavlje. Ako brojač bajta dostigne vrijednost 13 + ip_header_length + 8, automat prelazi u stanje DATA, gdje se obrađuju korisnički podaci.
-Nakon obrade korisničkih podataka, kada brojač bajta dostigne vrijednost 13 + ip_header_length + udp_length, automat prelazi u stanje CRC. U ovom stanju se provjerava integritet podataka, a kada signal out_endofpacket postane aktivan ('1'), automat se vraća u početno stanje IDLE, spreman za obradu narednog paketa.
+Nakon obrade korisničkih podataka, kada brojač bajta dostigne vrijednost 13 + ip_header_length + udp_length, automat prelazi u stanje CRC. U ovom stanju se provjerava integritet podataka, a kada signal out_endofpacket postane aktivan ('1'), automat se vraća u početno stanje IDLE, spreman za obradu narednog paketa. 
+
+Grafik konačnog automata korištenog za simulaciju parsera UDP datagrama je kreiran upotrebom draw.io, besplatnog online alata za crtanje dijagrama.
 
 ![UDP_parser](https://github.com/user-attachments/assets/d74fd4bc-0a29-4773-a18d-8855eab34865)
 
 ## Modeliranje sklopa u VHDL-u
 
-Shodno ranije opisanim signalima, te stanjima konačnog automata, sklop je modeliran pomoću jezika za opis hardvera VHDL. Ulazni i izlazni signali obuhvataju signale Avalon ST sučelja, dok je FSM modeliran kao 3-procesni.
+Shodno ranije opisanim signalima, te stanjima konačnog automata, sklop je modeliran pomoću jezika za opis hardvera - VHDL. Ulazni i izlazni signali obuhvataju signale Avalon ST sučelja, dok je FSM modeliran kao 3-procesni.
 Prvi proces odnosi se na kombinatornu logiku za tranzicije stanja i ostalih registara; drugi proces odnosi se na sekvencijalnu logiku za registre stanja, brojače i pomoćne registre, dok se treći proces odnosi na kombinatornu logiku za izlaze.
 
 
@@ -147,10 +149,27 @@ Posljedni testbench je kreiran za slučaj sa _backpressure_-om na UDP payload-u.
 
 ![tb3](https://github.com/user-attachments/assets/53e40543-c99b-44ff-b8ad-74c6cee3ac92)
 
+## Verifikacija pomoću preglednika stanja
+
+Preglednik stanja (engl. _State Machine Viewer_) pruža grafički prikaz stanja konačnog automata definisanog na osnovu koda za smulaciju parsera UDP datagrama kroz Intel Quartus Prime alat. Preglednik stanja je moguće otvoriti na sljedeće načine:  
+* U meniju _Tools_, odaberiom _Netlist Viewers_ i klikom na _State Machine Viewer_ ili
+* Dvostrukim klikom na instancu automata stanja u _RTL Viewer_-u.
+
+Na osnovu prethodnog, izvršena je verifikacija dijagrama konačnih stanja kreiranog upotrebom draw.io alata.
+
+![s_state](https://github.com/user-attachments/assets/701cca39-8955-40cf-a697-81a9adb514a4)
+
 ## Zaključak
+
+Korištenje wavedrom alata je omogućilo pojednostavljenu analizu prijenosa podataka, dok je implementacija konačnog automata u draw.io alatu osigurala precizno prepoznavanje zaglavlja paketa. Rezultati potvrđuju da simulacija parsera UDP datagrama kroz Quartus Prime razvojno okruženje pravilno prepoznaje strukturu paketa i omogućava prijenos podataka na osnovu definisanih kriterija. 
+
+Naredna poboljšanja parsera mogu uključivati proširenje podrške na dodatne protokole, te implementaciju naprednih metoda za analizu i filtriranje mrežnog saobraćaja. Ovakav pristup doprinosi efikasnijem radu mrežnih sistema, smanjenju latencije i doprinosi poboljšanju kvaliteta usluge u realnim sistemima.
 
 ## Literatura
 
 [1] Intel, F. P. G. A. (2021.) _Avalon® interface specifications_., Tech. Rep., MNL-AVABUSREF.
 
 [2] Kaljić E., (2024.), _Arhitekture paketskih čvorišta - Predavanje 5_.
+
+[3] Volnei A. Pedroni (2010) Circuit Design and Simulation with VHDL (poglavlje 11), The MIT Press, Cambridge, Massachussets, 2nd edition.
+
