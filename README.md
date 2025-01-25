@@ -133,8 +133,19 @@ Modul koristi indeksiranje bajta (byte_index) kako bi prepoznao odgovarajuća po
 
 ## Verifikacija pomoću simulacijskog alata ModelSim
 
-Kako su analizirana tri scenarija, kreirana su tri testbench file-a koji obuhvataju slučajeve bez _backpressure_-a, sa _backpressure_-om, te sa _backpressure_-om na UDP payload-u. U nastavku je dat opis kreiranih scenarija za verifikaciju, te prikaz signala u simulacijskom alatu ModelSim.
+Kako su analizirana tri scenarija, kreirana su tri testbench file-a koji obuhvataju slučajeve bez _backpressure_-a, sa _backpressure_-om, te sa _backpressure_-om na UDP payload-u. U nastavku je dat kratki opis kreiranih scenarija za verifikaciju, te prikaz signala u simulacijskom alatu ModelSim.
 
+Prvi testbench omogućava analizu simulacije ponašanja sistema kroz sekvencijalno slanje bajta za slučaj bez _backpressure_-a. Kako su signali ranije opisani, te predstavljeni wavefrom dijagrami, simulacijski alat ModelSim pruža verifikaciju ispravno predstavljenog prenosa.
+
+![tb1](https://github.com/user-attachments/assets/14f52639-76dd-4f6e-98d0-9e71997ff13e)
+
+Drugi slučaj obuhvata prenos sa _backpressure_-om.
+
+![tb2](https://github.com/user-attachments/assets/ba508d53-c204-4bd8-8882-c78951617014)
+
+Posljedni testbench je kreiran za slučaj sa _backpressure_-om na UDP payload-u.
+
+![tb3](https://github.com/user-attachments/assets/53e40543-c99b-44ff-b8ad-74c6cee3ac92)
 
 ## Zaključak
 
