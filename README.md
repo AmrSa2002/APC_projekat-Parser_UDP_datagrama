@@ -3,7 +3,7 @@
 ## Uvod
 
 UDP (User Datagram Protocol) predstavlja transportni protokol koji prenosi podatke u obliku datagrama, bez prethodno uspostavljene veze, često korišten za aplikacije koje zahtijevaju brzu komunikaciju s minimalnim kašnjenjem, poput video streaminga, online igara ili DNS-a.
-Parsiranje predstavlja proces identifikacije i ekstrakcije odgovarajućih polja iz zaglavlja paketa. 
+Parsiranje predstavlja proces identifikacije i ekstrakcije odgovarajućih polja iz zaglavlja paketa [2]. 
 S prethodnim u vezi, UDP datagram parser je hardverski ili softverski modul dizajniran za analizu, parsiranje i ekstrakciju informacija iz UDP datagrama.
 
 Glavni koraci pri parsiranju UDP datagrama su:
@@ -86,7 +86,7 @@ Signal `s_state` odnosi se na trenutno zaglavlje okvira, odnosno Ethernet, IP il
 
 #### Scenarij 2 - sa backpressure
 
-Potiskivanje unazad (engl. _Backpressure_) je mehanizam putem kojeg odredište (engl. _sink_) može signalizirati izvoru (engl. _source_) da obustavi slanje podataka. Odredište obično koristi backpressure kako bi zaustavilo protok podataka kada su njegovi FIFO baferi puni ili kada postoji zagušenje na izlaznom portu[1].  
+Potiskivanje unazad (engl. _Backpressure_) je mehanizam putem kojeg odredište (engl. _sink_) može signalizirati izvoru (engl. _source_) da obustavi slanje podataka. Odredište obično koristi backpressure kako bi zaustavilo protok podataka kada su njegovi FIFO baferi puni ili kada postoji zagušenje na izlaznom portu [1].  
 Kada sink nije spreman za prijem paketa, signal `out_ready` prelazi u stanje nula, čime se aktivira mehanizam backpressura. Ovaj mehanizam zaustavlja daljnji prijem paketa od strane source-a, pri čemu signal `in_ready` također postaje jednak nuli.
 
 U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz prethodni scenarij.
@@ -103,7 +103,7 @@ U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz 
 
 ## Konačni automat
 
-Konačni automat (engl. _Final State Machine_) predstavlja  je posebnu tehniku modeliranja za sekvencijalne logičke sklopove[3,str. 276]. Postoje dva načina predstavljanja konačnih automata - pomoću dijagrama stanja ili hardverski bazirane reprezentacije. Dijagram stanja predstavlja grafičku reprezentaciju specifikacija konačnog automata. Dijagram stanja prikazuje sva moguća stanja u kojima se sistem može naći, vrijednosti ulaza za koje sistem prelazi iz stanja u stanje, te vrijednosti izlaza koje sistem proizvodi u svakom od stanja. Ova metoda olakšava vizualizaciju i implementaciju sistema, jer omogućava intuitivno razumijevanje logike rada automata. Hardverski bazirana reprezentacija, s druge strane, fokusira se na implementaciju automata koristeći logičke sklopove, što je često ključno za dizajn ugrađenih sistema i digitalnih kola.
+Konačni automat (engl. _Final State Machine_) predstavlja  je posebnu tehniku modeliranja za sekvencijalne logičke sklopove [3,str. 276]. Postoje dva načina predstavljanja konačnih automata - pomoću dijagrama stanja ili hardverski bazirane reprezentacije. Dijagram stanja predstavlja grafičku reprezentaciju specifikacija konačnog automata. Dijagram stanja prikazuje sva moguća stanja u kojima se sistem može naći, vrijednosti ulaza za koje sistem prelazi iz stanja u stanje, te vrijednosti izlaza koje sistem proizvodi u svakom od stanja. Ova metoda olakšava vizualizaciju i implementaciju sistema, jer omogućava intuitivno razumijevanje logike rada automata. Hardverski bazirana reprezentacija, s druge strane, fokusira se na implementaciju automata koristeći logičke sklopove, što je često ključno za dizajn ugrađenih sistema i digitalnih kola.
 Konačni automat je dizajniran da parsira ulazni tok podataka kroz nekoliko slojeva mrežnog paketa. Proces uključuje identifikaciju početka paketa, validaciju zaglavlja svakog sloja (Ethernet, IP, UDP), izdvajanje korisničkih podataka i validaciju završetka paketa.
 
 Predstavljeno je ukupno šest mogućih stanja: 
@@ -151,7 +151,7 @@ Posljedni testbench je kreiran za slučaj sa _backpressure_-om na UDP payload-u.
 
 ## Verifikacija pomoću preglednika stanja
 
-Preglednik stanja (engl. _State Machine Viewer_) pruža grafički prikaz stanja konačnog automata definisanog na osnovu koda za smulaciju parsera UDP datagrama kroz Intel Quartus Prime alat. Preglednik stanja je moguće otvoriti na sljedeće načine:  
+Preglednik stanja (engl. _State Machine Viewer_) pruža grafički prikaz stanja konačnog automata definisanog na osnovu koda za simulaciju parsera UDP datagrama kroz Intel Quartus Prime alat. Preglednik stanja je moguće otvoriti na sljedeće načine:  
 * U meniju _Tools_, odaberiom _Netlist Viewers_ i klikom na _State Machine Viewer_ ili
 * Dvostrukim klikom na instancu automata stanja u _RTL Viewer_-u.
 
