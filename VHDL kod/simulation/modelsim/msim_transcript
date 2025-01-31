@@ -14,7 +14,7 @@
 # 
 # vcom -2008 -work work {C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 19:34:30 on Jan 25,2025
+# Start time: 14:17:27 on Jan 31,2025
 # vcom -reportprogress 300 -2008 -work work C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -22,52 +22,65 @@
 # -- Loading package NUMERIC_STD
 # -- Compiling entity Parser_UDP_datagrama
 # -- Compiling architecture rtl of Parser_UDP_datagrama
-# End time: 19:34:30 on Jan 25,2025, Elapsed time: 0:00:00
+# End time: 14:17:27 on Jan 31,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
-vcom -reportprogress 300 -work work {C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_tb3.vhd}
+vcom -reportprogress 300 -work work {C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_tb2.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 19:34:35 on Jan 25,2025
-# vcom -reportprogress 300 -work work C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_tb3.vhd 
+# Start time: 14:17:39 on Jan 31,2025
+# vcom -reportprogress 300 -work work C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_tb2.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
 # -- Compiling entity Parser_UDP_datagrama_tb3
 # -- Compiling architecture behavior of Parser_UDP_datagrama_tb3
-# End time: 19:34:35 on Jan 25,2025, Elapsed time: 0:00:00
+# End time: 14:17:39 on Jan 31,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vsim rtl_work.parser_udp_datagrama_tb3
-# vsim rtl_work.parser_udp_datagrama_tb3 
-# Start time: 19:34:40 on Jan 25,2025
+vcom -reportprogress 300 -work work {C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_tb2.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 14:18:20 on Jan 31,2025
+# vcom -reportprogress 300 -work work C:/Users/User/Desktop/APC/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_tb2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity Parser_UDP_datagrama_tb2
+# -- Compiling architecture behavior of Parser_UDP_datagrama_tb2
+# End time: 14:18:20 on Jan 31,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim rtl_work.parser_udp_datagrama_tb2
+# vsim rtl_work.parser_udp_datagrama_tb2 
+# Start time: 14:18:26 on Jan 31,2025
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
-# Loading rtl_work.parser_udp_datagrama_tb3(behavior)
+# Loading rtl_work.parser_udp_datagrama_tb2(behavior)
 # Loading rtl_work.parser_udp_datagrama(rtl)
 # A bookmarks file was found in the current directory with 1 bookmark
 add wave -position insertpoint  \
-sim:/parser_udp_datagrama_tb3/clk \
-sim:/parser_udp_datagrama_tb3/reset_n \
-sim:/parser_udp_datagrama_tb3/in_data \
-sim:/parser_udp_datagrama_tb3/in_startofpacket \
-sim:/parser_udp_datagrama_tb3/in_endofpacket \
-sim:/parser_udp_datagrama_tb3/in_ready \
-sim:/parser_udp_datagrama_tb3/in_valid \
-sim:/parser_udp_datagrama_tb3/out_data \
-sim:/parser_udp_datagrama_tb3/out_startofpacket \
-sim:/parser_udp_datagrama_tb3/out_endofpacket \
-sim:/parser_udp_datagrama_tb3/out_ready \
-sim:/parser_udp_datagrama_tb3/channel \
-sim:/parser_udp_datagrama_tb3/clk_period
+sim:/parser_udp_datagrama_tb2/clk \
+sim:/parser_udp_datagrama_tb2/reset \
+sim:/parser_udp_datagrama_tb2/in_data \
+sim:/parser_udp_datagrama_tb2/in_startofpacket \
+sim:/parser_udp_datagrama_tb2/in_endofpacket \
+sim:/parser_udp_datagrama_tb2/in_ready \
+sim:/parser_udp_datagrama_tb2/in_valid \
+sim:/parser_udp_datagrama_tb2/out_data \
+sim:/parser_udp_datagrama_tb2/out_startofpacket \
+sim:/parser_udp_datagrama_tb2/out_endofpacket \
+sim:/parser_udp_datagrama_tb2/out_ready \
+sim:/parser_udp_datagrama_tb2/out_valid \
+sim:/parser_udp_datagrama_tb2/channel \
+sim:/parser_udp_datagrama_tb2/clk_period
 # Bookmark(s) were restored for window "Wave"
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: tk-student  Hostname: etf-tk-lab222-w2  ProcessID: 24376
-#           Attempting to use alternate WLF file "./wlftn7k58s".
+#           Attempting to use alternate WLF file "./wlft9vjtif".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftn7k58s
+#           Using alternate file: ./wlft9vjtif
 run
 # No bookmark changes exist in window "Wave"
-# End time: 19:35:23 on Jan 25,2025, Elapsed time: 0:00:43
+# End time: 14:19:17 on Jan 31,2025, Elapsed time: 0:00:51
 # Errors: 0, Warnings: 2
