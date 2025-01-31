@@ -3,7 +3,7 @@
 ## Uvod
 
 UDP (User Datagram Protocol) predstavlja transportni protokol koji prenosi podatke u obliku datagrama, bez prethodno uspostavljene veze, često korišten za aplikacije koje zahtijevaju brzu komunikaciju s minimalnim kašnjenjem, poput video streaminga, online igara ili DNS-a.
-Parsiranje predstavlja proces identifikacije i ekstrakcije odgovarajućih polja iz zaglavlja paketa [2]. 
+Parsiranje predstavlja proces identifikacije i ekstrakcije odgovarajućih polja iz zaglavlja paketa [1]. 
 S prethodnim u vezi, UDP datagram parser je hardverski ili softverski modul dizajniran za analizu, parsiranje i ekstrakciju informacija iz UDP datagrama.
 
 Glavni koraci pri parsiranju UDP datagrama su:
@@ -171,9 +171,9 @@ Naredna poboljšanja parsera mogu uključivati proširenje podrške na dodatne p
 
 ## Literatura
 
-[1] Intel, F. P. G. A. (2021.) _Avalon® interface specifications_., Tech. Rep., MNL-AVABUSREF.
+[1] Kaljić E., (2024.), _Arhitekture paketskih čvorišta - Predavanje 5_.
 
-[2] Kaljić E., (2024.), _Arhitekture paketskih čvorišta - Predavanje 5_.
+[2] Intel, F. P. G. A. (2021.) _Avalon® interface specifications_., Tech. Rep., MNL-AVABUSREF.
 
 [3] Volnei A. Pedroni (2010) Circuit Design and Simulation with VHDL (poglavlje 11), The MIT Press, Cambridge, Massachussets, 2nd edition.
 
