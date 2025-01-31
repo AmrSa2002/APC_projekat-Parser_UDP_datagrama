@@ -2,8 +2,8 @@
 
 ## Uvod
 
-UDP (User Datagram Protocol) predstavlja transportni protokol koji prenosi podatke u obliku datagrama, bez prethodno uspostavljene veze, često korišten za aplikacije koje zahtijevaju brzu komunikaciju s minimalnim kašnjenjem, poput video streaminga, online igara ili DNS-a.
-Parsiranje predstavlja proces identifikacije i ekstrakcije odgovarajućih polja iz zaglavlja paketa [1]. 
+UDP (User Datagram Protocol) predstavlja transportni protokol koji prenosi podatke u obliku datagrama, bez prethodno uspostavljene veze, često korišten za aplikacije koje zahtijevaju brzu komunikaciju s minimalnim kašnjenjem, poput video streaminga, online igara ili DNS-a [1].
+Parsiranje predstavlja proces identifikacije i ekstrakcije odgovarajućih polja iz zaglavlja paketa [2]. 
 S prethodnim u vezi, UDP datagram parser je hardverski ili softverski modul dizajniran za analizu, parsiranje i ekstrakciju informacija iz UDP datagrama.
 
 Glavni koraci pri parsiranju UDP datagrama su:
@@ -40,7 +40,7 @@ Ulazni i izlazni signali sklopa opisani su korištenjem alata _Wavedrom_ na osno
 
 ### Signali - Avalon ST
 
-Prema [1] i [2], Avalon-ST (engl. _Avalon Streaming_) je sučelje koje predstavlja jednosmjerni tok podataka sabirnicom maksimalne širine 4096 bita, uključujući multipleksirane tokove, pakete i DSP podatke. 
+Prema [2] i [3], Avalon-ST (engl. _Avalon Streaming_) je sučelje koje predstavlja jednosmjerni tok podataka sabirnicom maksimalne širine 4096 bita, uključujući multipleksirane tokove, pakete i DSP podatke. 
 
 Signali na Avalon-ST sučelju su sljedeći:
 
@@ -103,7 +103,7 @@ U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz 
 
 ## Konačni automat
 
-Konačni automat (engl. _Final State Machine_) predstavlja  je posebnu tehniku modeliranja za sekvencijalne logičke sklopove [3,str. 276]. Postoje dva načina predstavljanja konačnih automata - pomoću dijagrama stanja ili hardverski bazirane reprezentacije. Dijagram stanja predstavlja grafičku reprezentaciju specifikacija konačnog automata. Dijagram stanja prikazuje sva moguća stanja u kojima se sistem može naći, vrijednosti ulaza za koje sistem prelazi iz stanja u stanje, te vrijednosti izlaza koje sistem proizvodi u svakom od stanja. Ova metoda olakšava vizualizaciju i implementaciju sistema, jer omogućava intuitivno razumijevanje logike rada automata. Hardverski bazirana reprezentacija, s druge strane, fokusira se na implementaciju automata koristeći logičke sklopove, što je često ključno za dizajn ugrađenih sistema i digitalnih kola.
+Konačni automat (engl. _Final State Machine_) predstavlja  je posebnu tehniku modeliranja za sekvencijalne logičke sklopove [4,str. 276]. Postoje dva načina predstavljanja konačnih automata - pomoću dijagrama stanja ili hardverski bazirane reprezentacije. Dijagram stanja predstavlja grafičku reprezentaciju specifikacija konačnog automata. Dijagram stanja prikazuje sva moguća stanja u kojima se sistem može naći, vrijednosti ulaza za koje sistem prelazi iz stanja u stanje, te vrijednosti izlaza koje sistem proizvodi u svakom od stanja. Ova metoda olakšava vizualizaciju i implementaciju sistema, jer omogućava intuitivno razumijevanje logike rada automata. Hardverski bazirana reprezentacija, s druge strane, fokusira se na implementaciju automata koristeći logičke sklopove, što je često ključno za dizajn ugrađenih sistema i digitalnih kola.
 Konačni automat je dizajniran da parsira ulazni tok podataka kroz nekoliko slojeva mrežnog paketa. Proces uključuje identifikaciju početka paketa, validaciju zaglavlja svakog sloja (Ethernet, IP, UDP), izdvajanje korisničkih podataka i validaciju završetka paketa.
 
 Predstavljeno je ukupno šest mogućih stanja: 
@@ -171,9 +171,12 @@ Naredna poboljšanja parsera mogu uključivati proširenje podrške na dodatne p
 
 ## Literatura
 
-[1] Kaljić E., (2024.), _Arhitekture paketskih čvorišta - Predavanje 5_.
+[1] "What is the User Datagram Protocol (UDP/IP)?" Dostupno: 
+https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp/
 
-[2] Intel, F. P. G. A. (2021.) _Avalon® interface specifications_., Tech. Rep., MNL-AVABUSREF.
+[2] Kaljić E., (2024.), _Arhitekture paketskih čvorišta - Predavanje 5_.
 
-[3] Volnei A. Pedroni (2010) Circuit Design and Simulation with VHDL (poglavlje 11), The MIT Press, Cambridge, Massachussets, 2nd edition.
+[3] Intel, F. P. G. A. (2021.) _Avalon® interface specifications_., Tech. Rep., MNL-AVABUSREF.
+
+[4] Volnei A. Pedroni (2010) Circuit Design and Simulation with VHDL (poglavlje 11), The MIT Press, Cambridge, Massachussets, 2nd edition.
 
