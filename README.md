@@ -127,10 +127,25 @@ Grafik konačnog automata korištenog za simulaciju parsera UDP datagrama je kre
 ## Modeliranje sklopa u VHDL-u
 
 Shodno ranije opisanim signalima, te stanjima konačnog automata, sklop je modeliran pomoću jezika za opis hardvera - VHDL. Ulazni i izlazni signali obuhvataju signale Avalon ST sučelja, dok je FSM modeliran kao 3-procesni.
-Prvi proces odnosi se na kombinatornu logiku za tranzicije stanja i ostalih registara; drugi proces odnosi se na sekvencijalnu logiku za registre stanja, brojače i pomoćne registre, dok se treći proces odnosi na kombinatornu logiku za izlaze.
+Prvi proces odnosi se na kombinatornu logiku za tranzicije stanja i ostalih registara; drugi proces odnosi se na sekvencijalnu logiku za registre stanja, brojače i pomoćne registre, dok se treći proces odnosi na kombinatornu logiku za izlaze. Modul koristi indeksiranje bajta (byte_index) kako bi prepoznao odgovarajuća polja u Ethernet, IP i UDP zaglavljima. Dužina IP i UDP zaglavlja dinamički se računa na temelju ulaznih podataka, dok se korisnički podaci direktno prosljeđuju na izlaz, sa minimalnim kašnjenjem.
 
+U nastavku je prikazan detaljan izvještaj o procesu kompilacije dizajna (engl. _compilation report_) i vizuelni dizajn na nivou Register Transfer Level-a (RTL), koji omogućava prikaz logičke strukture dizajna prije sinteze, što pomaže u analizi i otklanjanju grešaka.
 
-Modul koristi indeksiranje bajta (byte_index) kako bi prepoznao odgovarajuća polja u Ethernet, IP i UDP zaglavljima. Dužina IP i UDP zaglavlja dinamički se računa na temelju ulaznih podataka, dok se korisnički podaci direktno prosljeđuju na izlaz, sa minimalnim kašnjenjem.
+![report](https://github.com/user-attachments/assets/90640513-d3f6-4008-aa2a-199ecf0ce25d)
+
+![rtl](https://github.com/user-attachments/assets/cbe4f4f6-b510-412d-8053-b7adde61951b)
+
+## Verifikacija pomoću preglednika stanja
+
+Preglednik stanja (engl. _State Machine Viewer_) pruža grafički prikaz stanja konačnog automata definisanog na osnovu koda za simulaciju parsera UDP datagrama kroz Intel Quartus Prime alat. Preglednik stanja je moguće otvoriti na sljedeće načine:  
+* U meniju _Tools_, odaberiom _Netlist Viewers_ i klikom na _State Machine Viewer_ ili
+* Dvostrukim klikom na instancu automata stanja u _RTL Viewer_-u.
+
+Na osnovu prethodnog, izvršena je verifikacija dijagrama konačnih stanja kreiranog upotrebom draw.io alata.
+
+![s_state](https://github.com/user-attachments/assets/701cca39-8955-40cf-a697-81a9adb514a4)
+
+![fsm](https://github.com/user-attachments/assets/5e3d41cd-e042-4430-81cb-ff2287d819ef)
 
 
 ## Verifikacija pomoću simulacijskog alata ModelSim
@@ -149,15 +164,6 @@ Posljedni testbench je kreiran za slučaj sa _backpressure_-om na UDP payload-u.
 
 ![tb3](https://github.com/user-attachments/assets/53e40543-c99b-44ff-b8ad-74c6cee3ac92)
 
-## Verifikacija pomoću preglednika stanja
-
-Preglednik stanja (engl. _State Machine Viewer_) pruža grafički prikaz stanja konačnog automata definisanog na osnovu koda za simulaciju parsera UDP datagrama kroz Intel Quartus Prime alat. Preglednik stanja je moguće otvoriti na sljedeće načine:  
-* U meniju _Tools_, odaberiom _Netlist Viewers_ i klikom na _State Machine Viewer_ ili
-* Dvostrukim klikom na instancu automata stanja u _RTL Viewer_-u.
-
-Na osnovu prethodnog, izvršena je verifikacija dijagrama konačnih stanja kreiranog upotrebom draw.io alata.
-
-![s_state](https://github.com/user-attachments/assets/701cca39-8955-40cf-a697-81a9adb514a4)
 
 ## Zaključak
 
