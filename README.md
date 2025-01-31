@@ -143,8 +143,6 @@ Preglednik stanja (engl. _State Machine Viewer_) pruža grafički prikaz stanja 
 
 Na osnovu prethodnog, izvršena je verifikacija dijagrama konačnih stanja kreiranog upotrebom draw.io alata.
 
-![s_state](https://github.com/user-attachments/assets/701cca39-8955-40cf-a697-81a9adb514a4)
-
 ![fsm](https://github.com/user-attachments/assets/5e3d41cd-e042-4430-81cb-ff2287d819ef)
 
 
