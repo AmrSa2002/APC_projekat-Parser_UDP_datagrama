@@ -2,7 +2,7 @@
 
 ## Uvod
 
-UDP (User Datagram Protocol) predstavlja transportni protokol koji prenosi podatke u obliku datagrama, bez prethodno uspostavljene veze, često korišten za aplikacije koje zahtijevaju brzu komunikaciju s minimalnim kašnjenjem, poput video streaminga, online igara ili DNS-a [^1].
+UDP (User Datagram Protocol) predstavlja transportni protokol koji prenosi podatke u obliku datagrama, bez prethodno uspostavljene veze, često korišten za aplikacije koje zahtijevaju brzu komunikaciju s minimalnim kašnjenjem, poput video streaminga, online igara ili DNS-a [1].
 Parsiranje predstavlja proces identifikacije i ekstrakcije odgovarajućih polja iz zaglavlja paketa [2]. 
 S prethodnim u vezi, UDP datagram parser je hardverski ili softverski modul dizajniran za analizu, parsiranje i ekstrakciju informacija iz UDP datagrama.
 
@@ -171,7 +171,7 @@ Naredna poboljšanja parsera mogu uključivati proširenje podrške na dodatne p
 
 ## Literatura
 
-[^1] "What is the User Datagram Protocol (UDP/IP)?" Dostupno: 
+[1] "What is the User Datagram Protocol (UDP/IP)?" Dostupno: 
 https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp/
 
 [2] Kaljić E., (2024.), _Arhitekture paketskih čvorišta - Predavanje 5_.
