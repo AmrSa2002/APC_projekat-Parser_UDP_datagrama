@@ -129,7 +129,7 @@ Grafik konačnog automata korištenog za simulaciju parsera UDP datagrama je kre
 Shodno ranije opisanim signalima, te stanjima konačnog automata, sklop je modeliran pomoću jezika za opis hardvera - VHDL. Ulazni i izlazni signali obuhvataju signale Avalon ST sučelja, dok je FSM modeliran kao 3-procesni.
 Prvi proces odnosi se na kombinatornu logiku za tranzicije stanja i ostalih registara; drugi proces odnosi se na sekvencijalnu logiku za registre stanja, brojače i pomoćne registre, dok se treći proces odnosi na kombinatornu logiku za izlaze. Modul koristi indeksiranje bajta (byte_index) kako bi prepoznao odgovarajuća polja u Ethernet, IP i UDP zaglavljima. Dužina IP i UDP zaglavlja dinamički se računa na temelju ulaznih podataka, dok se korisnički podaci direktno prosljeđuju na izlaz, sa minimalnim kašnjenjem.
 
-U nastavku je prikazan detaljan izvještaj o procesu kompilacije dizajna (engl. _compilation report_) i vizuelni dizajn na nivou Register Transfer Level-a (RTL), koji omogućava prikaz logičke strukture dizajna prije sinteze, što pomaže u analizi i otklanjanju grešaka.
+U nastavku je prikazan detaljan izvještaj o procesu kompilacije dizajna (engl. _compilation report_) i vizuelni dizajn na nivou Register Transfer Level-a (RTL), koji omogućava prikaz logičke strukture dizajna prije sinteze.
 
 ![report](https://github.com/user-attachments/assets/90640513-d3f6-4008-aa2a-199ecf0ce25d)
 
