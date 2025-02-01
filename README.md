@@ -98,6 +98,7 @@ U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz 
 
 ![scenarij2](https://github.com/user-attachments/assets/e23dee94-8890-4478-b0a4-017c4a679a69)
 
+Za praćenje efekta potiskivanja unazad, kreiran je interni signal `counter`, čija uloga se ogleda u brojanju takt intervala u kojima je vrijednost `out_ready` različita od 1, kako bi se omogućilo ispravno upravljanje transferima ciklusa. Primjetno kašnjenje na grafiku posljedica je promjene na silaznoj ivici takt signala, što je u Wavedrom alatu regulisano definisanjem _phase = 0.5_, a s ciljem usklađivanja grafika sa rezultatima postignutim pokretanjem VHDL koda i njegovom verifikacijom u ModelSim-u.
 
 
 #### Scenarij 3 - backpressure (out_ready = '0' i na UDP payloadu)
@@ -177,7 +178,7 @@ Kroz prikaz u ModelSim-u verificirali smo ispravnost koda, gdje `out_data` preds
 
 ## Zaključak
 
-Korištenje wavedrom alata je omogućilo pojednostavljenu analizu prijenosa podataka, dok je implementacija konačnog automata u draw.io alatu osigurala precizno prepoznavanje zaglavlja paketa. Rezultati potvrđuju da simulacija parsera UDP datagrama kroz Quartus Prime razvojno okruženje pravilno prepoznaje strukturu paketa i omogućava prijenos podataka na osnovu definisanih kriterija. 
+Korištenje Wavedrom alata je omogućilo pojednostavljenu analizu prijenosa podataka, dok je implementacija konačnog automata u draw.io alatu osigurala precizno prepoznavanje zaglavlja paketa. Rezultati potvrđuju da simulacija parsera UDP datagrama kroz Quartus Prime razvojno okruženje pravilno prepoznaje strukturu paketa i omogućava prijenos podataka na osnovu definisanih kriterija. 
 
 Naredna poboljšanja parsera mogu uključivati proširenje podrške na dodatne protokole, te implementaciju naprednih metoda za analizu i filtriranje mrežnog saobraćaja. Ovakav pristup doprinosi efikasnijem radu mrežnih sistema, smanjenju latencije i doprinosi poboljšanju kvaliteta usluge u realnim sistemima.
 
