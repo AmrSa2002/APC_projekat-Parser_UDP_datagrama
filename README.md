@@ -170,8 +170,10 @@ Drugi slučaj obuhvata prenos sa _backpressure_-om.
 <img width="941" alt="tb2-2" src="https://github.com/user-attachments/assets/fa3d3fbf-b538-4baa-a5ea-b01f72d3ecd2" />
 
 Posljedni testbench je kreiran za slučaj sa _backpressure_-om na UDP payload-u.
+
 <img width="940" alt="tb3-1" src="https://github.com/user-attachments/assets/14729b01-ff32-4aca-bbe4-6e96326b690c" />
-<img width="950" alt="tb3-2" src="https://github.com/user-attachments/assets/94f68d8b-27a6-4c9c-b36b-9052af4b8991" />
+<img width="942" alt="tb3-2" src="https://github.com/user-attachments/assets/4c701a90-4621-4e4c-a053-f73ff2927efc" />
+
 
 ## Zaključak
 
