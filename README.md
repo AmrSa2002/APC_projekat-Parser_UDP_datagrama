@@ -65,6 +65,7 @@ Signali na Avalon-ST sučelju su sljedeći:
 #### Scenarij 1 - bez backpressure
 
 
+![Wavedrom - scenarij 1](https://github.com/user-attachments/assets/88faa99f-c4f9-44c8-a848-e74535c60922)
 
 
 
