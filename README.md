@@ -166,18 +166,12 @@ Prvi testbench omogućava analizu simulacije ponašanja sistema kroz sekvencijal
 
 Drugi slučaj obuhvata prenos sa _backpressure_-om.
 
-<img width="935" alt="tb2-1" src="https://github.com/user-attachments/assets/84035b44-375e-4191-8fe0-7ddd0206d5da" />
-<img width="935" alt="tb2-2" src="https://github.com/user-attachments/assets/50777b53-5757-4e49-bf85-59aafeb0740e" />
-
-
+<img width="940" alt="tb2-1" src="https://github.com/user-attachments/assets/acc5e3d5-127a-4881-9748-246a8e512570" />
+<img width="941" alt="tb2-2" src="https://github.com/user-attachments/assets/fa3d3fbf-b538-4baa-a5ea-b01f72d3ecd2" />
 
 Posljedni testbench je kreiran za slučaj sa _backpressure_-om na UDP payload-u.
-
-<img width="936" alt="tb3-1" src="https://github.com/user-attachments/assets/6fe1b2ea-9f90-4a3f-800b-a760c3e59152" />
-<img width="936" alt="tb3-2" src="https://github.com/user-attachments/assets/3f55a411-3029-452f-a813-31c4dc496f87" />
-
-
-
+<img width="940" alt="tb3-1" src="https://github.com/user-attachments/assets/14729b01-ff32-4aca-bbe4-6e96326b690c" />
+<img width="950" alt="tb3-2" src="https://github.com/user-attachments/assets/94f68d8b-27a6-4c9c-b36b-9052af4b8991" />
 
 ## Zaključak
 
