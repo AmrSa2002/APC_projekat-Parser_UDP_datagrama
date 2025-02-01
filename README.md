@@ -152,7 +152,7 @@ Na osnovu prethodnog, izvršena je verifikacija dijagrama konačnih stanja kreir
 
 ## Verifikacija pomoću simulacijskog alata ModelSim
 
-Kako su analizirana tri scenarija, kreirana su tri testbench file-a koji obuhvataju slučajeve bez _backpressure_-a, sa _backpressure_-om, te sa _backpressure_-om na UDP payload-u. U nastavku je dat kratki opis kreiranih scenarija za verifikaciju, te prikaz signala u simulacijskom alatu ModelSim. Zbog dužine signala, svaki scenarij je na slikama ispod prikazan iz dva dijela radi jasnijeg prikaza.
+Kako su analizirana tri scenarija, kreirana su tri testbench file-a koji obuhvataju slučajeve bez _backpressure_-a, sa _backpressure_-om, te sa _backpressure_-om na UDP payload-u. U nastavku je dat kratki opis kreiranih scenarija za verifikaciju, te prikaz signala u simulacijskom alatu ModelSim. Zbog dužine signala, svaki scenarij je na slikama ispod prikazan iz dva dijela radi jasnijeg prikaza svake faze obrade.
 
 Prvi testbench omogućava analizu simulacije ponašanja sistema kroz sekvencijalno slanje bajta za slučaj bez _backpressure_-a. Kako su signali ranije opisani, te predstavljeni wavefrom dijagrami, simulacijski alat ModelSim pruža verifikaciju ispravno predstavljenog prenosa.
 
