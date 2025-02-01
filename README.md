@@ -82,7 +82,8 @@ Signali na AVALON-ST sučelju obuhvataju i `empty` signal, ali je u konkretnom s
 
 Osim ulaznih i izlaznih Avalon-ST signala, na waveform dijagram dodani su i interni signali `byte_index`, `ip_header_length`, `udp_header_length`, te `s_state`, a na koji će pojednostaviti razumijevanje i kreiranje FSM dijagrama. 
 
-![scenarij1](https://github.com/user-attachments/assets/705e5180-1572-4d14-af54-d5a49b1dbf90)
+<img width="884" alt="scenarij1" src="https://github.com/user-attachments/assets/cbb0331d-80d5-4820-8fd4-ccbcd3bb6c13" />
+
 
 Signal `byte_index`, kako mu i naziv govori, signalizira kroz koji oktet `in_data` signala se prolazi, odnosno predstavlja brojač na osnovu kojeg je realizirana kombinatorna logika koja omogućava parsiranje UDP datagrama. 
 Signali `ip_header_length` i `udp_header_length` usko su vezani uz IP i UDP okvire opisane u _Uvodu_. Tačnije, oni uzimaju vrijednosti iz odgovarajućih polja okvira koji se odnose na dužinu zaglavlja. S tim u vezi, prvi bajt IP headera sačinjen je od 4 bita koji specificiraju verziju, te 4 bita koji specificiraju dužinu zaglavlja zbog čega se i razmatraju samo posljednja 4 bita.
@@ -95,14 +96,16 @@ Kada sink nije spreman za prijem paketa, signal `out_ready` prelazi u stanje nul
 
 U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz prethodni scenarij.
 
-![scenarij2](https://github.com/user-attachments/assets/ae1a631f-2389-4780-9585-e8dff54fa9a8)
+<img width="652" alt="scenarij2" src="https://github.com/user-attachments/assets/21168cfb-0e4a-4321-abda-29a48bd17d56" />
+
 
 
 #### Scenarij 3 - backpressure (out_ready = '0' i na UDP payloadu)
 
 U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz _Scenarij br. 1_.
 
-![scenarij3](https://github.com/user-attachments/assets/c22fcbf8-ac3d-4acc-9252-1b945b5f4ceb)
+<img width="661" alt="scenarij3" src="https://github.com/user-attachments/assets/a1199f60-e4fe-412c-a6f0-4700772e224d" />
+
 
 
 ## Konačni automat
@@ -156,25 +159,20 @@ Kako su analizirana tri scenarija, kreirana su tri testbench file-a koji obuhvat
 
 Prvi testbench omogućava analizu simulacije ponašanja sistema kroz sekvencijalno slanje bajta za slučaj bez _backpressure_-a. Kako su signali ranije opisani, te predstavljeni wavefrom dijagrami, simulacijski alat ModelSim pruža verifikaciju ispravno predstavljenog prenosa.
 
-<img width="935" alt="tb1-1" src="https://github.com/user-attachments/assets/bc2d854b-11e2-40f2-af59-ed5aee2e3bec" />
-<img width="935" alt="tb1-2" src="https://github.com/user-attachments/assets/1e06700c-cb91-46b8-9a10-f51de6f64659" />
-
+<img width="940" alt="tb1-1" src="https://github.com/user-attachments/assets/a4330d26-9236-4126-8b2a-7956ee141485" />
+<img width="940" alt="tb1-2" src="https://github.com/user-attachments/assets/81081f55-9b95-4aee-97f1-677eaf7d5f80" />
 
 
 
 Drugi slučaj obuhvata prenos sa _backpressure_-om.
 
-<img width="935" alt="tb2-1" src="https://github.com/user-attachments/assets/84035b44-375e-4191-8fe0-7ddd0206d5da" />
-<img width="935" alt="tb2-2" src="https://github.com/user-attachments/assets/50777b53-5757-4e49-bf85-59aafeb0740e" />
-
-
+<img width="940" alt="tb2-1" src="https://github.com/user-attachments/assets/acc5e3d5-127a-4881-9748-246a8e512570" />
+<img width="941" alt="tb2-2" src="https://github.com/user-attachments/assets/fa3d3fbf-b538-4baa-a5ea-b01f72d3ecd2" />
 
 Posljedni testbench je kreiran za slučaj sa _backpressure_-om na UDP payload-u.
 
-<img width="936" alt="tb3-1" src="https://github.com/user-attachments/assets/6fe1b2ea-9f90-4a3f-800b-a760c3e59152" />
-<img width="936" alt="tb3-2" src="https://github.com/user-attachments/assets/3f55a411-3029-452f-a813-31c4dc496f87" />
-
-
+<img width="940" alt="tb3-1" src="https://github.com/user-attachments/assets/14729b01-ff32-4aca-bbe4-6e96326b690c" />
+<img width="942" alt="tb3-2" src="https://github.com/user-attachments/assets/4c701a90-4621-4e4c-a053-f73ff2927efc" />
 
 
 ## Zaključak
