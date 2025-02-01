@@ -82,7 +82,8 @@ Signali na AVALON-ST sučelju obuhvataju i `empty` signal, ali je u konkretnom s
 
 Osim ulaznih i izlaznih Avalon-ST signala, na waveform dijagram dodani su i interni signali `byte_index`, `ip_header_length`, `udp_header_length`, te `s_state`, a na koji će pojednostaviti razumijevanje i kreiranje FSM dijagrama. 
 
-![scenarij1](https://github.com/user-attachments/assets/705e5180-1572-4d14-af54-d5a49b1dbf90)
+<img width="884" alt="scenarij1" src="https://github.com/user-attachments/assets/cbb0331d-80d5-4820-8fd4-ccbcd3bb6c13" />
+
 
 Signal `byte_index`, kako mu i naziv govori, signalizira kroz koji oktet `in_data` signala se prolazi, odnosno predstavlja brojač na osnovu kojeg je realizirana kombinatorna logika koja omogućava parsiranje UDP datagrama. 
 Signali `ip_header_length` i `udp_header_length` usko su vezani uz IP i UDP okvire opisane u _Uvodu_. Tačnije, oni uzimaju vrijednosti iz odgovarajućih polja okvira koji se odnose na dužinu zaglavlja. S tim u vezi, prvi bajt IP headera sačinjen je od 4 bita koji specificiraju verziju, te 4 bita koji specificiraju dužinu zaglavlja zbog čega se i razmatraju samo posljednja 4 bita.
@@ -95,14 +96,16 @@ Kada sink nije spreman za prijem paketa, signal `out_ready` prelazi u stanje nul
 
 U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz prethodni scenarij.
 
-![scenarij2](https://github.com/user-attachments/assets/ae1a631f-2389-4780-9585-e8dff54fa9a8)
+<img width="652" alt="scenarij2" src="https://github.com/user-attachments/assets/21168cfb-0e4a-4321-abda-29a48bd17d56" />
+
 
 
 #### Scenarij 3 - backpressure (out_ready = '0' i na UDP payloadu)
 
 U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz _Scenarij br. 1_.
 
-![scenarij3](https://github.com/user-attachments/assets/c22fcbf8-ac3d-4acc-9252-1b945b5f4ceb)
+<img width="661" alt="scenarij3" src="https://github.com/user-attachments/assets/a1199f60-e4fe-412c-a6f0-4700772e224d" />
+
 
 
 ## Konačni automat
