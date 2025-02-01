@@ -63,8 +63,8 @@ Signali na Avalon-ST sučelju su sljedeći:
 ### Ulazni i izlazni signali sklopa - Waveform dijagram
 
 #### Scenarij 1 - bez backpressure
-![Wavedrom - scenarij 1/1]("https://github.com/user-attachments/assets/47dd9fb6-d58c-431b-a747-29b827b7bc10")
-![Wavedrom - scenarij 1/2]("https://github.com/user-attachments/assets/6da254f9-4b7e-4026-8ca9-4c9c574cbbc8")
+
+
 
 
 
