@@ -64,6 +64,8 @@ Signali na Avalon-ST sučelju su sljedeći:
 
 #### Scenarij 1 - bez backpressure
 ![Wavedrom - scenarij 1/1]("https://github.com/user-attachments/assets/47dd9fb6-d58c-431b-a747-29b827b7bc10")
+![Wavedrom - scenarij 1/2]("https://github.com/user-attachments/assets/6da254f9-4b7e-4026-8ca9-4c9c574cbbc8")
+
 
 
 Kako je prikazano, definisani su takt signal `clk`, te reset signal `rst`. Kako je naglašeno, `in_data` signal predstavlja podatke koje se prenose, odnosno oktete iz okvira definisanih u _Uvodu_. U nastavku je dat opis transfera:
