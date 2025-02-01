@@ -69,14 +69,14 @@ Signali na Avalon-ST sučelju su sljedeći:
 
 
 
-Kako je prikazano, definisani su takt signal `clk`, te reset signal `rst`. Kako je naglašeno, `in_data` signal predstavlja podatke koje se prenose, odnosno oktete iz okvira definisanih u _Uvodu_. U nastavku je dat opis transfera:
+Kako je prikazano, definisani su takt signal `clk`, te reset signal `rst`. Kako je naglašeno, `in_data` signal predstavlja podatke koji se prenose, odnosno oktete iz okvira definisanih u _Uvodu_. U nastavku je dat opis transfera:
 
 * **D1 - D14** predstavljaju Ethernet okvir (isključujući preambulu i SFD). Dakle, prenos počinje sa prvim oktetom odredišne MAC adrese. S tim u vezi, **D1-D6** predstavljaju 6B odredišne MAC adrese. Nakon toga, slijedi 6B izvorišne MAC adrese (**D7-D12**), te 2B koja označavaju dužinu ili tip podataka. Iz posljednja dva okteta izvlači se informacija o tipu protokola koji se prenosi u okviru. U slučaju da su posljednja dva okteta "0x0800", riječ je IPv4. 
 * Nakon Ethernet okvira, slijedi IP okvir (**D15 - D34**). U strukturi okvira, **D15** predstavlja 1B informacije o verziji IP, nakon čega slijedi 1B (**D16**) TOS (engl. _Type of service_). **D17-D18** nose informaciju o dužini IP okvira na osnovu kojeg zaključujemo kada očekujemo sljedeći okvir. **D17-D23** predstavljaju identifikaciju (2B), IP zastavice (2B), te 1B TTL (engl. _Time to live_), rekurzivno. Potom slijedi **D24**, odnosno polje veličine 1B koje služi za identifikaciju protokola koji se koristi na višem sloju. U slučaju da je to vrijednost 17, paket se dalje šalje na UDP. Slijede 2B checksum-a (**D25-D26**), te 4B izvorišne IP adrese (**D27-D30**) koji identifikuje uređaj koji šalje IPv4 paket, te 4B odredišne IP adrese (**D31-D34**).
 * Kako je ranije navedeno, u slučaju da je unutar IP okvira vrijednost protokola 17, sljedeći okvir je UDP (**D35-D42**). U strukturi okvira, prva 2B (**D35-D36**) rezervisana su za UDP port izvora, nakon čega slijede 2B UDP porta odredišta (**D37-D38**). Slijede 2B (**D39-D40**)o dužini UDP datagrama (uključujući zaglavlje i payload), te 2B (**D41-D42**) checksuma.
 * Kada se završi UDP okvir, šalju se podaci (engl. _payload_) (**D43-D60**), nakon čega slijede 4B provjere (engl. _Frame Check Sequence_) koji se koriste za detekciju grešaka nastalih tokom prijenosa podataka.
 
-Signal `out_data` predstavlja parsirani UDP payload ulaznih podataka, dok `channel` pokazuje vrijednosti OCD: {IP adresa izvora **D27-D30**, UDP port izvora **D35-D36**, IP adresa odredišta **D31-D34**, UDP port odredišta **D37-D38**} što sugeriše da parser signalizira završetak prenosa podataka i selekciju odgovarajućeg izlaznog kanala.
+Signal `out_data` predstavlja parsirani UDP payload ulaznih podataka, dok `channel` pokazuje vrijednosti OCD: {IP adresa izvora **D27-D30**, UDP port izvora **D35-D36**, IP adresa odredišta **D31-D34**, UDP port odredišta **D37-D38**} što sugeriše da parser signalizira završetak prenosa podataka odgovarajućim kanalom.
 
 Signali na AVALON-ST sučelju obuhvataju i `empty` signal, ali je u konkretnom slučaju isti isključen jer projektni zadatak predviđa 8-bitni Avalon-ST, gdje je vrijednost empty signala uvijek nula.
 
@@ -98,7 +98,7 @@ U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz 
 
 ![scenarij2](https://github.com/user-attachments/assets/e23dee94-8890-4478-b0a4-017c4a679a69)
 
-Za praćenje efekta potiskivanja unazad, kreiran je interni signal `counter`, čija uloga se ogleda u brojanju takt intervala u kojima je vrijednost `out_ready` različita od 1, kako bi se omogućilo ispravno upravljanje transferima ciklusa. Primjetno kašnjenje na grafiku posljedica je promjene na silaznoj ivici takt signala, što je u Wavedrom alatu regulisano definisanjem _phase = 0.5_, a s ciljem usklađivanja grafika sa rezultatima postignutim pokretanjem VHDL koda i njegovom verifikacijom u ModelSim-u.
+Za praćenje efekta potiskivanja unazad, kreiran je interni signal `counter`, čija uloga se ogleda u brojanju takt intervala u kojima je vrijednost `out_ready` različita od 1, kako bi se omogućilo ispravno upravljanje transferima. Primjetno kašnjenje na grafiku posljedica je promjene na silaznoj ivici takt signala, što je u Wavedrom alatu regulisano definisanjem _phase = 0.5_, a s ciljem usklađivanja grafika sa rezultatima postignutim pokretanjem VHDL koda i njegovom verifikacijom u ModelSim-u.
 
 
 #### Scenarij 3 - backpressure (out_ready = '0' i na UDP payloadu)
@@ -174,7 +174,7 @@ Posljedni testbench je kreiran za slučaj sa _backpressure_-om na UDP payload-u.
 <img width="940" alt="tb3-1" src="https://github.com/user-attachments/assets/14729b01-ff32-4aca-bbe4-6e96326b690c" />
 <img width="942" alt="tb3-2" src="https://github.com/user-attachments/assets/4c701a90-4621-4e4c-a053-f73ff2927efc" />
 
-Kroz prikaz u ModelSim-u verificirali smo ispravnost koda, gdje `out_data` predstavlja očekivani parsirani UDP payload ulaznih podataka, dok `channel` pokazuje vrijednosti IP adrese izvora, UDP port izvora, IP adresu odredišta, te UDP port odredišta, respektivno, što sugeriše da parser signalizira završetak prenosa podataka i selekciju odgovarajućeg izlaznog kanala.
+Kroz prikaz u ModelSim-u verificirali smo ispravnost koda, gdje `out_data` predstavlja očekivani parsirani UDP payload ulaznih podataka, dok `channel` pokazuje vrijednosti IP adrese izvora, UDP port izvora, IP adresu odredišta, te UDP port odredišta, respektivno.
 
 ## Zaključak
 
@@ -184,7 +184,7 @@ Naredna poboljšanja parsera mogu uključivati proširenje podrške na dodatne p
 
 ## Literatura
 
-[[1] "What is the User Datagram Protocol (UDP/IP)?"](https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp/)
+[1] "What is the User Datagram Protocol (UDP/IP)?", Dostupno https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp/
 
 [2] Kaljić E., (2024.), _Arhitekture paketskih čvorišta - Predavanje 5_.
 
