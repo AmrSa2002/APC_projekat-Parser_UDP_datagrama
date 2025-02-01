@@ -1,5 +1,5 @@
 Flow report for Parser_UDP_datagrama
-Fri Jan 31 14:13:22 2025
+Sat Feb 01 12:44:22 2025
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -41,22 +41,20 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Fri Jan 31 14:13:22 2025       ;
+; Flow Status                        ; Successful - Sat Feb 01 12:44:22 2025       ;
 ; Quartus Prime Version              ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name                      ; Parser_UDP_datagrama                        ;
 ; Top-level Entity Name              ; Parser_UDP_datagrama                        ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 531 / 6,272 ( 8 % )                         ;
-;     Total combinational functions  ; 519 / 6,272 ( 8 % )                         ;
-;     Dedicated logic registers      ; 220 / 6,272 ( 4 % )                         ;
-; Total registers                    ; 220                                         ;
-; Total pins                         ; 122 / 180 ( 68 % )                          ;
-; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 0 / 276,480 ( 0 % )                         ;
-; Embedded Multiplier 9-bit elements ; 0 / 30 ( 0 % )                              ;
-; Total PLLs                         ; 0 / 2 ( 0 % )                               ;
-; Device                             ; EP4CE6F17C6                                 ;
-; Timing Models                      ; Final                                       ;
+; Total logic elements               ; N/A until Partition Merge                   ;
+;     Total combinational functions  ; N/A until Partition Merge                   ;
+;     Dedicated logic registers      ; N/A until Partition Merge                   ;
+; Total registers                    ; N/A until Partition Merge                   ;
+; Total pins                         ; N/A until Partition Merge                   ;
+; Total virtual pins                 ; N/A until Partition Merge                   ;
+; Total memory bits                  ; N/A until Partition Merge                   ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                   ;
+; Total PLLs                         ; N/A until Partition Merge                   ;
 +------------------------------------+---------------------------------------------+
 
 
@@ -65,7 +63,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+----------------------+
 ; Option            ; Setting              ;
 +-------------------+----------------------+
-; Start date & time ; 01/31/2025 14:12:58  ;
+; Start date & time ; 02/01/2025 12:44:07  ;
 ; Main task         ; Compilation          ;
 ; Revision Name     ; Parser_UDP_datagrama ;
 +-------------------+----------------------+
@@ -76,7 +74,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 264086613493419.173832917811404        ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 1095340343745.173841024714176          ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                                   ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)                 ; <None>        ; --          ; --             ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top            ;
@@ -88,41 +86,29 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                        ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:11     ; 1.0                     ; 4841 MB             ; 00:00:13                           ;
-; Fitter               ; 00:00:06     ; 1.1                     ; 6098 MB             ; 00:00:09                           ;
-; Assembler            ; 00:00:01     ; 1.0                     ; 4684 MB             ; 00:00:01                           ;
-; Timing Analyzer      ; 00:00:02     ; 1.2                     ; 4873 MB             ; 00:00:02                           ;
-; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4654 MB             ; 00:00:01                           ;
-; Total                ; 00:00:21     ; --                      ; --                  ; 00:00:26                           ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                          ;
++------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name            ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Elaboration ; 00:00:16     ; 1.0                     ; 4778 MB             ; 00:00:27                           ;
+; Total                  ; 00:00:16     ; --                      ; --                  ; 00:00:27                           ;
++------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                    ;
-+----------------------+------------------+------------+------------+----------------+
-; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
-+----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; Administrator    ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; Administrator    ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; Administrator    ; Windows 10 ; 10.0       ; x86_64         ;
-; Timing Analyzer      ; Administrator    ; Windows 10 ; 10.0       ; x86_64         ;
-; EDA Netlist Writer   ; Administrator    ; Windows 10 ; 10.0       ; x86_64         ;
-+----------------------+------------------+------------+------------+----------------+
++--------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                      ;
++------------------------+------------------+------------+------------+----------------+
+; Module Name            ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
++------------------------+------------------+------------+------------+----------------+
+; Analysis & Elaboration ; DESKTOP-6S6LO9H  ; Windows 10 ; 10.0       ; x86_64         ;
++------------------------+------------------+------------+------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
-quartus_map --read_settings_files=on --write_settings_files=off Parser_UDP_datagrama -c Parser_UDP_datagrama
-quartus_fit --read_settings_files=off --write_settings_files=off Parser_UDP_datagrama -c Parser_UDP_datagrama
-quartus_asm --read_settings_files=off --write_settings_files=off Parser_UDP_datagrama -c Parser_UDP_datagrama
-quartus_sta Parser_UDP_datagrama -c Parser_UDP_datagrama
-quartus_eda --read_settings_files=off --write_settings_files=off Parser_UDP_datagrama -c Parser_UDP_datagrama
+quartus_map --read_settings_files=on --write_settings_files=off Parser_UDP_datagrama -c Parser_UDP_datagrama --analysis_and_elaboration
 
 
 

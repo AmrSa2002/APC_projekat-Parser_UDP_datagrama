@@ -102,6 +102,9 @@ BEGIN
 
         -- Send the Ethernet frame data byte by byte using a while loop
         WHILE index <= 63 LOOP
+                IF ethernet_frame(index) <= X"1A" THEN
+		in_startofpacket <= '0';
+            END IF;
             -- When the last byte is reached, mark the end of packet
             IF index = 63 THEN
                 in_data <= ethernet_frame(index);  -- Send the predefined byte of the Ethernet frame

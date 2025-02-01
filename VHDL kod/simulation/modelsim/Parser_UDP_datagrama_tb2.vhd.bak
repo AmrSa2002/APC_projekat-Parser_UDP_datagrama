@@ -2,10 +2,10 @@ LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
 
-ENTITY Parser_UDP_datagrama_tb3 IS
-END ENTITY Parser_UDP_datagrama_tb3;
+ENTITY Parser_UDP_datagrama_tb2 IS
+END ENTITY Parser_UDP_datagrama_tb2;
 
-ARCHITECTURE behavior OF Parser_UDP_datagrama_tb3 IS
+ARCHITECTURE behavior OF Parser_UDP_datagrama_tb2 IS
 
     -- Component declaration for the tested entity
     COMPONENT Parser_UDP_datagrama

@@ -38,6 +38,7 @@ ARCHITECTURE behavior OF Parser_UDP_datagrama_tb IS
     SIGNAL out_startofpacket   : STD_LOGIC;
     SIGNAL out_endofpacket     : STD_LOGIC;
     SIGNAL out_ready           : STD_LOGIC := '1';
+    SIGNAL out_valid           : STD_LOGIC := '1';
     SIGNAL channel             : STD_LOGIC_VECTOR(95 DOWNTO 0);
 
     -- Clock period definition
@@ -59,6 +60,7 @@ BEGIN
             out_startofpacket   => out_startofpacket,
             out_endofpacket     => out_endofpacket,
             out_ready           => out_ready,
+	    out_valid           => out_valid,
             channel             => channel
         );
 
