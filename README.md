@@ -2,7 +2,7 @@
 
 ## Uvod
 
-UDP (User Datagram Protocol) predstavlja transportni protokol koji prenosi podatke u obliku datagrama, bez prethodno uspostavljene veze, često korišten za aplikacije koje zahtijevaju brzu komunikaciju s minimalnim kašnjenjem, poput video streaminga, online igara ili DNS-a.
+UDP (User Datagram Protocol) predstavlja transportni protokol koji prenosi podatke u obliku datagrama, bez prethodno uspostavljene veze, često korišten za aplikacije koje zahtijevaju brzu komunikaciju s minimalnim kašnjenjem, poput video streaminga, online igara ili DNS-a [1].
 Parsiranje predstavlja proces identifikacije i ekstrakcije odgovarajućih polja iz zaglavlja paketa [2]. 
 S prethodnim u vezi, UDP datagram parser je hardverski ili softverski modul dizajniran za analizu, parsiranje i ekstrakciju informacija iz UDP datagrama.
 
@@ -40,7 +40,7 @@ Ulazni i izlazni signali sklopa opisani su korištenjem alata _Wavedrom_ na osno
 
 ### Signali - Avalon ST
 
-Prema [1] i [2], Avalon-ST (engl. _Avalon Streaming_) je sučelje koje predstavlja jednosmjerni tok podataka sabirnicom maksimalne širine 4096 bita, uključujući multipleksirane tokove, pakete i DSP podatke. 
+Prema [2] i [3], Avalon-ST (engl. _Avalon Streaming_) je sučelje koje predstavlja jednosmjerni tok podataka sabirnicom maksimalne širine 4096 bita, uključujući multipleksirane tokove, pakete i DSP podatke. 
 
 Signali na Avalon-ST sučelju su sljedeći:
 
@@ -63,7 +63,11 @@ Signali na Avalon-ST sučelju su sljedeći:
 ### Ulazni i izlazni signali sklopa - Waveform dijagram
 
 #### Scenarij 1 - bez backpressure
-![Wavedrom - scenarij 1](https://github.com/user-attachments/assets/95cf4501-3498-4b93-84c8-76eae59f75f5)
+
+
+![Wavedrom - scenarij 1](https://github.com/user-attachments/assets/88faa99f-c4f9-44c8-a848-e74535c60922)
+
+
 
 Kako je prikazano, definisani su takt signal `clk`, te reset signal `rst`. Kako je naglašeno, `in_data` signal predstavlja podatke koje se prenose, odnosno oktete iz okvira definisanih u _Uvodu_. U nastavku je dat opis transfera:
 
@@ -103,7 +107,7 @@ U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz 
 
 ## Konačni automat
 
-Konačni automat (engl. _Final State Machine_) predstavlja  je posebnu tehniku modeliranja za sekvencijalne logičke sklopove [3,str. 276]. Postoje dva načina predstavljanja konačnih automata - pomoću dijagrama stanja ili hardverski bazirane reprezentacije. Dijagram stanja predstavlja grafičku reprezentaciju specifikacija konačnog automata. Dijagram stanja prikazuje sva moguća stanja u kojima se sistem može naći, vrijednosti ulaza za koje sistem prelazi iz stanja u stanje, te vrijednosti izlaza koje sistem proizvodi u svakom od stanja. Ova metoda olakšava vizualizaciju i implementaciju sistema, jer omogućava intuitivno razumijevanje logike rada automata. Hardverski bazirana reprezentacija, s druge strane, fokusira se na implementaciju automata koristeći logičke sklopove, što je često ključno za dizajn ugrađenih sistema i digitalnih kola.
+Konačni automat (engl. _Final State Machine_) predstavlja  je posebnu tehniku modeliranja za sekvencijalne logičke sklopove [4,str. 276]. Postoje dva načina predstavljanja konačnih automata - pomoću dijagrama stanja ili hardverski bazirane reprezentacije. Dijagram stanja predstavlja grafičku reprezentaciju specifikacija konačnog automata. Dijagram stanja prikazuje sva moguća stanja u kojima se sistem može naći, vrijednosti ulaza za koje sistem prelazi iz stanja u stanje, te vrijednosti izlaza koje sistem proizvodi u svakom od stanja. Ova metoda olakšava vizualizaciju i implementaciju sistema, jer omogućava intuitivno razumijevanje logike rada automata. Hardverski bazirana reprezentacija, s druge strane, fokusira se na implementaciju automata koristeći logičke sklopove, što je često ključno za dizajn ugrađenih sistema i digitalnih kola.
 Konačni automat je dizajniran da parsira ulazni tok podataka kroz nekoliko slojeva mrežnog paketa. Proces uključuje identifikaciju početka paketa, validaciju zaglavlja svakog sloja (Ethernet, IP, UDP), izdvajanje korisničkih podataka i validaciju završetka paketa.
 
 Predstavljeno je ukupno šest mogućih stanja: 
@@ -127,27 +131,13 @@ Grafik konačnog automata korištenog za simulaciju parsera UDP datagrama je kre
 ## Modeliranje sklopa u VHDL-u
 
 Shodno ranije opisanim signalima, te stanjima konačnog automata, sklop je modeliran pomoću jezika za opis hardvera - VHDL. Ulazni i izlazni signali obuhvataju signale Avalon ST sučelja, dok je FSM modeliran kao 3-procesni.
-Prvi proces odnosi se na kombinatornu logiku za tranzicije stanja i ostalih registara; drugi proces odnosi se na sekvencijalnu logiku za registre stanja, brojače i pomoćne registre, dok se treći proces odnosi na kombinatornu logiku za izlaze.
+Prvi proces odnosi se na kombinatornu logiku za tranzicije stanja i ostalih registara; drugi proces odnosi se na sekvencijalnu logiku za registre stanja, brojače i pomoćne registre, dok se treći proces odnosi na kombinatornu logiku za izlaze. Modul koristi indeksiranje bajta (byte_index) kako bi prepoznao odgovarajuća polja u Ethernet, IP i UDP zaglavljima. Dužina IP i UDP zaglavlja dinamički se računa na temelju ulaznih podataka, dok se korisnički podaci direktno prosljeđuju na izlaz, sa minimalnim kašnjenjem.
 
+U nastavku je prikazan detaljan izvještaj o procesu kompilacije dizajna (engl. _compilation report_) i vizuelni dizajn na nivou Register Transfer Level-a (RTL), koji omogućava prikaz logičke strukture dizajna prije sinteze.
 
-Modul koristi indeksiranje bajta (byte_index) kako bi prepoznao odgovarajuća polja u Ethernet, IP i UDP zaglavljima. Dužina IP i UDP zaglavlja dinamički se računa na temelju ulaznih podataka, dok se korisnički podaci direktno prosljeđuju na izlaz, sa minimalnim kašnjenjem.
+![report](https://github.com/user-attachments/assets/90640513-d3f6-4008-aa2a-199ecf0ce25d)
 
-
-## Verifikacija pomoću simulacijskog alata ModelSim
-
-Kako su analizirana tri scenarija, kreirana su tri testbench file-a koji obuhvataju slučajeve bez _backpressure_-a, sa _backpressure_-om, te sa _backpressure_-om na UDP payload-u. U nastavku je dat kratki opis kreiranih scenarija za verifikaciju, te prikaz signala u simulacijskom alatu ModelSim.
-
-Prvi testbench omogućava analizu simulacije ponašanja sistema kroz sekvencijalno slanje bajta za slučaj bez _backpressure_-a. Kako su signali ranije opisani, te predstavljeni wavefrom dijagrami, simulacijski alat ModelSim pruža verifikaciju ispravno predstavljenog prenosa.
-
-![tb1](https://github.com/user-attachments/assets/14f52639-76dd-4f6e-98d0-9e71997ff13e)
-
-Drugi slučaj obuhvata prenos sa _backpressure_-om.
-
-![tb2](https://github.com/user-attachments/assets/ba508d53-c204-4bd8-8882-c78951617014)
-
-Posljedni testbench je kreiran za slučaj sa _backpressure_-om na UDP payload-u.
-
-![tb3](https://github.com/user-attachments/assets/53e40543-c99b-44ff-b8ad-74c6cee3ac92)
+![rtl](https://github.com/user-attachments/assets/cbe4f4f6-b510-412d-8053-b7adde61951b)
 
 ## Verifikacija pomoću preglednika stanja
 
@@ -157,7 +147,35 @@ Preglednik stanja (engl. _State Machine Viewer_) pruža grafički prikaz stanja 
 
 Na osnovu prethodnog, izvršena je verifikacija dijagrama konačnih stanja kreiranog upotrebom draw.io alata.
 
-![s_state](https://github.com/user-attachments/assets/701cca39-8955-40cf-a697-81a9adb514a4)
+![fsm](https://github.com/user-attachments/assets/5e3d41cd-e042-4430-81cb-ff2287d819ef)
+
+
+## Verifikacija pomoću simulacijskog alata ModelSim
+
+Kako su analizirana tri scenarija, kreirana su tri testbench file-a koji obuhvataju slučajeve bez _backpressure_-a, sa _backpressure_-om, te sa _backpressure_-om na UDP payload-u. U nastavku je dat kratki opis kreiranih scenarija za verifikaciju, te prikaz signala u simulacijskom alatu ModelSim. Zbog dužine signala, svaki scenarij je na slikama ispod prikazan iz dva dijela radi jasnijeg prikaza svake faze obrade.
+
+Prvi testbench omogućava analizu simulacije ponašanja sistema kroz sekvencijalno slanje bajta za slučaj bez _backpressure_-a. Kako su signali ranije opisani, te predstavljeni wavefrom dijagrami, simulacijski alat ModelSim pruža verifikaciju ispravno predstavljenog prenosa.
+
+<img width="935" alt="tb1-1" src="https://github.com/user-attachments/assets/bc2d854b-11e2-40f2-af59-ed5aee2e3bec" />
+<img width="935" alt="tb1-2" src="https://github.com/user-attachments/assets/1e06700c-cb91-46b8-9a10-f51de6f64659" />
+
+
+
+
+Drugi slučaj obuhvata prenos sa _backpressure_-om.
+
+<img width="935" alt="tb2-1" src="https://github.com/user-attachments/assets/84035b44-375e-4191-8fe0-7ddd0206d5da" />
+<img width="935" alt="tb2-2" src="https://github.com/user-attachments/assets/50777b53-5757-4e49-bf85-59aafeb0740e" />
+
+
+
+Posljedni testbench je kreiran za slučaj sa _backpressure_-om na UDP payload-u.
+
+<img width="936" alt="tb3-1" src="https://github.com/user-attachments/assets/6fe1b2ea-9f90-4a3f-800b-a760c3e59152" />
+<img width="936" alt="tb3-2" src="https://github.com/user-attachments/assets/3f55a411-3029-452f-a813-31c4dc496f87" />
+
+
+
 
 ## Zaključak
 
@@ -167,9 +185,12 @@ Naredna poboljšanja parsera mogu uključivati proširenje podrške na dodatne p
 
 ## Literatura
 
-[1] Intel, F. P. G. A. (2021.) _Avalon® interface specifications_., Tech. Rep., MNL-AVABUSREF.
+[1] "What is the User Datagram Protocol (UDP/IP)?" Dostupno: 
+https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp/
 
 [2] Kaljić E., (2024.), _Arhitekture paketskih čvorišta - Predavanje 5_.
 
-[3] Volnei A. Pedroni (2010) Circuit Design and Simulation with VHDL (poglavlje 11), The MIT Press, Cambridge, Massachussets, 2nd edition.
+[3] Intel, F. P. G. A. (2021.) _Avalon® interface specifications_., Tech. Rep., MNL-AVABUSREF.
+
+[4] Volnei A. Pedroni (2010) Circuit Design and Simulation with VHDL (poglavlje 11), The MIT Press, Cambridge, Massachussets, 2nd edition.
 
