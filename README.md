@@ -156,16 +156,20 @@ Kako su analizirana tri scenarija, kreirana su tri testbench file-a koji obuhvat
 Prvi testbench omogućava analizu simulacije ponašanja sistema kroz sekvencijalno slanje bajta za slučaj bez _backpressure_-a. Kako su signali ranije opisani, te predstavljeni wavefrom dijagrami, simulacijski alat ModelSim pruža verifikaciju ispravno predstavljenog prenosa.
 
 <img width="935" alt="tb1-1" src="https://github.com/user-attachments/assets/bc2d854b-11e2-40f2-af59-ed5aee2e3bec" />
+<img width="935" alt="tb1-2" src="https://github.com/user-attachments/assets/1e06700c-cb91-46b8-9a10-f51de6f64659" />
 
 
 
 Drugi slučaj obuhvata prenos sa _backpressure_-om.
+<img width="935" alt="tb2-1" src="https://github.com/user-attachments/assets/84035b44-375e-4191-8fe0-7ddd0206d5da" />
+<img width="935" alt="tb2-2" src="https://github.com/user-attachments/assets/50777b53-5757-4e49-bf85-59aafeb0740e" />
 
-![tb2](https://github.com/user-attachments/assets/ba508d53-c204-4bd8-8882-c78951617014)
+
 
 Posljedni testbench je kreiran za slučaj sa _backpressure_-om na UDP payload-u.
+<img width="936" alt="tb3-1" src="https://github.com/user-attachments/assets/6fe1b2ea-9f90-4a3f-800b-a760c3e59152" />
+<img width="936" alt="tb3-2" src="https://github.com/user-attachments/assets/3f55a411-3029-452f-a813-31c4dc496f87" />
 
-![tb3](https://github.com/user-attachments/assets/53e40543-c99b-44ff-b8ad-74c6cee3ac92)
 
 
 ## Zaključak
