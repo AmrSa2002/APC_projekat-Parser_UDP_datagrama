@@ -22,7 +22,7 @@ ARCHITECTURE behavior OF Parser_UDP_datagrama_tb3 IS
             out_endofpacket     : OUT STD_LOGIC;
             out_ready           : IN  STD_LOGIC;
             out_valid           : OUT STD_LOGIC;
-            channel             : OUT STD_LOGIC_VECTOR(95 DOWNTO 0)
+            out_channel         : OUT STD_LOGIC_VECTOR(95 DOWNTO 0)
         );
     END COMPONENT;
 
@@ -39,7 +39,7 @@ ARCHITECTURE behavior OF Parser_UDP_datagrama_tb3 IS
     SIGNAL out_endofpacket     : STD_LOGIC;
     SIGNAL out_ready           : STD_LOGIC := '1';
     SIGNAL out_valid           : STD_LOGIC := '1';
-    SIGNAL channel             : STD_LOGIC_VECTOR(95 DOWNTO 0);
+    SIGNAL out_channel         : STD_LOGIC_VECTOR(95 DOWNTO 0);
 
     -- Clock period definition
     CONSTANT clk_period : TIME := 10 ns;
@@ -61,7 +61,7 @@ BEGIN
             out_endofpacket     => out_endofpacket,
             out_ready           => out_ready,
             out_valid		=> out_valid,
-            channel             => channel
+            out_channel         => out_channel
         );
 
     -- Clock generation process
@@ -107,29 +107,29 @@ BEGIN
                 in_data <= ethernet_frame(index);  -- Send the predefined byte of the Ethernet frame
                 index := index + 1;
                 in_endofpacket <= '1';  -- End of packet
-            ELSIF index = 11 THEN
+            ELSIF index = 10 THEN
                 out_ready <= '0';  -- Apply backpressure
                 in_data <= ethernet_frame(index);  -- Send the predefined byte of the Ethernet frame
                 backpreusere := backpreusere + 1;
-                IF backpreusere = 3 THEN
+                IF backpreusere = 4 THEN
                     out_ready <= '1';  -- Remove backpressure after 3 cycles
                     index := index + 1;
                     in_data <= ethernet_frame(index);
                     index := index + 1;
                     backpreusere := 0;
                 END IF;
-            ELSIF index = 24 THEN
+            ELSIF index = 23 THEN
                 out_ready <= '0';  -- Apply backpressure
                 in_data <= ethernet_frame(index);  -- Send the predefined byte of the Ethernet frame
                 backpreusere := backpreusere + 1;
-                IF backpreusere = 5 THEN
+                IF backpreusere = 6 THEN
                     out_ready <= '1';  -- Remove backpressure after 5 cycles
                     index := index + 1;
                     in_data <= ethernet_frame(index);
                     index := index + 1;
                     backpreusere := 0;
                 END IF;
-            ELSIF index = 45 THEN
+            ELSIF index = 58 THEN
                 out_ready <= '0';  -- Apply backpressure
                 in_data <= ethernet_frame(index);  -- Send the predefined byte of the Ethernet frame
                 backpreusere := backpreusere + 1;

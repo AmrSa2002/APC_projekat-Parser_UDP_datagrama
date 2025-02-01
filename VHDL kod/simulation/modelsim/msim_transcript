@@ -12,7 +12,7 @@
 # 
 # vcom -2008 -work work {C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 12:40:42 on Feb 01,2025
+# Start time: 13:33:26 on Feb 01,2025
 # vcom -reportprogress 300 -2008 -work work C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -20,34 +20,52 @@
 # -- Loading package NUMERIC_STD
 # -- Compiling entity Parser_UDP_datagrama
 # -- Compiling architecture rtl of Parser_UDP_datagrama
-# End time: 12:40:42 on Feb 01,2025, Elapsed time: 0:00:00
+# End time: 13:33:26 on Feb 01,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
-vcom -reportprogress 300 -work work {C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_tb.vhd}
+vcom -reportprogress 300 -work work {C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_tb3.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 12:42:39 on Feb 01,2025
-# vcom -reportprogress 300 -work work C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_tb.vhd 
+# Start time: 13:36:18 on Feb 01,2025
+# vcom -reportprogress 300 -work work C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_tb3.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
-# -- Compiling entity Parser_UDP_datagrama_tb
-# -- Compiling architecture behavior of Parser_UDP_datagrama_tb
-# End time: 12:42:39 on Feb 01,2025, Elapsed time: 0:00:00
+# -- Compiling entity Parser_UDP_datagrama_tb3
+# -- Compiling architecture behavior of Parser_UDP_datagrama_tb3
+# End time: 13:36:19 on Feb 01,2025, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
-vsim rtl_work.parser_udp_datagrama_tb
-# vsim rtl_work.parser_udp_datagrama_tb 
-# Start time: 12:42:44 on Feb 01,2025
+vsim -gui -l msim_transcript rtl_work.parser_udp_datagrama_tb3
+# vsim -gui -l msim_transcript rtl_work.parser_udp_datagrama_tb3 
+# Start time: 13:36:28 on Feb 01,2025
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
-# Loading rtl_work.parser_udp_datagrama_tb(behavior)
+# Loading rtl_work.parser_udp_datagrama_tb3(behavior)
 # Loading rtl_work.parser_udp_datagrama(rtl)
-# ** Error: (vsim-3732) C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_tb.vhd(65): No default binding for component instance 'uut'.
-#    The following component port is not on the entity:
-#           channel
-#    Time: 0 ps  Iteration: 0  Instance: /parser_udp_datagrama_tb/uut File: C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/Parser_UDP_datagrama.vhd
-# Error loading design
-# End time: 12:42:44 on Feb 01,2025, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
+add wave -r /*
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: tk-student  Hostname: etf-tk-lab222-w2  ProcessID: 24376
+#           Attempting to use alternate WLF file "./wlftd8awxk".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftd8awxk
+add wave -r /*
+run
+vcom -reportprogress 300 -work work {C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_tb3.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:41:44 on Feb 01,2025
+# vcom -reportprogress 300 -work work C:/Users/Lejla/Desktop/APC projekat/APC_projekat-Parser_UDP_datagrama/VHDL kod/simulation/modelsim/Parser_UDP_datagrama_tb3.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity Parser_UDP_datagrama_tb3
+# -- Compiling architecture behavior of Parser_UDP_datagrama_tb3
+# End time: 13:41:44 on Feb 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# Loading rtl_work.parser_udp_datagrama_tb3(behavior)
+run
+# End time: 13:53:34 on Feb 01,2025, Elapsed time: 0:17:06
+# Errors: 0, Warnings: 2

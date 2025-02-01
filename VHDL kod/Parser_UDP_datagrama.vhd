@@ -21,7 +21,7 @@ ENTITY Parser_UDP_datagrama IS
         out_endofpacket : OUT STD_LOGIC;
         out_ready : IN STD_LOGIC;
         out_valid : OUT STD_LOGIC;
-        channel: OUT STD_LOGIC_VECTOR(95 DOWNTO 0) -- IP source, IP destination, source port, destination port
+        out_channel: OUT STD_LOGIC_VECTOR(95 DOWNTO 0) -- IP source, IP destination, source port, destination port
     );
 END ENTITY Parser_UDP_datagrama;
 
@@ -247,13 +247,13 @@ BEGIN
         out_startofpacket <= '0';
         out_endofpacket <= s_out_endofpacket;
         out_startofpacket <= s_out_startofpacket;
-        channel <= (OTHERS => '0');
+        out_channel <= (OTHERS => '0');
         in_ready <= out_ready;
         CASE s_state IS
             WHEN DATA =>
                 out_data <= s_out_data; -- Use delayed signal
                 out_valid <= '1';
-                channel <= s_channel;
+                out_channel <= s_channel;
             WHEN OTHERS =>
                 out_valid <= '0';
                 out_data <= (OTHERS => '0');

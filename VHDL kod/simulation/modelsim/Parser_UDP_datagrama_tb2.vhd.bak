@@ -100,6 +100,9 @@ BEGIN
 
         -- Process to send Ethernet frame with backpressure handling
         WHILE index <= 63 LOOP
+            IF ethernet_frame(index) <= X"1A" THEN
+		in_startofpacket <= '0';
+            END IF;
             IF index = 63 THEN
                 in_data <= ethernet_frame(index);  -- Send the predefined byte of the Ethernet frame
                 index := index + 1;
