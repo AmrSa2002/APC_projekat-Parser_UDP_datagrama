@@ -156,7 +156,7 @@ Na osnovu prethodnog, izvršena je verifikacija dijagrama konačnih stanja kreir
 
 Kako su analizirana tri scenarija, kreirana su tri testbench file-a koji obuhvataju slučajeve bez _backpressure_-a, sa _backpressure_-om, te sa _backpressure_-om na UDP payload-u. U nastavku je dat kratki opis kreiranih scenarija za verifikaciju, te prikaz signala u simulacijskom alatu ModelSim. Zbog dužine signala, svaki scenarij je na slikama ispod prikazan iz dva dijela radi jasnijeg prikaza svake faze obrade.
 
-Prvi testbench omogućava analizu simulacije ponašanja sistema kroz sekvencijalno slanje bajta za slučaj bez _backpressure_-a. Kako su signali ranije opisani, te predstavljeni wavefrom dijagrami, simulacijski alat ModelSim pruža verifikaciju ispravno predstavljenog prenosa.
+Prvi testbench omogućava analizu simulacije ponašanja sistema kroz sekvencijalno slanje bajta za slučaj bez _backpressure_-a. Kako su signali ranije opisani, te predstavljeni waveform dijagrami, simulacijski alat ModelSim pruža verifikaciju ispravno predstavljenog prenosa paketa veličine 64B.
 
 <img width="940" alt="tb1-1" src="https://github.com/user-attachments/assets/a4330d26-9236-4126-8b2a-7956ee141485" />
 <img width="940" alt="tb1-2" src="https://github.com/user-attachments/assets/81081f55-9b95-4aee-97f1-677eaf7d5f80" />
@@ -173,6 +173,7 @@ Posljedni testbench je kreiran za slučaj sa _backpressure_-om na UDP payload-u.
 <img width="940" alt="tb3-1" src="https://github.com/user-attachments/assets/14729b01-ff32-4aca-bbe4-6e96326b690c" />
 <img width="942" alt="tb3-2" src="https://github.com/user-attachments/assets/4c701a90-4621-4e4c-a053-f73ff2927efc" />
 
+Kroz prikaz u ModelSim-u verificirali smo ispravnost koda, gdje `out_data` predstavlja očekivani parsirani UDP payload ulaznih podataka, dok `channel` pokazuje vrijednosti IP adrese izvora, UDP port izvora, IP adresu odredišta, te UDP port odredišta, respektivno, što sugeriše da parser signalizira završetak prenosa podataka i selekciju odgovarajućeg izlaznog kanala.
 
 ## Zaključak
 
