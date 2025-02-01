@@ -159,9 +159,8 @@ Kako su analizirana tri scenarija, kreirana su tri testbench file-a koji obuhvat
 
 Prvi testbench omogućava analizu simulacije ponašanja sistema kroz sekvencijalno slanje bajta za slučaj bez _backpressure_-a. Kako su signali ranije opisani, te predstavljeni wavefrom dijagrami, simulacijski alat ModelSim pruža verifikaciju ispravno predstavljenog prenosa.
 
-<img width="935" alt="tb1-1" src="https://github.com/user-attachments/assets/bc2d854b-11e2-40f2-af59-ed5aee2e3bec" />
-<img width="935" alt="tb1-2" src="https://github.com/user-attachments/assets/1e06700c-cb91-46b8-9a10-f51de6f64659" />
-
+<img width="940" alt="tb1-1" src="https://github.com/user-attachments/assets/a4330d26-9236-4126-8b2a-7956ee141485" />
+<img width="940" alt="tb1-2" src="https://github.com/user-attachments/assets/81081f55-9b95-4aee-97f1-677eaf7d5f80" />
 
 
 
