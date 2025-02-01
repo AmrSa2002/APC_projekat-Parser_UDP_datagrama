@@ -96,7 +96,7 @@ Kada sink nije spreman za prijem paketa, signal `out_ready` prelazi u stanje nul
 
 U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz prethodni scenarij.
 
-![scenarij2](https://github.com/user-attachments/assets/136a7b77-7c8c-4790-950c-2fdaa7aaf89f)
+![scenarij2](https://github.com/user-attachments/assets/e23dee94-8890-4478-b0a4-017c4a679a69)
 
 
 
@@ -104,7 +104,7 @@ U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz 
 
 U nastavku je dat prikaz waveform dijagrama sa internim signalima opisanim kroz _Scenarij br. 1_.
 
-![scenarij3](https://github.com/user-attachments/assets/7e1268b3-3948-4dcf-8e64-12c0423c57e0)
+![scenarij3](https://github.com/user-attachments/assets/e174ca89-ec30-4f09-a5e2-2f2f94b97122)
 
 
 ## Konačni automat
