@@ -182,8 +182,7 @@ Naredna poboljšanja parsera mogu uključivati proširenje podrške na dodatne p
 
 ## Literatura
 
-[1] "What is the User Datagram Protocol (UDP/IP)?" Dostupno: 
-https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp/
+[[1] "What is the User Datagram Protocol (UDP/IP)?"] (https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp/)
 
 [2] Kaljić E., (2024.), _Arhitekture paketskih čvorišta - Predavanje 5_.
 
