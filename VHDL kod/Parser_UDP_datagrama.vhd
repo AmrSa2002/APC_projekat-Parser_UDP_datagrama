@@ -66,8 +66,8 @@ BEGIN
                     next_state <= ETHERNET_HEADER;
                     next_byte_index <= 0;
                 ELSE
-					     next_state <= IDLE;
-					 END IF;
+		    next_state <= IDLE;
+		END IF;
 
             WHEN ETHERNET_HEADER =>
                 IF (out_ready = '1' AND in_valid = '1') THEN
@@ -90,7 +90,7 @@ BEGIN
                         next_byte_index <= byte_index + 1;
                     END IF;
                 ELSIF out_ready = '0' THEN
-					     next_state <= ETHERNET_HEADER;
+		    next_state <= ETHERNET_HEADER;
                     next_byte_index <= byte_index + 1;
                 END IF;
 
@@ -117,7 +117,7 @@ BEGIN
                     END IF;
                 ELSIF out_ready = '0' THEN
                     next_byte_index <= byte_index + 1;
-						  next_state <= IP_HEADER;
+		    next_state <= IP_HEADER;
                 END IF;
 
             WHEN UDP_HEADER =>
@@ -138,7 +138,7 @@ BEGIN
                     END IF;
                 ELSIF out_ready = '0' THEN
                     next_byte_index <= byte_index + 1;
-						  next_state <= UDP_HEADER;
+		    next_state <= UDP_HEADER;
                 END IF;
 
             WHEN DATA =>
@@ -157,7 +157,7 @@ BEGIN
                 ELSIF out_ready = '0' THEN
                     next_byte_index <= byte_index + 1;
                     next_out_startofpacket <= '0';
-						  next_state <= DATA;
+		    next_state <= DATA;
                 END IF;
 
             WHEN CRC =>
@@ -167,7 +167,7 @@ BEGIN
                         next_state <= IDLE;
                     ELSE
                         next_byte_index <= byte_index + 1;
-								next_state <= CRC;
+		        next_state <= CRC;
                     END IF;
                 END IF;
 
@@ -190,16 +190,16 @@ BEGIN
                 udp_payload_length <= 0;
                 s_channel <= (OTHERS => '0');
                 s_out_endofpacket <= '0';
-				    s_out_startofpacket <= '0';
+		s_out_startofpacket <= '0';
                 delayed_data <= (OTHERS => '0');
                 s_out_data <= (OTHERS => '0');
             ELSE
                 s_state <= next_state;
-					 IF (out_ready = '0' AND counter = 0) OR out_ready = '1' THEN
+		IF (out_ready = '0' AND counter = 0) OR out_ready = '1' THEN
                     byte_index <= next_byte_index;
-						  delayed_data <= in_data; -- Store current value of in_data
+		    delayed_data <= in_data; -- Store current value of in_data
                     s_out_data <= delayed_data; -- Assign delayed value to output
-					 END IF;
+		END IF;
                 ip_header_length <= next_ip_header_length;
                 udp_length <= next_udp_length;
                 udp_payload_length <= next_udp_payload_length;
@@ -207,7 +207,7 @@ BEGIN
                 s_out_startofpacket <= next_out_startofpacket;
 					 
                 CASE byte_index IS
-					     WHEN 24 =>
+		    WHEN 24 =>
                         s_channel(95 DOWNTO 88) <= in_data;
                     WHEN 25 =>
                         s_channel(87 DOWNTO 80) <= in_data;
@@ -223,8 +223,8 @@ BEGIN
                         s_channel(47 DOWNTO 40) <= in_data;
                     WHEN 31 =>
                         s_channel(39 DOWNTO 32) <= in_data;
-						  WHEN OTHERS =>
-						      NULL;	
+		    WHEN OTHERS =>
+			NULL;	
                 END CASE;
 					 
                 IF byte_index = (12 + ip_header_length) THEN
