@@ -184,11 +184,11 @@ Naredna poboljšanja parsera mogu uključivati proširenje podrške na dodatne p
 
 ## Literatura
 
-[1] "What is the User Datagram Protocol (UDP/IP)?", Dostupno https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp/
+[1] "What is the User Datagram Protocol (UDP/IP)?", (bez dat.) na CloudFlare, Dostupno: https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp \[pristupano 27.1.2025.\]
 
-[2] Kaljić E., (2024.), _Arhitekture paketskih čvorišta - Predavanje 5_.
+[2] Kaljić E., "Predavanje 5 - Interkonekcija komponenti paketskog čvorišta", nastavni materijal na predmetu Arhitekture paketskih čvorišta, Univerzitet u Sarajevu, Elektrotehnički fakultet, 2024.
 
-[3] Intel, F. P. G. A. (2021.) _Avalon® interface specifications_., Tech. Rep., MNL-AVABUSREF.
+[3] Intel, F. P. G. A., _Avalon® interface specifications_., Tech. Rep., MNL-AVABUSREF, 2021.
 
-[4] Volnei A. Pedroni (2010) Circuit Design and Simulation with VHDL (poglavlje 11), The MIT Press, Cambridge, Massachussets, 2nd edition.
+[4] Volnei A. Pedroni, Circuit Design and Simulation with VHDL (poglavlje 11), The MIT Press, Cambridge, Massachussets, 2nd edition, 2010. 
 
